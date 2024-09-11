@@ -9,6 +9,7 @@
 
 import wx
 import wx.xrc
+import wx.grid
 
 ###########################################################################
 ## Class MyFrame1
@@ -104,7 +105,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelHome.SetSizer( gSizer7 )
 		self.m_panelHome.Layout()
 		gSizer7.Fit( self.m_panelHome )
-		self.m_notebook1.AddPage( self.m_panelHome, u"Home", False )
+		self.m_notebook1.AddPage( self.m_panelHome, u"Home", True )
 		self.m_panelSearch = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerSearchFrame = wx.BoxSizer( wx.VERTICAL )
 
@@ -228,8 +229,29 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerRangeBottom = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_panelRangeList = wx.Panel( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizerRangeBottom.Add( self.m_panelRangeList, 1, wx.EXPAND |wx.ALL, 5 )
+		self.m_grid1 = wx.grid.Grid( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+		# Grid
+		self.m_grid1.CreateGrid( 5, 5 )
+		self.m_grid1.EnableEditing( True )
+		self.m_grid1.EnableGridLines( True )
+		self.m_grid1.EnableDragGridSize( False )
+		self.m_grid1.SetMargins( 0, 0 )
+
+		# Columns
+		self.m_grid1.EnableDragColMove( False )
+		self.m_grid1.EnableDragColSize( True )
+		self.m_grid1.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.m_grid1.EnableDragRowSize( True )
+		self.m_grid1.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_grid1.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizerRangeBottom.Add( self.m_grid1, 0, wx.ALL, 5 )
 
 
 		bSizerRangeMain.Add( bSizerRangeBottom, 1, wx.EXPAND, 5 )
@@ -280,10 +302,29 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerFilterBottom = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_panelLevelList = wx.Panel( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.m_panelLevelList.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+		self.m_grid2 = wx.grid.Grid( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
-		bSizerFilterBottom.Add( self.m_panelLevelList, 1, wx.EXPAND |wx.ALL, 0 )
+		# Grid
+		self.m_grid2.CreateGrid( 5, 5 )
+		self.m_grid2.EnableEditing( True )
+		self.m_grid2.EnableGridLines( True )
+		self.m_grid2.EnableDragGridSize( False )
+		self.m_grid2.SetMargins( 0, 0 )
+
+		# Columns
+		self.m_grid2.EnableDragColMove( False )
+		self.m_grid2.EnableDragColSize( True )
+		self.m_grid2.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.m_grid2.EnableDragRowSize( True )
+		self.m_grid2.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_grid2.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizerFilterBottom.Add( self.m_grid2, 0, wx.ALL, 5 )
 
 
 		bSizerLevelFilter.Add( bSizerFilterBottom, 1, wx.EXPAND|wx.TOP, 10 )
@@ -420,7 +461,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelMealPlanner.SetSizer( gSizerPlanner )
 		self.m_panelMealPlanner.Layout()
 		gSizerPlanner.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
 
 		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 
