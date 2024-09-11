@@ -7,8 +7,6 @@ def search_food_by_name(food_name):
     if result.empty:
         return False
     else:
-        return True
+        return result
 
-def get_nutritional_info(food_name):
-        nutritional_info = df[df['food'] == food_name]
-        return nutritional_info
+

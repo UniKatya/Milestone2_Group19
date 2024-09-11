@@ -143,7 +143,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelSearch.SetSizer( bSizerSearchFrame )
 		self.m_panelSearch.Layout()
 		bSizerSearchFrame.Fit( self.m_panelSearch )
-		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", False )
+		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", True )
 		self.m_panelBreakdown = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerBreakdownFrame = wx.BoxSizer( wx.VERTICAL )
 
@@ -420,7 +420,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelMealPlanner.SetSizer( gSizerPlanner )
 		self.m_panelMealPlanner.Layout()
 		gSizerPlanner.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
 
 		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 
@@ -433,5 +433,15 @@ class MyFrame1 ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_buttonSearch.Bind( wx.EVT_BUTTON, self.search_food_by_name )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def search_food_by_name( self, event ):
+		event.Skip()
+
+
