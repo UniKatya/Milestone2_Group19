@@ -89,33 +89,7 @@ class MyMainFrame(MyFrame):
         return nutritional_info
 
     def create_pie_chart(self, event):
-        nutritional_info = self.get_nutritional_info(self)
-        if not nutritional_info:
-            wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
-            return
-        categories = list(nutritional_info.keys())
-        sizes = list(nutritional_info.values())
-
-        # Create the pie chart
-        fig, ax = plt.subplots(1, 1, figsize=(4, 4))
-
-        # Create explode list with same length as categories
-        explode = [0.1] + [0.0] * (len(categories) - 1)
-
-        # Ensure explode list length matches number of slices
-        if len(explode) != len(categories):
-            explode = [0.0] * len(categories)  # No explosion if lengths mismatch
-
-        ax.pie(sizes, labels=categories, autopct="%1.1f%%", shadow=True, explode=explode)
-        ax.set_title("Nutritional Information Pie Chart")
-
-        # Adjust figure size based on panel size
-        h, w = self.m_panelFoodInfo.GetSize()
-        fig.set_size_inches(h / fig.get_dpi(), w / fig.get_dpi())
-        canvas = FigureCanvasWxAgg(self.m_panelFoodInfo, -1, fig)
-        canvas.SetSize((h, w))
-        self.Layout()
-
+        pass
 
 
 if __name__ == "__main__":
