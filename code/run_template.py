@@ -17,6 +17,7 @@ class MyMainFrame(MyFrame):
 
     def search_food_by_name(self, event):
         food_name = self.m_textCtrlSearch.GetValue()
+        food_name = food_name.lower()
         result = df[df['food'] == food_name]
         if result.empty:
             display_text = f"There is no such food called {food_name}."
