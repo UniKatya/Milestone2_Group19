@@ -131,10 +131,225 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerSearchBottom = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_staticTextData = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"Please enter a food name", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.m_staticTextData.Wrap( -1 )
+		self.m_staticTextTitle = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"Please enter a food name", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.m_staticTextTitle.Wrap( -1 )
 
-		bSizerSearchBottom.Add( self.m_staticTextData, 0, wx.ALL, 8 )
+		bSizerSearchBottom.Add( self.m_staticTextTitle, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 8 )
+
+		bSizer20 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticCaloricValue = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticCaloricValue.Wrap( -1 )
+
+		bSizer20.Add( self.m_staticCaloricValue, 0, wx.ALL, 5 )
+
+		self.m_staticFat = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticFat.Wrap( -1 )
+
+		bSizer20.Add( self.m_staticFat, 0, wx.ALL, 5 )
+
+		self.VitaminD = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminD.Wrap( -1 )
+
+		bSizer20.Add( self.VitaminD, 0, wx.ALL, 5 )
+
+		self.Selenium = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Selenium.Wrap( -1 )
+
+		bSizer20.Add( self.Selenium, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer20, 1, wx.EXPAND, 5 )
+
+		bSizer221 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticMonounFats = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticMonounFats.Wrap( -1 )
+
+		bSizer221.Add( self.m_staticMonounFats, 0, wx.ALL, 5 )
+
+		self.m_staticSaturatedFats = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticSaturatedFats.Wrap( -1 )
+
+		bSizer221.Add( self.m_staticSaturatedFats, 0, wx.ALL, 5 )
+
+		self.VitaminE = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminE.Wrap( -1 )
+
+		bSizer221.Add( self.VitaminE, 0, wx.ALL, 5 )
+
+		self.Zinc = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Zinc.Wrap( -1 )
+
+		bSizer221.Add( self.Zinc, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer221, 1, wx.EXPAND, 5 )
+
+		bSizer23 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticCarbs = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticCarbs.Wrap( -1 )
+
+		bSizer23.Add( self.m_staticCarbs, 0, wx.ALL, 5 )
+
+		self.m_staticPolyFats = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticPolyFats.Wrap( -1 )
+
+		bSizer23.Add( self.m_staticPolyFats, 0, wx.ALL, 5 )
+
+		self.VitaminK = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminK.Wrap( -1 )
+
+		bSizer23.Add( self.VitaminK, 0, wx.ALL, 5 )
+
+		self.Density = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Density.Wrap( -1 )
+
+		bSizer23.Add( self.Density, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer23, 1, wx.EXPAND, 5 )
+
+		bSizer24 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticProtein = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticProtein.Wrap( -1 )
+
+		bSizer24.Add( self.m_staticProtein, 0, wx.ALL, 5 )
+
+		self.m_staticSugars = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticSugars.Wrap( -1 )
+
+		bSizer24.Add( self.m_staticSugars, 0, wx.ALL, 5 )
+
+		self.Calcium = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Calcium.Wrap( -1 )
+
+		bSizer24.Add( self.Calcium, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer24, 1, wx.EXPAND, 5 )
+
+		bSizer25 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_Cholesterol = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_Cholesterol.Wrap( -1 )
+
+		bSizer25.Add( self.m_Cholesterol, 0, wx.ALL, 5 )
+
+		self.m_DietaryFiber = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_DietaryFiber.Wrap( -1 )
+
+		bSizer25.Add( self.m_DietaryFiber, 0, wx.ALL, 5 )
+
+		self.Copper = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Copper.Wrap( -1 )
+
+		bSizer25.Add( self.Copper, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer25, 1, wx.EXPAND, 5 )
+
+		bSizer261 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_Sodium = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_Sodium.Wrap( -1 )
+
+		bSizer261.Add( self.m_Sodium, 0, wx.ALL, 5 )
+
+		self.m_Water = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_Water.Wrap( -1 )
+
+		bSizer261.Add( self.m_Water, 0, wx.ALL, 5 )
+
+		self.Iron = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Iron.Wrap( -1 )
+
+		bSizer261.Add( self.Iron, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer261, 1, wx.EXPAND, 5 )
+
+		bSizer27 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.VitaminA = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminA.Wrap( -1 )
+
+		bSizer27.Add( self.VitaminA, 0, wx.ALL, 5 )
+
+		self.VitaminB1 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB1.Wrap( -1 )
+
+		bSizer27.Add( self.VitaminB1, 0, wx.ALL, 5 )
+
+		self.Magnesium = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Magnesium.Wrap( -1 )
+
+		bSizer27.Add( self.Magnesium, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer27, 1, wx.EXPAND, 5 )
+
+		bSizer28 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.VitaminB12 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB12.Wrap( -1 )
+
+		bSizer28.Add( self.VitaminB12, 0, wx.ALL, 5 )
+
+		self.VitaminB2 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB2.Wrap( -1 )
+
+		bSizer28.Add( self.VitaminB2, 0, wx.ALL, 5 )
+
+		self.Manganese = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Manganese.Wrap( -1 )
+
+		bSizer28.Add( self.Manganese, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer28, 1, wx.EXPAND, 5 )
+
+		bSizer29 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.VitaminB3 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB3.Wrap( -1 )
+
+		bSizer29.Add( self.VitaminB3, 0, wx.ALL, 5 )
+
+		self.VitaminB5 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB5.Wrap( -1 )
+
+		bSizer29.Add( self.VitaminB5, 0, wx.ALL, 5 )
+
+		self.Phosphorus = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Phosphorus.Wrap( -1 )
+
+		bSizer29.Add( self.Phosphorus, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer29, 1, wx.EXPAND, 5 )
+
+		bSizer30 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.VitaminB6 = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminB6.Wrap( -1 )
+
+		bSizer30.Add( self.VitaminB6, 0, wx.ALL, 5 )
+
+		self.VitaminC = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.VitaminC.Wrap( -1 )
+
+		bSizer30.Add( self.VitaminC, 0, wx.ALL, 5 )
+
+		self.Potassium = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"                                                   ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Potassium.Wrap( -1 )
+
+		bSizer30.Add( self.Potassium, 0, wx.ALL, 5 )
+
+
+		bSizerSearchBottom.Add( bSizer30, 1, wx.EXPAND, 5 )
 
 
 		bSizerSearchFrame.Add( bSizerSearchBottom, 1, wx.EXPAND|wx.TOP, 10 )
@@ -434,14 +649,18 @@ class MyFrame1 ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
-		self.m_buttonSearch.Bind( wx.EVT_BUTTON, self.search_food_by_name )
+		self.m_buttonSearch.Bind( wx.EVT_BUTTON, self.display_nutritional_info )
+		self.m_buttonBreakdown.Bind( wx.EVT_BUTTON, self.create_pie_chart )
 
 	def __del__( self ):
 		pass
 
 
 	# Virtual event handlers, override them in your derived class
-	def search_food_by_name( self, event ):
+	def display_nutritional_info( self, event ):
+		event.Skip()
+
+	def create_pie_chart( self, event ):
 		event.Skip()
 
 
