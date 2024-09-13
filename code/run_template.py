@@ -14,6 +14,7 @@ from template_frame import MyFrame1 as MyFrame
 class MyMainFrame(MyFrame):
     def __init__(self,parent=None):
         super().__init__(parent)
+        self.meal_plan = {}
 
         self.Layout()
         self.Show(True)
@@ -26,59 +27,21 @@ class MyMainFrame(MyFrame):
             wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        self.m_staticTextTitle.SetLabel(food_name)
-
-        self.m_staticCaloricValue.SetLabel(f'Caloric Value: {result.get("Caloric Value")}')
-        self.m_staticFat.SetLabel(f"Fat: {result.get('Fat')}")
-        self.VitaminD.SetLabel(f"Vitamin D: {result.get('Vitamin D')}")
-        self.Selenium.SetLabel(f"Selenium: {result.get('Selenium')}")
-
-        self.m_staticSaturatedFats.SetLabel(f'Saturated Fats: {result.get("Saturated Fats")}')
-        self.m_staticMonounFats.SetLabel(f'Monounsaturated Fats: {result.get("Monounsaturated Fats")}')
-        self.VitaminE.SetLabel(f'Vitamin E: {result.get("Vitamin E")}')
-        self.Zinc.SetLabel(f'Zinc: {result.get("Zinc")}')
-
-        self.m_staticPolyFats.SetLabel(f'Polyunsaturated Fats: {result.get("Polyunsaturated Fats")}')
-        self.m_staticCarbs.SetLabel(f'Carbohydrates: {result.get("Carbohydrates")}')
-        self.VitaminK.SetLabel(f"Vitamin K: {result.get('Vitamin K')}")
-        self.Density.SetLabel(f"Density: {result.get('Nutrition Density')}")
-
-        self.m_staticSugars.SetLabel(f"Sugars: {result.get('Sugars')}")
-        self.m_staticProtein.SetLabel(f"Protein: {result.get('Protein')}")
-        self.Calcium.SetLabel(f'Calcium: {result.get("Calcium")}')
-
-        self.m_DietaryFiber.SetLabel(f'Dietary Fiber: {result.get("Dietary Fiber")}')
-        self.m_Cholesterol.SetLabel(f'Cholesteral: {result.get("Cholesterol")}')
-        self.Copper.SetLabel(f'Copper: {result.get("Copper")}')
-
-        self.m_Sodium.SetLabel(f"Sodium: {result.get('Sodium')}")
-        self.m_Water.SetLabel(f"Water: {result.get('Water')}")
-        self.Iron.SetLabel(f"Iron: {result.get('Iron')}")
-
-        self.VitaminA.SetLabel(f"Vitamin A: {result.get('Vitamin A')}")
-        self.VitaminB1.SetLabel(f"Vitamin B1: {result.get('Vitamin B1')}")
-        self.Magnesium.SetLabel(f'Magnesium: {result.get("Magnesium")}')
-
-        self.VitaminB12.SetLabel(f"Vitamin B12: {result.get('Vitamin B12')}")
-        self.VitaminB2.SetLabel(f"Vitamin B2: {result.get('Vitamin B2')}")
-        self.Manganese.SetLabel(f"Manganese: {result.get('Manganese')}")
-
-        self.VitaminB3.SetLabel(f"Vitamin B3: {result.get('Vitamin B3')}")
-        self.VitaminB5.SetLabel(f"Vitamin B5: {result.get('Vitamin B5')}")
-        self.Phosphorus.SetLabel(f"Phosphorus: {result.get('Phosphorus')}")
-
-        self.VitaminB6.SetLabel(f"Vitamin B6: {result.get('Vitamin B6')}")
-        self.VitaminC.SetLabel(f"Vitamin C: {result.get('Vitamin C')}")
-        self.Potassium.SetLabel(f"Potassium: {result.get('Potassium')}")
-
+        self.m_staticTextTitle.SetLabel(food_name.capitalize())
+        self.m_richText2.SetValue(f'Caloric Value: {result.get("Caloric Value")}     Fat: {result.get("Fat")}     Vitamin D: {result.get("Vitamin D")}     Selenium: {result.get("Selenium")}     '
+                                  f'Saturated Fats: {result.get("Saturated Fats")}     Monounsaturated Fats: {result.get("Monounsaturated Fats")}      Vitamin E: {result.get("Vitamin E")}     '
+                                  f'Zinc: {result.get("Zinc")}     Polyunsaturated Fats: {result.get("Polyunsaturated Fats")}     Carbohydrates: {result.get("Carbohydrates")}     '
+                                  f'Vitamin K: {result.get("Vitamin K")}     Density: {result.get("Nutrition Density")}     Sugars: {result.get("Sugars")}     Protein: {result.get("Protein")}     '
+                                  f'Calcium: {result.get("Calcium")}     Dietary Fiber: {result.get("Dietary Fiber")}     Cholesteral: {result.get("Cholesterol")}     Copper: {result.get("Copper")}     '
+                                  f'Sodium: {result.get("Sodium")}     Water: {result.get("Water")}     Iron: {result.get("Iron")}     Vitamin A: {result.get("Vitamin A")}     Vitamin B1: {result.get("Vitamin B1")}     '
+                                  f"Magnesium: {result.get('Magnesium')}      Vitamin B12: {result.get('Vitamin B12')}      Vitamin B2: {result.get('Vitamin B2')}       Manganese: {result.get('Manganese')}"
+                                  f"     Vitamin B3: {result.get('Vitamin B3')}     Vitamin B5: {result.get('Vitamin B5')}      Phosphorus: {result.get('Phosphorus')}      Vitamin B6: {result.get('Vitamin B6')}        "
+                                  f"Vitamin C: {result.get('Vitamin C')}     Potassium: {result.get('Potassium')}")
 
         self.Layout()
-
-
     def search_food_by_name(self, name):
         found = name in df['food'].values
         return found
-
 
     def get_nutritional_info(self, name):
         if not self.search_food_by_name(name):
@@ -88,8 +51,55 @@ class MyMainFrame(MyFrame):
         nutritional_info.pop('food', None)
         return nutritional_info
 
-    def create_pie_chart(self, event):
+    def display_charts(self, event):
         pass
+
+    def display_meal_plan(self, event):
+        food_name = self.m_textCtrl51.GetValue()
+        quantity = self.m_textCtrl52.GetValue()
+
+        try:
+            quantity = int(quantity.strip())
+            nutritional_info = self.get_nutritional_info(food_name)
+            if not nutritional_info:
+                wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
+                return
+
+            food_name, quantity = self.generate_meal_plan(food_name, quantity)
+            total_calories = self.generate_total_calories()
+            self.m_staticText59.SetLabel(f"                 {total_calories}")
+
+
+        except ValueError:
+            wx.MessageBox("Please enter a valid number for quantity.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+    def display_food(self, event):
+        pass
+
+
+    def generate_meal_plan(self, name, quantity):
+        if name in self.meal_plan:
+            self.meal_plan[name] += quantity
+        else:
+            self.meal_plan[name] = quantity
+
+        return name, quantity
+
+
+    def generate_total_calories(self):
+        c_total = 0
+        for key, value in self.meal_plan.items():
+            food_row = df[df['food'] == key].iloc[0]
+            caloric_value = food_row['Caloric Value']
+            c_total = caloric_value * value
+
+        return c_total
+
+    def remove_food_from_meal_plan(self, event):
+        food_name = self.m_staticTextAddFood.GetValue()
+        del self.meal_plan[food_name]
+
 
 
 if __name__ == "__main__":
