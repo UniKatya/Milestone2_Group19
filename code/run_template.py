@@ -1,5 +1,6 @@
 import wx.grid
 import pandas as pd
+import re
 
 import matplotlib
 matplotlib.use('WXAgg')
@@ -7,14 +8,52 @@ matplotlib.use('WXAgg')
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 import matplotlib.pyplot as plt
 
+EVEN_ROW_COLOUR = '#CCE6FF'
+GRID_LINE_COLOUR = '#ccc'
+
 df = pd.read_csv('Food_Nutrition_Dataset.csv')
 
 from template_frame import MyFrame1 as MyFrame
+
+class DataTable(wx.grid.GridTableBase):
+    def __init__(self, data=None):
+        wx.grid.GridTableBase.__init__(self)
+        self.headerRows = 1
+        self.data = data
+
+    def GetNumberRows(self):
+        return len(self.data.index)
+
+    def GetNumberCols(self):
+        return len(self.data.columns)
+
+    def GetValue(self, row, col):
+        return self.data.iloc[row, col]
+
+    def SetValue(self, row, col, value):
+        self.data.iloc[row, col] = value
+
+    def GetColLabelValue(self, col):
+        return self.data.columns[col]
+
+    def GetAttr(self, row, col, prop):
+        attr = wx.grid.GridCellAttr()
+        if row % 2 == 1:
+            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
+        return attr
+
 
 class MyMainFrame(MyFrame):
     def __init__(self,parent=None):
         super().__init__(parent)
         self.meal_plan = {}
+        self.selected_meal_food = ""
+        self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
+
+        self.table = DataTable(self.ml)
+        self.m_grid1.SetTable(self.table, takeOwnership=True)
+        self.m_grid1.AutoSize()
+        self.Show(True)
 
         self.Layout()
         self.Show(True)
@@ -39,6 +78,7 @@ class MyMainFrame(MyFrame):
                                   f"Vitamin C: {result.get('Vitamin C')}     Potassium: {result.get('Potassium')}")
 
         self.Layout()
+
     def search_food_by_name(self, name):
         found = name in df['food'].values
         return found
@@ -55,8 +95,8 @@ class MyMainFrame(MyFrame):
         pass
 
     def display_meal_plan(self, event):
-        food_name = self.m_textCtrl51.GetValue()
-        quantity = self.m_textCtrl52.GetValue()
+        food_name = self.m_textCtrl9.GetValue()
+        quantity = self.m_textCtrl8.GetValue()
 
         try:
             quantity = int(quantity.strip())
@@ -65,17 +105,45 @@ class MyMainFrame(MyFrame):
                 wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
                 return
 
-            food_name, quantity = self.generate_meal_plan(food_name, quantity)
+            self.generate_meal_plan(food_name, quantity)
             total_calories = self.generate_total_calories()
-            self.m_staticText59.SetLabel(f"                 {total_calories}")
+            self.m_staticText38.SetLabel(f"{total_calories}")
 
+            self.m_grid1.ClearGrid()
+            self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
+            self.table = DataTable(self.ml)
+            self.m_grid1.SetTable(self.table, takeOwnership=True)
+            self.m_grid1.AutoSize()
+            self.m_grid1.ForceRefresh()
+
+            self.Show(True)
 
         except ValueError:
             wx.MessageBox("Please enter a valid number for quantity.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
     def display_food(self, event):
-        pass
+        food_name = self.m_textCtrl10.GetValue().strip().lower()
+        if not food_name:
+            wx.MessageBox("Please enter a food name to search.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        meal_found = False
+        if food_name in [key.lower() for key in self.meal_plan.keys()]:
+            meal_found = True
+
+        if meal_found:
+            food_key = [key for key in self.meal_plan.keys() if key.lower() == food_name][0]  # Get original name
+            quantity = self.meal_plan[food_key]
+            food_row = df[df['food'].str.strip().str.lower() == food_name]
+            if not food_row.empty:
+                caloric_value = food_row.iloc[0]['Caloric Value']
+                total_calories = caloric_value * quantity
+
+                self.m_staticText43.SetLabel(f"{food_name}")
+                self.m_staticText47.SetLabel(f"  {quantity}  ")
+                self.m_staticText44.SetLabel(f"  {total_calories} calories")
+                self.selected_meal_food = food_name
 
 
     def generate_meal_plan(self, name, quantity):
@@ -92,13 +160,21 @@ class MyMainFrame(MyFrame):
         for key, value in self.meal_plan.items():
             food_row = df[df['food'] == key].iloc[0]
             caloric_value = food_row['Caloric Value']
-            c_total = caloric_value * value
+            c_total += caloric_value * value
 
         return c_total
 
     def remove_food_from_meal_plan(self, event):
-        food_name = self.m_staticTextAddFood.GetValue()
-        del self.meal_plan[food_name]
+        del self.meal_plan[self.selected_meal_food]
+
+        self.m_grid1.ClearGrid()
+        self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
+        self.table = DataTable(self.ml)
+        self.m_grid1.SetTable(self.table, takeOwnership=True)
+        self.m_grid1.AutoSize()
+        self.m_grid1.ForceRefresh()
+
+        self.Show(True)
 
 
 

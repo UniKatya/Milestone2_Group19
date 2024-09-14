@@ -10,6 +10,7 @@
 import wx
 import wx.xrc
 import wx.richtext
+import wx.grid
 
 ###########################################################################
 ## Class MyFrame1
@@ -41,7 +42,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelHome.SetSizer( gSizer7 )
 		self.m_panelHome.Layout()
 		gSizer7.Fit( self.m_panelHome )
-		self.m_notebook1.AddPage( self.m_panelHome, u"Home", True )
+		self.m_notebook1.AddPage( self.m_panelHome, u"Home", False )
 		self.m_panelSearch = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerSearchFrame = wx.BoxSizer( wx.VERTICAL )
 
@@ -239,147 +240,216 @@ class MyFrame1 ( wx.Frame ):
 		bSizerLevelFilter.Fit( self.m_panelLevelFilter )
 		self.m_notebook1.AddPage( self.m_panelLevelFilter, u"Level Filter", False )
 		self.m_panelMealPlanner = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizerPlanner = wx.GridSizer( 2, 2, 0, 0 )
-
-		self.m_panel13 = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.m_panel13.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
-
-		fgSizerPlanner = wx.FlexGridSizer( 3, 3, 0, 0 )
-		fgSizerPlanner.SetFlexibleDirection( wx.BOTH )
-		fgSizerPlanner.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
-
-		self.m_staticTextCalories = wx.StaticText( self.m_panel13, wx.ID_ANY, u"Daily Calories :", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticTextCalories.Wrap( -1 )
-
-		fgSizerPlanner.Add( self.m_staticTextCalories, 0, wx.ALL, 8 )
-
-		self.m_staticText59 = wx.StaticText( self.m_panel13, wx.ID_ANY, u"                 xxx                              ", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText59.Wrap( -1 )
-
-		fgSizerPlanner.Add( self.m_staticText59, 0, wx.ALL, 5 )
-
-		bSizer282 = wx.BoxSizer( wx.VERTICAL )
-
-
-		fgSizerPlanner.Add( bSizer282, 1, wx.EXPAND, 5 )
-
-		self.m_staticTextFoodName = wx.StaticText( self.m_panel13, wx.ID_ANY, u"Food Name :", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticTextFoodName.Wrap( -1 )
-
-		fgSizerPlanner.Add( self.m_staticTextFoodName, 0, wx.ALL, 8 )
-
-		self.m_textCtrl51 = wx.TextCtrl( self.m_panel13, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizerPlanner.Add( self.m_textCtrl51, 0, wx.ALL, 5 )
-
-		bSizer29 = wx.BoxSizer( wx.VERTICAL )
-
-
-		fgSizerPlanner.Add( bSizer29, 1, wx.EXPAND, 5 )
-
-		self.m_staticTextQuantity = wx.StaticText( self.m_panel13, wx.ID_ANY, u"Quantity :", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticTextQuantity.Wrap( -1 )
-
-		fgSizerPlanner.Add( self.m_staticTextQuantity, 0, wx.ALL, 8 )
-
-		self.m_textCtrl52 = wx.TextCtrl( self.m_panel13, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizerPlanner.Add( self.m_textCtrl52, 0, wx.ALL, 5 )
-
-		bSizer30 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_buttonMealQuantity = wx.Button( self.m_panel13, wx.ID_ANY, u"Enter", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_buttonMealQuantity.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
-		self.m_buttonMealQuantity.SetMaxSize( wx.Size( 50,-1 ) )
-
-		bSizer30.Add( self.m_buttonMealQuantity, 0, wx.ALL, 5 )
-
-
-		fgSizerPlanner.Add( bSizer30, 1, wx.EXPAND, 5 )
-
-
-		self.m_panel13.SetSizer( fgSizerPlanner )
-		self.m_panel13.Layout()
-		fgSizerPlanner.Fit( self.m_panel13 )
-		gSizerPlanner.Add( self.m_panel13, 1, wx.EXPAND |wx.ALL, 5 )
-
-		self.m_panelCalories = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.m_panelCalories.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
-
 		bSizer22 = wx.BoxSizer( wx.VERTICAL )
 
-		bSizer26 = wx.BoxSizer( wx.VERTICAL )
+		self.m_panel27 = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer23 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_panel28 = wx.Panel( self.m_panel27, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		fgSizer7 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer7.SetFlexibleDirection( wx.BOTH )
+		fgSizer7.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		bSizer43 = wx.BoxSizer( wx.HORIZONTAL )
+
+		bSizer44 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText42 = wx.StaticText( self.m_panel28, wx.ID_ANY, u"Daily Calories:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText42.Wrap( -1 )
+
+		bSizer44.Add( self.m_staticText42, 0, wx.ALL, 5 )
 
 
-		bSizer26.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+		bSizer43.Add( bSizer44, 1, wx.EXPAND, 5 )
 
-		self.m_staticTextAddFood = wx.StaticText( self.m_panelCalories, wx.ID_ANY, u"Food : Quantity", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticTextAddFood.Wrap( -1 )
+		bSizer45 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_staticTextAddFood.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNTEXT ) )
+		self.m_staticText38 = wx.StaticText( self.m_panel28, wx.ID_ANY, u"xxxx", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText38.Wrap( -1 )
 
-		bSizer26.Add( self.m_staticTextAddFood, 0, wx.ALIGN_CENTER|wx.ALL, 8 )
-
-		self.m_staticTextAddCalories = wx.StaticText( self.m_panelCalories, wx.ID_ANY, u"xxxx calories", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticTextAddCalories.Wrap( -1 )
-
-		bSizer26.Add( self.m_staticTextAddCalories, 0, wx.ALIGN_CENTER|wx.ALL, 8 )
-
-		self.m_buttonDelete = wx.Button( self.m_panelCalories, wx.ID_ANY, u"Delete", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_buttonDelete.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
-		self.m_buttonDelete.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
-		self.m_buttonDelete.SetMaxSize( wx.Size( 50,-1 ) )
-
-		bSizer26.Add( self.m_buttonDelete, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		bSizer45.Add( self.m_staticText38, 0, wx.ALL, 5 )
 
 
-		bSizer26.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+		bSizer43.Add( bSizer45, 1, wx.EXPAND, 5 )
 
 
-		bSizer22.Add( bSizer26, 1, wx.EXPAND|wx.TOP, 10 )
+		fgSizer7.Add( bSizer43, 1, wx.EXPAND, 5 )
 
 
-		self.m_panelCalories.SetSizer( bSizer22 )
-		self.m_panelCalories.Layout()
-		bSizer22.Fit( self.m_panelCalories )
-		gSizerPlanner.Add( self.m_panelCalories, 1, wx.ALL|wx.EXPAND, 10 )
+		fgSizer7.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_panelMealPlan = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.m_panelMealPlan.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
-		self.m_panelMealPlan.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
+		bSizer41 = wx.BoxSizer( wx.HORIZONTAL )
 
-		bSizerMealPlanFrame = wx.BoxSizer( wx.VERTICAL )
+		self.m_staticText39 = wx.StaticText( self.m_panel28, wx.ID_ANY, u"Food Name:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText39.Wrap( -1 )
 
-		self.m_staticText60 = wx.StaticText( self.m_panelMealPlan, wx.ID_ANY, u"Meal Plan", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText60.Wrap( -1 )
+		bSizer41.Add( self.m_staticText39, 0, wx.ALL, 5 )
 
-		self.m_staticText60.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_CAPTIONTEXT ) )
-
-		bSizerMealPlanFrame.Add( self.m_staticText60, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-		self.m_staticText61 = wx.StaticText( self.m_panelMealPlan, wx.ID_ANY, u"Click the 'Show' button to view the food details.", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText61.Wrap( -1 )
-
-		self.m_staticText61.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_CAPTIONTEXT ) )
-
-		bSizerMealPlanFrame.Add( self.m_staticText61, 0, wx.ALL, 5 )
-
-		fgSizerMealItems = wx.FlexGridSizer( 20, 2, 0, 0 )
-		fgSizerMealItems.SetFlexibleDirection( wx.BOTH )
-		fgSizerMealItems.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		self.m_textCtrl9 = wx.TextCtrl( self.m_panel28, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer41.Add( self.m_textCtrl9, 0, wx.ALL, 5 )
 
 
-		bSizerMealPlanFrame.Add( fgSizerMealItems, 1, wx.EXPAND, 5 )
+		fgSizer7.Add( bSizer41, 1, wx.EXPAND, 5 )
 
 
-		self.m_panelMealPlan.SetSizer( bSizerMealPlanFrame )
-		self.m_panelMealPlan.Layout()
-		bSizerMealPlanFrame.Fit( self.m_panelMealPlan )
-		gSizerPlanner.Add( self.m_panelMealPlan, 1, wx.ALL|wx.EXPAND, 5 )
+		fgSizer7.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		bSizer40 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticText41 = wx.StaticText( self.m_panel28, wx.ID_ANY, u"Quantity:      ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText41.Wrap( -1 )
+
+		bSizer40.Add( self.m_staticText41, 0, wx.ALL, 5 )
+
+		self.m_textCtrl8 = wx.TextCtrl( self.m_panel28, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer40.Add( self.m_textCtrl8, 0, wx.ALL, 5 )
 
 
-		self.m_panelMealPlanner.SetSizer( gSizerPlanner )
+		fgSizer7.Add( bSizer40, 1, wx.EXPAND, 5 )
+
+		self.m_button7 = wx.Button( self.m_panel28, wx.ID_ANY, u"Enter", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer7.Add( self.m_button7, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		self.m_panel28.SetSizer( fgSizer7 )
+		self.m_panel28.Layout()
+		fgSizer7.Fit( self.m_panel28 )
+		bSizer23.Add( self.m_panel28, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.m_panel30 = wx.Panel( self.m_panel27, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.m_panel30.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
+
+		bSizer49 = wx.BoxSizer( wx.VERTICAL )
+
+
+		bSizer49.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		self.m_staticText19 = wx.StaticText( self.m_panel30, wx.ID_ANY, u"Food Details:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText19.Wrap( -1 )
+
+		bSizer49.Add( self.m_staticText19, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.m_staticText43 = wx.StaticText( self.m_panel30, wx.ID_ANY, u"Food", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText43.Wrap( -1 )
+
+		bSizer49.Add( self.m_staticText43, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.m_staticText47 = wx.StaticText( self.m_panel30, wx.ID_ANY, u"Quantity", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText47.Wrap( -1 )
+
+		bSizer49.Add( self.m_staticText47, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.m_staticText44 = wx.StaticText( self.m_panel30, wx.ID_ANY, u"xxxx calories", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText44.Wrap( -1 )
+
+		bSizer49.Add( self.m_staticText44, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.m_button8 = wx.Button( self.m_panel30, wx.ID_ANY, u"Delete", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer49.Add( self.m_button8, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer49.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+		self.m_panel30.SetSizer( bSizer49 )
+		self.m_panel30.Layout()
+		bSizer49.Fit( self.m_panel30 )
+		bSizer23.Add( self.m_panel30, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.m_panel27.SetSizer( bSizer23 )
+		self.m_panel27.Layout()
+		bSizer23.Fit( self.m_panel27 )
+		bSizer22.Add( self.m_panel27, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.m_panel31 = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.m_panel31.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
+
+		bSizer57 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText31 = wx.StaticText( self.m_panel31, wx.ID_ANY, u"MEAL PLANNER", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText31.Wrap( -1 )
+
+		bSizer57.Add( self.m_staticText31, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 0 )
+
+		self.m_staticText18 = wx.StaticText( self.m_panel31, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText18.Wrap( -1 )
+
+		bSizer57.Add( self.m_staticText18, 0, wx.ALL, 5 )
+
+		bSizer72 = wx.BoxSizer( wx.VERTICAL )
+
+		gSizer18 = wx.GridSizer( 0, 2, 0, 0 )
+
+		bSizer76 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_grid1 = wx.grid.Grid( self.m_panel31, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+		# Grid
+		self.m_grid1.CreateGrid( 5, 5 )
+		self.m_grid1.EnableEditing( True )
+		self.m_grid1.EnableGridLines( True )
+		self.m_grid1.SetGridLineColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_APPWORKSPACE ) )
+		self.m_grid1.EnableDragGridSize( False )
+		self.m_grid1.SetMargins( 0, 0 )
+
+		# Columns
+		self.m_grid1.EnableDragColMove( False )
+		self.m_grid1.EnableDragColSize( True )
+		self.m_grid1.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.m_grid1.SetRowSize( 0, 19 )
+		self.m_grid1.SetRowSize( 1, 19 )
+		self.m_grid1.SetRowSize( 2, 19 )
+		self.m_grid1.SetRowSize( 3, 19 )
+		self.m_grid1.SetRowSize( 4, 19 )
+		self.m_grid1.EnableDragRowSize( True )
+		self.m_grid1.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+		self.m_grid1.SetLabelBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		# Cell Defaults
+		self.m_grid1.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer76.Add( self.m_grid1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		gSizer18.Add( bSizer76, 1, wx.EXPAND, 5 )
+
+		bSizer75 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText46 = wx.StaticText( self.m_panel31, wx.ID_ANY, u"Enter a name to look at food details:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText46.Wrap( -1 )
+
+		bSizer75.Add( self.m_staticText46, 0, wx.ALL, 0 )
+
+		self.m_textCtrl10 = wx.TextCtrl( self.m_panel31, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer75.Add( self.m_textCtrl10, 0, wx.ALL, 5 )
+
+		self.m_button9 = wx.Button( self.m_panel31, wx.ID_ANY, u"Show", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer75.Add( self.m_button9, 0, wx.ALL, 5 )
+
+
+		gSizer18.Add( bSizer75, 1, wx.EXPAND, 5 )
+
+
+		bSizer72.Add( gSizer18, 1, wx.EXPAND, 5 )
+
+
+		bSizer57.Add( bSizer72, 1, wx.EXPAND, 5 )
+
+
+		self.m_panel31.SetSizer( bSizer57 )
+		self.m_panel31.Layout()
+		bSizer57.Fit( self.m_panel31 )
+		bSizer22.Add( self.m_panel31, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.m_panelMealPlanner.SetSizer( bSizer22 )
 		self.m_panelMealPlanner.Layout()
-		gSizerPlanner.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
+		bSizer22.Fit( self.m_panelMealPlanner )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
 
 		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 
@@ -395,8 +465,9 @@ class MyFrame1 ( wx.Frame ):
 		# Connect Events
 		self.m_buttonSearch.Bind( wx.EVT_BUTTON, self.display_nutritional_info )
 		self.m_buttonBreakdown.Bind( wx.EVT_BUTTON, self.display_charts )
-		self.m_buttonMealQuantity.Bind( wx.EVT_BUTTON, self.display_meal_plan )
-		self.m_buttonDelete.Bind( wx.EVT_BUTTON, self.remove_food_from_meal_plan )
+		self.m_button7.Bind( wx.EVT_BUTTON, self.display_meal_plan )
+		self.m_button8.Bind( wx.EVT_BUTTON, self.remove_food_from_meal_plan )
+		self.m_button9.Bind( wx.EVT_BUTTON, self.display_food )
 
 	def __del__( self ):
 		pass
@@ -413,6 +484,9 @@ class MyFrame1 ( wx.Frame ):
 		event.Skip()
 
 	def remove_food_from_meal_plan( self, event ):
+		event.Skip()
+
+	def display_food( self, event ):
 		event.Skip()
 
 
