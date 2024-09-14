@@ -141,7 +141,7 @@ class MyMainFrame(MyFrame):
                 total_calories = caloric_value * quantity
 
                 self.m_staticText43.SetLabel(f"{food_name}")
-                self.m_staticText47.SetLabel(f"    {quantity}  ")
+                self.m_staticText47.SetLabel(f"     {quantity}  ")
                 self.m_staticText44.SetLabel(f"  {total_calories} calories")
                 self.selected_meal_food = food_name
 

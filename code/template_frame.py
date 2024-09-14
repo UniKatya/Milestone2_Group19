@@ -367,6 +367,9 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizer57 = wx.BoxSizer( wx.VERTICAL )
 
+
+		bSizer57.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
 		self.m_staticText31 = wx.StaticText( self.m_panel31, wx.ID_ANY, u"MEAL PLANNER", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText31.Wrap( -1 )
 
