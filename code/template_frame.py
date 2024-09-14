@@ -375,6 +375,9 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizer57.Add( self.m_staticText31, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 0 )
 
+
+		bSizer57.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
 		self.m_staticText18 = wx.StaticText( self.m_panel31, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText18.Wrap( -1 )
 
