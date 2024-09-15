@@ -15,11 +15,11 @@
 
 Please Describe what you have accomplished in this group project.
 - s5404039, Ekaterina Kozub
-  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), Food Search (Feature), Nutritional Breakdown (Feature), general setup of project, and general reviewing and editing.
+  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), general setup of project, general reviewing and editing, <span style="color:red">Food Search (Feature), and Nutritional Breakdown (Feature). </span>
 - s5271400, Ella Baines-Lang
-  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), User Interface Design (Visual Design), and User Interface (Code).
+  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), User Interface Design (Visual Design), and <span style="color:red">User Interface (Code).</span>
 - s5303300, Fiston Kayeye
-  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, User Interface Design (Structural Design), and Nutritional Breakown (Feature).
+  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, User Interface Design (Structural Design), and <span style="color:red"> Nutritional Breakown (Feature).</span>
 
 <div style="page-break-after: always;"></div>
 
@@ -100,35 +100,38 @@ The health enthusiasts are general users that are interested in having a healthy
 ![Work Breakdown Structure](images/WBS.png)
 
 ## 3. Activity Definition Estimation
-The whole project will take 35 days (excluding weekends as these days will not be work days for this project). Some tasks will be done consecutively, so look at the Gantt Chart to get further detail.
+The whole project will take 35 days (excluding weekends as these days will not be work days for this project). Some tasks will be done consecutively, so look at the Gantt Chart to get further detail.<span style="color:red">Some tasks took longer/shorter than expected (this will be shown in the Gantt Chart) and some teammates did work that they weren't assigned due to other teammates shortcomings. This Activity Definition Estimation table will outline the updated teammates that did some of the tasks they were not orginally assigned.</span>
 
-| Activity #No | Activity Name | Brief Description | Duration | Responsible Team Members |
-|--------------|---------------|-------------------|----------|--------------------------|
-| 1          | Initiating           | Start project, assign Project Manager, and identify and meet with stakeholders.               | 3 days      | All               |
-| 1.1         | Compile Project Team & Assign Project Manager           | Assemble team and determine the Project Manager.               | 2 days      | All                      |
-| 1.2        | Identify & Meet with Stakeholders           | Identify key stakeholders and conduct a meeting with them.               | 1 day      | All                      |
-| 2        | Planning           | Develop a detailed plan covering all aspects of the project.               | 12 days      | All                      |
-| 2.1       | Create Project Overview           | Create a Project Overview Document that defines the objectives, stakeholder, and scope.               | 3 days      | Ekaterina                      |
-| 2.2        | Create Work Breakdown Structure (WBS)           | Break down the project into smaller and more manageable tasks. Visualizing this through an image.               | 1 day      | Ella                      |
-| 2.3        | Create Activity Definition Estimation          | From the WBS make an Activity Definition Estimation that provides a brief description, duration, and responsible team members for each task.               | 2 days      | Ekaterina & Fiston                      |
-| 2.4        | Create Gantt Chart           | Create a Gantt Chart that visualizes the Activity Definition Estimation.               | 2 days      | Ekaterina & Fiston                      |
-| 2.5        | Determine System Vision           | Create the System Vision Document that includes the problem background, system capabilities/overview, and potential benefits of the system.               | 1 day      | Ekaterina                      |
-| 2.6        | Collect & Determine Requirements & System Components           | Collect and determine requirements, this includes user requirements, software requirements, use case diagrams, and use cases. The same will go with the System Components, which includes functions, data structures/data sources, and a detailed design.                | 1 day      | All                      |
-| 2.7        | Create Software & User Interface Design           | Create a Structural, Visual, and Software Design.               | 2 days      | Ella & Fiston                      |
-| 3        | Executing           | Implement the project plan and create code.              | 16 days      | All                      |
-| 3.1        | Create Food Search         | Develop the Food Search function.               | 6 days      | Ekaterina                      |
-| 3.2        | Create Nutrition Breakdown         | Develop the Nutrition Breakdown function.               | 6 days      | Ella                      |
-| 3.3        | Create Nutrition Range Filter         | Develop the Nutrition Range Filter function.             | 6 days      | Fiston                      |
-| 3.4        | Create Nutrition Level Filter         | Develop the Nutrition Level Filter function.              | 6 days      | Fiston                      |
-| 3.5        | Create Meal Planner         | Develop the Meal Planner function.               | 6 days      | Ella                      |
-| 3.6        | Create User Interface         | Develop the User Interface function.               | 6 days      | Ekaterina                      |
-| 3.7        | Final Testing         | Test the whole system and correct errors.               | 4 days      | All                      |
-| 4        | Controlling         | Monitor and control the project's progress.               | 2 days      | Ekaterina                      |
-| 4.1        | Status Reports         | Generate regular status reports.               | 1 day      | Ekaterina                      |
-| 4.2        | Update Plans         | Adjust plans over the projects progress.               | 1 day      | Ekaterina                      |
-| 5        | Closing         | Finalize and close the project.               | 2 days      | All                      |
-| 5.1     | Final Performance Review         | Review the project's performance against the objectives.               | 1 day      | All                      |
-| 5.2        | Propose Final Report         | Create a final project report.               | 1 day      | All                      |
+| Activity #No | Activity Name | Brief Description | Duration | Responsible Team Members                           |
+|--------------|---------------|-------------------|----------|----------------------------------------------------|
+| 1          | Initiating           | Start project, assign Project Manager, and identify and meet with stakeholders.               | 3 days      | All                                                |
+| 1.1         | Compile Project Team & Assign Project Manager           | Assemble team and determine the Project Manager.               | 2 days      | All                                                |
+| 1.2        | Identify & Meet with Stakeholders           | Identify key stakeholders and conduct a meeting with them.               | 1 day      | All                                                |
+| 2        | Planning           | Develop a detailed plan covering all aspects of the project.               | 12 days      | All                                                |
+| 2.1       | Create Project Overview           | Create a Project Overview Document that defines the objectives, stakeholder, and scope.               | 3 days      | Ekaterina                                          |
+| 2.2        | Create Work Breakdown Structure (WBS)           | Break down the project into smaller and more manageable tasks. Visualizing this through an image.               | 1 day      | Ella                                               |
+| 2.3        | Create Activity Definition Estimation          | From the WBS make an Activity Definition Estimation that provides a brief description, duration, and responsible team members for each task.               | 2 days      | Ekaterina & Fiston                                 |
+| 2.4        | Create Gantt Chart           | Create a Gantt Chart that visualizes the Activity Definition Estimation.               | 2 days      | Ekaterina & Fiston                                 |
+| 2.5        | Determine System Vision           | Create the System Vision Document that includes the problem background, system capabilities/overview, and potential benefits of the system.               | 1 day      | Ekaterina                                          |
+| 2.6        | Collect & Determine Requirements & System Components           | Collect and determine requirements, this includes user requirements, software requirements, use case diagrams, and use cases. The same will go with the System Components, which includes functions, data structures/data sources, and a detailed design.                | 1 day      | All                                                |
+| 2.7        | Create Software & User Interface Design           | Create a Structural, Visual, and Software Design.               | 2 days      | Ella & Fiston                                      |
+| 3        | Executing           | Implement the project plan and create code.              | 16 days      | All                                                |
+| 3.1        | Create Food Search         | Develop the Food Search function.               | 6 days      | Ekaterina                                          |
+| 3.2        | Create Nutrition Breakdown         | Develop the Nutrition Breakdown function.               | 6 days      | Ella                                               |
+| 3.3        | Create Nutrition Range Filter         | Develop the Nutrition Range Filter function.             | 6 days      | Fiston <span style="color:red"> & Ekaterina</span> |
+| 3.4        | Create Nutrition Level Filter         | Develop the Nutrition Level Filter function.              | 6 days      | Fiston <span style="color:red"> & Ekaterina</span> |
+| 3.5        | Create Meal Planner         | Develop the Meal Planner function.               | 6 days      | Ella                                               |
+| 3.6        | Create User Interface         | Develop the User Interface function.               | 6 days      | Ekaterina                                          |
+| 3.7        | Final Testing         | Test the whole system and correct errors.               | 4 days      | All                                                |
+| 4        | Controlling         | Monitor and control the project's progress.               | 2 days      | Ekaterina                                          |
+| 4.1        | Status Reports         | Generate regular status reports.               | 1 day      | Ekaterina                                          |
+| 4.2        | Update Plans         | Adjust plans over the projects progress.               | 1 day      | Ekaterina                                          |
+| 5        | Closing         | Finalize and close the project.               | 2 days      | All                                                |
+| 5.1     | Final Performance Review         | Review the project's performance against the objectives.               | 1 day      | All                                                |
+| 5.2        | Propose Final Report         | Create a final project report.               | 1 day      | All                                                |
 
 ## 4. Gantt Chart
+
+<span style="color:red"> Here is the updated Gantt Chart, showing the time it took to complete the executing, controlling, and closing phase of the project.</span>
+
 ![Gantt Chart](images/Gantt_Chart.png)
