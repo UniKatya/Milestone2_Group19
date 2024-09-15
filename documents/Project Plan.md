@@ -15,11 +15,11 @@
 
 Please Describe what you have accomplished in this group project.
 - s5404039, Ekaterina Kozub
-  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), general setup of project, general reviewing and editing, <span style="color:red">Food Search (Feature), and Nutritional Breakdown (Feature). </span>
+  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), general setup of project, general reviewing and editing, <span style="color:red">Food Search (Feature), Nutrition Range Filter (Feature), Nutrition Level Filter (Feature), and User Interface (Feature). </span>
 - s5271400, Ella Baines-Lang
-  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), User Interface Design (Visual Design), and <span style="color:red">User Interface (Code).</span>
+  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), User Interface Design (Visual Design), <span style="color:red"> Nutritional Breakdown (Feature), and Meal Plan (Feature).</span>
 - s5303300, Fiston Kayeye
-  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, User Interface Design (Structural Design), and <span style="color:red"> Nutritional Breakown (Feature).</span>
+  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, User Interface Design (Structural Design), <span style="color:red"> Nutrition Range Filter (Feature), and Nutrition Level Filter (Feature).</span>
 
 <div style="page-break-after: always;"></div>
 
