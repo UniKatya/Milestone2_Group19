@@ -15,11 +15,11 @@
 
 Please Describe what you have accomplished in this group project.
 - s5404039, Ekaterina Kozub
-  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), general setup of project, and general reviewing and editing.
+  - Accomplishments: Project Overview, Activity Definition Estimation, Gantt Chart, System Vision, Requirements, Software Design (Flowchart), Food Search (Feature), Nutritional Breakdown (Feature), general setup of project, and general reviewing and editing.
 - s5271400, Ella Baines-Lang
-  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), and User Interface Design (Visual Design).
+  - Accomplishments: Work Breakdown Structure, System Components (Functions & Detailed Design), User Interface Design (Visual Design), and User Interface (Code).
 - s5303300, Fiston Kayeye
-  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, and User Interface Design (Structural Design).
+  - Accomplishments: Activity Definition Estimation, Gantt Chart, Data Structures, User Interface Design (Structural Design), and Nutritional Breakown (Feature).
 
 <div style="page-break-after: always;"></div>
 
