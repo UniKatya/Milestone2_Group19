@@ -1,25 +1,24 @@
 # Executive Summary
 
-Please provide your GitHub repository link.
 ### GitHub Repository URL: https://github.com/XXXX/XXXXX.git
 
 ---
-
-You should use your software to prepare an executive summary as outlined below for the five required features.
 
 ## 1. Food Search
 ### Description  
 Allows for the user to search for food by name and show the nutritional information from this search. 
 
 ### Steps
-1. Step-by-step instructions for using this feature.
-2. Add additional steps as needed.
+1. The user selects 'Search' from the navigation bar.
+2. The user clicks the input box and enters the name of their desired food item.
+3. The user clicks the 'Enter' button.
 
-### Screenshots
-Include screenshots for each step demonstrating the use of this feature.  
-![1](./visual_design.png)
+### Screenshots 
+![1](./images/FoodSearch1.png)
 
-![2](./visual_design.png)
+![2](./images/FoodSearch2.png)
+
+![3](./images/FoodSearch3.png)
 
 ---
 
@@ -28,14 +27,16 @@ Include screenshots for each step demonstrating the use of this feature.
 Allows for the user to see a pie chart and bar graph showing the breakdown of different nutrients from food they have chosen. 
 
 ### Steps
-1. Step-by-step instructions for using this feature.
-2. Add additional steps as needed.
+1. The user selects 'Nutritional Breakdown' from the navigation bar.
+2. The user clicks the input box and enters the name of their desired food item.
+3. The user clicks the 'Enter' button.
 
 ### Screenshots
-Include screenshots for each step demonstrating the use of this feature.  
-![1](./visual_design.png)
+![1](./images/NutritionalBreakdown1.png)
 
-![2](./visual_design.png)
+![2](./images/NutritionalBreakdown2.png)
+
+![3](./images/NutritionalBreakdown3.png)
 
 ---
 
@@ -78,14 +79,29 @@ Include screenshots for each step demonstrating the use of this feature.
 Allows for the user to plan meals and calculate the total calories for a day. This includes features such as the ability to select a food and a specified quantity, calculate the total caloric count, delete certain food items, and display the meal plan to the user.
 
 ### Steps
-1. Step-by-step instructions for using this feature.
-2. Add additional steps as needed.
+1. The user selects 'Meal Planner' from the navigation bar.
+2. The user clicks the input box (called Food Name) and enters the name of their desired food item.
+3. The user clicks the input box (called Quantity) and enters the quantity of the food item.
+4. The user clicks the 'Enter' button.
+5. If the user wishes to see more in depth information from selected food items, they can click the input box on the bottom right and enter the name of a meal food item.
+6. The user clicks the 'Show' button below the bottom right input box.
+7. If the user wishes to delete a specific meal item from the meal plan, they can click the 'Delete' button on the top right where the food details are shown for the selected item.
 
-### Screenshots
-Include screenshots for each step demonstrating the use of this feature.    
-![1](./visual_design.png)
 
-![2](./visual_design.png)
+### Screenshots 
+![1](./images/MealPlanner1.png)
+
+![2](./images/MealPlanner2.png)
+
+![3](./images/MealPlanner3.png)
+
+![4](./images/MealPlanner4.png)
+
+![5](./images/MealPlanner5.png)
+
+![6](./images/MealPlanner6.png)
+
+![7](./images/MealPlanner7.png)
 
 
 ---

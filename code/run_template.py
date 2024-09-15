@@ -141,7 +141,7 @@ class MyMainFrame(MyFrame):
         self.Layout()
 
     def display_meal_plan(self, event):
-        food_name = self.m_textCtrl9.GetValue()
+        food_name = self.m_textCtrl9.GetValue().lower()
         quantity = self.m_textCtrl8.GetValue()
 
         try:
