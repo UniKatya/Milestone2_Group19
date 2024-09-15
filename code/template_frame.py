@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ###########################################################################
-## Python code generated with wxFormBuilder (version 4.2.1-43-gf15ce330)
+## Python code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 ## http://www.wxformbuilder.org/
 ##
 ## PLEASE DO *NOT* EDIT THIS FILE!
@@ -36,7 +36,7 @@ class MyFrame1 ( wx.Frame ):
 		gSizer7 = wx.GridSizer( 1, 1, 0, 0 )
 
 		self.m_richText6 = wx.richtext.RichTextCtrl( self.m_panelHome, wx.ID_ANY, u"Search Food : Allows for the user to search for a food by name through an input box. \nThe system will then provide the food and it's nutritional information.\n\nNutritional Breakdown : Allows for the user to view nutritional breakdown through a bar graph and pie chart of their selected food item.\n\nRange Filter: Allows for the user to filter a list of foods through the range they give into the system. The system will then filter and return a list of foods that fit inside of this range.\n\nLevel Filter : Allows for the user to filter food through entering content levels (low, medium, high) for their chosen nutrient such as protein or fats.\n\nMeal Planner : Allows for the user to create a meal plan by selecting a food and the quantity which the system will then calculate and add to the meal plan.\n\n\n", wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
-		gSizer7.Add( self.m_richText6, 1, wx.EXPAND | wx.ALL, 5 )
+		gSizer7.Add( self.m_richText6, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		self.m_panelHome.SetSizer( gSizer7 )
@@ -53,7 +53,7 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerSearchTop.Add( self.m_staticTextSearch, 0, wx.ALL, 8 )
 
-		self.m_textCtrlSearch = wx.TextCtrl( self.m_panelSearch, wx.ID_ANY, u"cheddar cheese", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_textCtrlSearch = wx.TextCtrl( self.m_panelSearch, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_textCtrlSearch.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 
 		bSizerSearchTop.Add( self.m_textCtrlSearch, 0, wx.ALL, 5 )
@@ -75,7 +75,7 @@ class MyFrame1 ( wx.Frame ):
 		bSizerSearchBottom.Add( self.m_staticTextTitle, 0, wx.ALL, 8 )
 
 		self.m_richText2 = wx.richtext.RichTextCtrl( self.m_panelSearch, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
-		bSizerSearchBottom.Add( self.m_richText2, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizerSearchBottom.Add( self.m_richText2, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		bSizerSearchFrame.Add( bSizerSearchBottom, 1, wx.EXPAND|wx.TOP, 10 )
@@ -95,20 +95,14 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerBreakdownTop.Add( self.m_staticTextBreakdownSearch, 0, wx.ALL, 8 )
 
-		self.m_textCtrl3 = wx.TextCtrl( self.m_panelBreakdown, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 150,-1 ), 0 )
+		self.m_textCtrl3 = wx.TextCtrl( self.m_panelBreakdown, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizerBreakdownTop.Add( self.m_textCtrl3, 0, wx.ALL, 5 )
 
-		self.PieandBarBreakdown = wx.Button( self.m_panelBreakdown, wx.ID_ANY, u"Pie Chart", wx.Point( -1,-1 ), wx.Size( -1,-1 ), 0 )
-		self.PieandBarBreakdown.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
-		self.PieandBarBreakdown.SetMaxSize( wx.Size( 150,-1 ) )
+		self.m_buttonBreakdown = wx.Button( self.m_panelBreakdown, wx.ID_ANY, u"Enter", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonBreakdown.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
+		self.m_buttonBreakdown.SetMaxSize( wx.Size( 50,-1 ) )
 
-		bSizerBreakdownTop.Add( self.PieandBarBreakdown, 0, wx.ALL, 5 )
-
-		self.PieandBarBreakdown1 = wx.Button( self.m_panelBreakdown, wx.ID_ANY, u"Bar Graph", wx.Point( -1,-1 ), wx.Size( -1,-1 ), 0 )
-		self.PieandBarBreakdown1.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
-		self.PieandBarBreakdown1.SetMaxSize( wx.Size( 150,-1 ) )
-
-		bSizerBreakdownTop.Add( self.PieandBarBreakdown1, 0, wx.ALL, 5 )
+		bSizerBreakdownTop.Add( self.m_buttonBreakdown, 0, wx.ALL, 5 )
 
 
 		bSizerBreakdownFrame.Add( bSizerBreakdownTop, 0, wx.EXPAND|wx.TOP, 10 )
@@ -121,7 +115,7 @@ class MyFrame1 ( wx.Frame ):
 		bSizer281.Add( self.m_staticText58, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 		self.m_panelFoodInfo = wx.Panel( self.m_panelBreakdown, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizer281.Add( self.m_panelFoodInfo, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizer281.Add( self.m_panelFoodInfo, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		bSizerBreakdownFrame.Add( bSizer281, 1, wx.EXPAND, 5 )
@@ -130,7 +124,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelBreakdown.SetSizer( bSizerBreakdownFrame )
 		self.m_panelBreakdown.Layout()
 		bSizerBreakdownFrame.Fit( self.m_panelBreakdown )
-		self.m_notebook1.AddPage( self.m_panelBreakdown, u"Nutritional Breakdown", True )
+		self.m_notebook1.AddPage( self.m_panelBreakdown, u"Nutritional Breakdown", False )
 		self.m_panelRangeFilter = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerRangeMain = wx.BoxSizer( wx.VERTICAL )
 
@@ -181,7 +175,7 @@ class MyFrame1 ( wx.Frame ):
 		bSizerRangeBottom = wx.BoxSizer( wx.VERTICAL )
 
 		self.m_panelRangeList = wx.Panel( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizerRangeBottom.Add( self.m_panelRangeList, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizerRangeBottom.Add( self.m_panelRangeList, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		bSizerRangeMain.Add( bSizerRangeBottom, 1, wx.EXPAND, 5 )
@@ -235,7 +229,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelLevelList = wx.Panel( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.m_panelLevelList.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 
-		bSizerFilterBottom.Add( self.m_panelLevelList, 1, wx.EXPAND | wx.ALL, 0 )
+		bSizerFilterBottom.Add( self.m_panelLevelList, 1, wx.EXPAND |wx.ALL, 0 )
 
 
 		bSizerLevelFilter.Add( bSizerFilterBottom, 1, wx.EXPAND|wx.TOP, 10 )
@@ -320,7 +314,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panel28.SetSizer( fgSizer7 )
 		self.m_panel28.Layout()
 		fgSizer7.Fit( self.m_panel28 )
-		bSizer23.Add( self.m_panel28, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizer23.Add( self.m_panel28, 1, wx.EXPAND |wx.ALL, 5 )
 
 		self.m_panel30 = wx.Panel( self.m_panel27, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.m_panel30.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
@@ -360,13 +354,13 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panel30.SetSizer( bSizer49 )
 		self.m_panel30.Layout()
 		bSizer49.Fit( self.m_panel30 )
-		bSizer23.Add( self.m_panel30, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizer23.Add( self.m_panel30, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		self.m_panel27.SetSizer( bSizer23 )
 		self.m_panel27.Layout()
 		bSizer23.Fit( self.m_panel27 )
-		bSizer22.Add( self.m_panel27, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizer22.Add( self.m_panel27, 1, wx.EXPAND |wx.ALL, 5 )
 
 		self.m_panel31 = wx.Panel( self.m_panelMealPlanner, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.m_panel31.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
@@ -455,15 +449,15 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panel31.SetSizer( bSizer57 )
 		self.m_panel31.Layout()
 		bSizer57.Fit( self.m_panel31 )
-		bSizer22.Add( self.m_panel31, 1, wx.EXPAND | wx.ALL, 5 )
+		bSizer22.Add( self.m_panel31, 1, wx.EXPAND |wx.ALL, 5 )
 
 
 		self.m_panelMealPlanner.SetSizer( bSizer22 )
 		self.m_panelMealPlanner.Layout()
 		bSizer22.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
 
-		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND | wx.ALL, 0 )
+		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 
 
 		bSizer1.Add( bSizer2, 1, wx.EXPAND, 0 )
@@ -476,8 +470,7 @@ class MyFrame1 ( wx.Frame ):
 
 		# Connect Events
 		self.m_buttonSearch.Bind( wx.EVT_BUTTON, self.display_nutritional_info )
-		self.PieandBarBreakdown.Bind( wx.EVT_BUTTON, self.display_charts )
-		self.PieandBarBreakdown1.Bind( wx.EVT_BUTTON, self.display_charts )
+		self.m_buttonBreakdown.Bind( wx.EVT_BUTTON, self.display_charts )
 		self.m_button7.Bind( wx.EVT_BUTTON, self.display_meal_plan )
 		self.m_button8.Bind( wx.EVT_BUTTON, self.remove_food_from_meal_plan )
 		self.m_button9.Bind( wx.EVT_BUTTON, self.display_food )
@@ -492,7 +485,6 @@ class MyFrame1 ( wx.Frame ):
 
 	def display_charts( self, event ):
 		event.Skip()
-
 
 	def display_meal_plan( self, event ):
 		event.Skip()

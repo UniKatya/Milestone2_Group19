@@ -55,10 +55,6 @@ class MyMainFrame(MyFrame):
         self.m_grid1.AutoSize()
         self.Show(True)
 
-        #Linking template_frame to the main class.
-        self.PieandBarBreakdown.Bind(wx.EVT_BUTTON, self.generate_pie_chart)
-        self.PieandBarBreakdown1.Bind(wx.EVT_BUTTON, self.generate_bar_graph)
-
         self.Layout()
         self.Show(True)
 
@@ -96,7 +92,53 @@ class MyMainFrame(MyFrame):
         return nutritional_info
 
     def display_charts(self, event):
-        pass
+        food_name = self.m_textCtrl3.GetValue().lower()
+        nutritional_info = self.get_nutritional_info(food_name)
+        self.m_staticText58.SetLabel(food_name.capitalize())
+
+        if not nutritional_info:
+            wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
+
+        categories = list(filtered_nutritional_info.keys())
+        sizes = list(filtered_nutritional_info.values())
+
+        fig, ax = plt.subplots(1, 2, figsize=(8, 4))
+        ax1, ax2 = ax
+
+        MAX_SLICES = 8
+        if len(categories) > MAX_SLICES:
+            sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
+            large_items = sorted_items[:MAX_SLICES]
+            other_items = sorted_items[MAX_SLICES:]
+            filtered_categories = [item[0] for item in large_items] + ['Others']
+            filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
+        else:
+            filtered_categories = categories
+            filtered_sizes = sizes
+
+        explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
+        if len(explode) != len(filtered_categories):
+            explode = [0.0] * len(filtered_categories)
+
+        ax1.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", shadow=True, explode=explode)
+
+        ax2.bar(filtered_categories, filtered_sizes, color='skyblue')
+        ax2.set_xlabel('Nutrients')
+        ax2.set_ylabel('Values')
+        plt.yticks(rotation=0)
+        plt.xticks(rotation=45, ha='right')
+
+        plt.tight_layout()
+
+        h, w = self.m_panelFoodInfo.GetSize()
+        fig.set_size_inches(h / fig.get_dpi(), w / fig.get_dpi())
+
+        canvas = FigureCanvasWxAgg(self.m_panelFoodInfo, -1, fig)
+        canvas.SetSize((h, w))
+        self.Layout()
 
     def display_meal_plan(self, event):
         food_name = self.m_textCtrl9.GetValue()
@@ -180,41 +222,6 @@ class MyMainFrame(MyFrame):
 
         self.Show(True)
 
-    #call function to generate pie chart and bar graph, linking it to panelFoodInfo.
-    def generate_pie_chart(self, event):
-        self.display_chart('pie')
-
-    def generate_bar_graph(self, event):
-        self.display_chart('bar')
-
-    def display_chart(self, chart_type):
-        food_name = self.m_textCtrlSearch.GetValue().strip().lower()
-        food_data = df[df['food'].str.lower() == food_name]
-
-        if food_data.empty:
-            wx.MessageBox("No data found for the entered food.", "Error", wx.OK | wx.ICON_ERROR)
-            return
-
-        fig, ax = plt.subplots()
-
-        if chart_type == 'pie':
-            ax.pie(food_data.iloc[0][1:], labels=food_data.columns[1:], autopct='%1.1f%%', startangle=140)
-            ax.axis('equal')
-            plt.title(f'{food_name.capitalize()}')
-
-        elif chart_type == 'bar':
-            nutrients = food_data.iloc[0][1:]
-            ax.bar(nutrients.index, nutrients.values)
-            plt.xlabel('Nutrients')
-            plt.ylabel('Value')
-            plt.title(f'{food_name.capitalize()}')
-            plt.xticks(rotation=90, ha='center', fontsize=6)
-
-        canvas = FigureCanvasWxAgg(self.m_panelFoodInfo, -1, fig)
-        fig.tight_layout()
-        canvas.draw()
-        canvas.SetSize(self.m_panelFoodInfo.GetSize())
-        self.m_panelFoodInfo.Layout()
 
 
 if __name__ == "__main__":
