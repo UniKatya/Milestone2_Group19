@@ -55,6 +55,10 @@ class MyMainFrame(MyFrame):
         self.m_grid1.AutoSize()
         self.Show(True)
 
+        #Linking template_frame to the main class.
+        self.PieandBarBreakdown.Bind(wx.EVT_BUTTON, self.generate_pie_chart)
+        self.PieandBarBreakdown1.Bind(wx.EVT_BUTTON, self.generate_bar_graph)
+
         self.Layout()
         self.Show(True)
 
@@ -176,6 +180,41 @@ class MyMainFrame(MyFrame):
 
         self.Show(True)
 
+    #call function to generate pie chart and bar graph, linking it to panelFoodInfo.
+    def generate_pie_chart(self, event):
+        self.display_chart('pie')
+
+    def generate_bar_graph(self, event):
+        self.display_chart('bar')
+
+    def display_chart(self, chart_type):
+        food_name = self.m_textCtrlSearch.GetValue().strip().lower()
+        food_data = df[df['food'].str.lower() == food_name]
+
+        if food_data.empty:
+            wx.MessageBox("No data found for the entered food.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        fig, ax = plt.subplots()
+
+        if chart_type == 'pie':
+            ax.pie(food_data.iloc[0][1:], labels=food_data.columns[1:], autopct='%1.1f%%', startangle=140)
+            ax.axis('equal')
+            plt.title(f'{food_name.capitalize()}')
+
+        elif chart_type == 'bar':
+            nutrients = food_data.iloc[0][1:]
+            ax.bar(nutrients.index, nutrients.values)
+            plt.xlabel('Nutrients')
+            plt.ylabel('Value')
+            plt.title(f'{food_name.capitalize()}')
+            plt.xticks(rotation=90, ha='center', fontsize=6)
+
+        canvas = FigureCanvasWxAgg(self.m_panelFoodInfo, -1, fig)
+        fig.tight_layout()
+        canvas.draw()
+        canvas.SetSize(self.m_panelFoodInfo.GetSize())
+        self.m_panelFoodInfo.Layout()
 
 
 if __name__ == "__main__":
