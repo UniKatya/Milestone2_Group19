@@ -108,11 +108,11 @@ class MyMainFrame(MyFrame):
         fig, ax = plt.subplots(1, 2, figsize=(8, 4))
         ax1, ax2 = ax
 
-        MAX_SLICES = 8
-        if len(categories) > MAX_SLICES:
+        max_slices = 8
+        if len(categories) > max_slices:
             sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
-            large_items = sorted_items[:MAX_SLICES]
-            other_items = sorted_items[MAX_SLICES:]
+            large_items = sorted_items[:max_slices]
+            other_items = sorted_items[max_slices:]
             filtered_categories = [item[0] for item in large_items] + ['Others']
             filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
         else:
@@ -123,11 +123,12 @@ class MyMainFrame(MyFrame):
         if len(explode) != len(filtered_categories):
             explode = [0.0] * len(filtered_categories)
 
-        ax1.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", shadow=True, explode=explode)
+        ax1.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", explode=explode,
+                textprops={'fontsize': 5}, shadow=True)
 
-        ax2.bar(filtered_categories, filtered_sizes, color='skyblue')
-        ax2.set_xlabel('Nutrients')
-        ax2.set_ylabel('Values')
+        ax2.bar(filtered_categories, filtered_sizes, color=['blue', 'green', 'red', 'purple'])
+        ax2.set_xlabel('Nutrients', fontsize=6)
+        ax2.set_ylabel('Values', fontsize=8)
         plt.yticks(rotation=0)
         plt.xticks(rotation=45, ha='right')
 
