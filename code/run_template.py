@@ -149,8 +149,10 @@ class MyMainFrame(MyFrame):
         max_val = float(self.m_textCtrlMaxVal.GetValue())
 
         df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <=max_val)]
-
-        tabel = DataTable(df_1)
+        
+        df_display = df_1[['food', nutrient]]
+        
+        tabel = DataTable(df_display)
         self.m_gridRangeFilter.ClearGrid()
         self.m_gridRangeFilter.SetTable(tabel, True)
         self.m_gridRangeFilter.AutoSize()
