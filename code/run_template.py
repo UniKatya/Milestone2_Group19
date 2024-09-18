@@ -141,6 +141,21 @@ class MyMainFrame(MyFrame):
         canvas.SetSize((h, w))
         self.Layout()
 
+    def filter_food_by_nutrition_range(self, event):
+        nutrient = self.m_choiceNutrientRange.GetStringSelection()
+
+        #min & max values
+        min_val = float(self.m_textCtrlMinVal.GetValue())
+        max_val = float(self.m_textCtrlMaxVal.GetValue())
+
+        df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <=max_val)]
+
+        tabel = DataTable(df_1)
+        self.m_gridRangeFilter.ClearGrid()
+        self.m_gridRangeFilter.SetTable(tabel, True)
+        self.m_gridRangeFilter.AutoSize()
+        self.Layout()
+
     def display_meal_plan(self, event):
         food_name = self.m_textCtrl9.GetValue().lower()
         quantity = self.m_textCtrl8.GetValue()
