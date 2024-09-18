@@ -172,13 +172,29 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerRangeMain.Add( bSizerRangeTop, 0, wx.EXPAND|wx.TOP, 10 )
 
-		bSizerRangeBottom = wx.BoxSizer( wx.VERTICAL )
+		self.m_gridRangeFilter = wx.grid.Grid( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
-		self.m_panelRangeList = wx.Panel( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizerRangeBottom.Add( self.m_panelRangeList, 1, wx.EXPAND |wx.ALL, 5 )
+		# Grid
+		self.m_gridRangeFilter.CreateGrid( 5, 5 )
+		self.m_gridRangeFilter.EnableEditing( True )
+		self.m_gridRangeFilter.EnableGridLines( True )
+		self.m_gridRangeFilter.EnableDragGridSize( False )
+		self.m_gridRangeFilter.SetMargins( 0, 0 )
 
+		# Columns
+		self.m_gridRangeFilter.EnableDragColMove( False )
+		self.m_gridRangeFilter.EnableDragColSize( True )
+		self.m_gridRangeFilter.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
-		bSizerRangeMain.Add( bSizerRangeBottom, 1, wx.EXPAND, 5 )
+		# Rows
+		self.m_gridRangeFilter.EnableDragRowSize( True )
+		self.m_gridRangeFilter.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_gridRangeFilter.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizerRangeMain.Add( self.m_gridRangeFilter, 0, wx.ALL, 5 )
 
 
 		self.m_panelRangeFilter.SetSizer( bSizerRangeMain )
@@ -224,15 +240,29 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerLevelFilter.Add( bSizerFilterTop, 0, wx.EXPAND|wx.TOP, 10 )
 
-		bSizerFilterBottom = wx.BoxSizer( wx.VERTICAL )
+		self.m_gridLevelFilter = wx.grid.Grid( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
-		self.m_panelLevelList = wx.Panel( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.m_panelLevelList.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+		# Grid
+		self.m_gridLevelFilter.CreateGrid( 5, 5 )
+		self.m_gridLevelFilter.EnableEditing( True )
+		self.m_gridLevelFilter.EnableGridLines( True )
+		self.m_gridLevelFilter.EnableDragGridSize( False )
+		self.m_gridLevelFilter.SetMargins( 0, 0 )
 
-		bSizerFilterBottom.Add( self.m_panelLevelList, 1, wx.EXPAND |wx.ALL, 0 )
+		# Columns
+		self.m_gridLevelFilter.EnableDragColMove( False )
+		self.m_gridLevelFilter.EnableDragColSize( True )
+		self.m_gridLevelFilter.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
+		# Rows
+		self.m_gridLevelFilter.EnableDragRowSize( True )
+		self.m_gridLevelFilter.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
-		bSizerLevelFilter.Add( bSizerFilterBottom, 1, wx.EXPAND|wx.TOP, 10 )
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_gridLevelFilter.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizerLevelFilter.Add( self.m_gridLevelFilter, 0, wx.ALL, 5 )
 
 
 		self.m_panelLevelFilter.SetSizer( bSizerLevelFilter )
