@@ -350,7 +350,9 @@ This function removes a particular food from the user's meal plan when the food 
 5.	Level Filter Screen: This screen will allow users to search for specific nutrient (including fat, protein, carbohydrates, sugar, and nutritional density) based on a particular level (low, medium, high). There will be one input boxes for the nutrient as well as three radio buttons that correspond to the three levels (one can only be selected at a time). A button will then have to be clicked for the system to register the response so that the user can change their response if they want to. The system will then show the results right below in a clear manner. This is done to be simple and consistent with all the other screens. 
 
 
-6.	Meal Planner Screen: This screen is designed to empower users to effectively organize their meals by allowing them to plan, review, and edit their meal plan. It will include a calorie counter on the upper left of the screen, updating every time the user adds a new food to the meal plan. This is done so that the user can track the amount of total calories in their meal plan. Below this there will be two input boxes for food name and quantity. After the input is registered, the system will display the meal plan as a list right below. The list will provide the user the ability to click on a previously inputted foods names and view their quantity and calories on the top right part of the screen. Food can also be deleted from the meal planner through a delete button that is located right next to each food name on the list.  All these features are here to simplify the meal planning process as well as make the user experience more enjoyable when using this feature.
+6.	Meal Planner Screen: This screen is designed to empower users to effectively organize their meals by allowing them to plan, review, and edit their meal plan. It will include a calorie counter on the upper left of the screen, updating every time the user adds a new food to the meal plan. This is done so that the user can track the amount of total calories in their meal plan. Below this there will be two input boxes for food name and quantity. After the input is registered, the system will display the meal plan as a list <span style="color:red">below on the left side. If the user wishes to look at more details of the foods in the meal planner, they can click on the search bar located on the bottom right of the screen. And after inputting the desired food name and clicking the 'Show' button the system will display the</span> quantity and calories on the top right part of the screen. Food can also be deleted from the meal planner through a delete button that is located <span style="color:red">below the top right part of the screen where the selected food item and it's details are located.</span>  All these features are here to simplify the meal planning process as well as make the user experience more enjoyable when using this feature.
+
+
 
 •	Information Grouping:
 
@@ -362,7 +364,7 @@ This function removes a particular food from the user's meal plan when the food 
 
 •	Navigation: 
 
-The application will feature a sticky navigation bar at the top of the screen, enabling users to seamlessly navigate between different screens. Additionally, it will offer buttons and links to assist users with specific tasks, such as searching for foods, accessing nutritional information, and managing meal plans. Each screen will also have their title at the top of the screen, to indicate to the user where they are for better navigation.
+The application will feature a sticky navigation bar at the top of the screen, enabling users to seamlessly navigate between different screens. Additionally, it will offer buttons and links to assist users with specific tasks, such as searching for foods, accessing nutritional information, and managing meal plans. <span style="color:red">Each screen will have at the very top 'Nutrition Database' and the screen that the user is currently on will be shaded slightly on the navigation bar to show which screen they are currently on. This will help with navigation.</span>
 
 •	Design Choices: 
 
@@ -374,7 +376,7 @@ Our application has been meticulously designed to be user-friendly, with a simpl
 
 ### 4.2	Visual Design
 
-The user interface for the database includes a main screen, a daily meal planner, food search screen, nutrition breakdown screen, and two separate screens for ordering nutrients by level and range. There is a navigation bar at the top of each screen, this is done to make it simple and easier for users to navigate through the application.   
+The user interface for the database includes a main screen, a daily meal planner, food search screen, nutrition breakdown screen, and two separate screens for ordering nutrients by level and range. There is a navigation bar at the top of each screen, this is done to make it simple and easier for users to navigate through the application. 
 
 The 'Home' Screen displays a list of all the services the app provides. This is provided for first-time users who are just getting a feel for the app and want to understand what the program has to offer. From there users can make use of the functions by using the navigation bar at the top of the screen. This is done for easy navigation of the program. 
 
