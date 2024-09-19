@@ -72,10 +72,36 @@ class MyFrame1 ( wx.Frame ):
 		self.m_staticTextTitle = wx.StaticText( self.m_panelSearch, wx.ID_ANY, u"Please enter a food name", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
 		self.m_staticTextTitle.Wrap( -1 )
 
-		bSizerSearchBottom.Add( self.m_staticTextTitle, 0, wx.ALL, 8 )
+		bSizerSearchBottom.Add( self.m_staticTextTitle, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 8 )
 
-		self.m_richText2 = wx.richtext.RichTextCtrl( self.m_panelSearch, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
-		bSizerSearchBottom.Add( self.m_richText2, 1, wx.EXPAND |wx.ALL, 5 )
+		self.m_grid4 = wx.grid.Grid( self.m_panelSearch, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+		# Grid
+		self.m_grid4.CreateGrid( 5, 5 )
+		self.m_grid4.EnableEditing( True )
+		self.m_grid4.EnableGridLines( True )
+		self.m_grid4.EnableDragGridSize( False )
+		self.m_grid4.SetMargins( 0, 0 )
+
+		# Columns
+		self.m_grid4.SetColSize( 0, 79 )
+		self.m_grid4.SetColSize( 1, 80 )
+		self.m_grid4.SetColSize( 2, 80 )
+		self.m_grid4.SetColSize( 3, 80 )
+		self.m_grid4.SetColSize( 4, 80 )
+		self.m_grid4.EnableDragColMove( False )
+		self.m_grid4.EnableDragColSize( True )
+		self.m_grid4.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.m_grid4.EnableDragRowSize( True )
+		self.m_grid4.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_grid4.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizerSearchBottom.Add( self.m_grid4, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
 		bSizerSearchFrame.Add( bSizerSearchBottom, 1, wx.EXPAND|wx.TOP, 10 )
@@ -84,7 +110,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelSearch.SetSizer( bSizerSearchFrame )
 		self.m_panelSearch.Layout()
 		bSizerSearchFrame.Fit( self.m_panelSearch )
-		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", False )
+		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", True )
 		self.m_panelBreakdown = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerBreakdownFrame = wx.BoxSizer( wx.VERTICAL )
 
@@ -194,7 +220,7 @@ class MyFrame1 ( wx.Frame ):
 
 		# Cell Defaults
 		self.m_gridRangeFilter.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizerRangeMain.Add( self.m_gridRangeFilter, 0, wx.ALL, 5 )
+		bSizerRangeMain.Add( self.m_gridRangeFilter, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
 		self.m_panelRangeFilter.SetSizer( bSizerRangeMain )
@@ -262,7 +288,7 @@ class MyFrame1 ( wx.Frame ):
 
 		# Cell Defaults
 		self.m_gridLevelFilter.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizerLevelFilter.Add( self.m_gridLevelFilter, 0, wx.ALL, 5 )
+		bSizerLevelFilter.Add( self.m_gridLevelFilter, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
 		self.m_panelLevelFilter.SetSizer( bSizerLevelFilter )
@@ -485,7 +511,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelMealPlanner.SetSizer( bSizer22 )
 		self.m_panelMealPlanner.Layout()
 		bSizer22.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
 
 		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 
@@ -528,3 +554,5 @@ class MyFrame1 ( wx.Frame ):
 
 	def display_food( self, event ):
 		event.Skip()
+
+

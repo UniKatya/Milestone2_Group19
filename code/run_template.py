@@ -29,25 +29,20 @@ class MyMainFrame(MyFrame):
         self.Show(True)
 
     def display_nutritional_info(self, event):
-        food_name = self.m_textCtrlSearch.GetValue()
-        food_name = food_name.lower()
+        food_name = self.m_textCtrlSearch.GetValue().strip().lower()
         result = get_nutritional_info(food_name)
-        if result == {}:
+        if not result:
             wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
         self.m_staticTextTitle.SetLabel(food_name.capitalize())
-        self.m_richText2.SetValue(
-            f'Caloric Value: {result.get("Caloric Value")}     Fat: {result.get("Fat")}     Vitamin D: {result.get("Vitamin D")}     Selenium: {result.get("Selenium")}     '
-            f'Saturated Fats: {result.get("Saturated Fats")}     Monounsaturated Fats: {result.get("Monounsaturated Fats")}      Vitamin E: {result.get("Vitamin E")}     '
-            f'Zinc: {result.get("Zinc")}     Polyunsaturated Fats: {result.get("Polyunsaturated Fats")}     Carbohydrates: {result.get("Carbohydrates")}     '
-            f'Vitamin K: {result.get("Vitamin K")}     Density: {result.get("Nutrition Density")}     Sugars: {result.get("Sugars")}     Protein: {result.get("Protein")}     '
-            f'Calcium: {result.get("Calcium")}     Dietary Fiber: {result.get("Dietary Fiber")}     Cholesteral: {result.get("Cholesterol")}     Copper: {result.get("Copper")}     '
-            f'Sodium: {result.get("Sodium")}     Water: {result.get("Water")}     Iron: {result.get("Iron")}     Vitamin A: {result.get("Vitamin A")}     Vitamin B1: {result.get("Vitamin B1")}     '
-            f"Magnesium: {result.get('Magnesium')}      Vitamin B12: {result.get('Vitamin B12')}      Vitamin B2: {result.get('Vitamin B2')}       Manganese: {result.get('Manganese')}"
-            f"     Vitamin B3: {result.get('Vitamin B3')}     Vitamin B5: {result.get('Vitamin B5')}      Phosphorus: {result.get('Phosphorus')}      Vitamin B6: {result.get('Vitamin B6')}        "
-            f"Vitamin C: {result.get('Vitamin C')}     Potassium: {result.get('Potassium')}")
 
+        df_nutritional_info = pd.DataFrame(result.items(), columns=['Nutrient', 'Value'])
+
+        table = DataTable(df_nutritional_info)
+        self.m_grid4.ClearGrid()
+        self.m_grid4.SetTable(table, takeOwnership=True)
+        self.m_grid4.AutoSize()
         self.Layout()
 
 
