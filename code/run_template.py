@@ -104,7 +104,7 @@ class MyMainFrame(MyFrame):
         max_val = float(self.m_textCtrlMaxVal.GetValue())
 
         df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
-
+        df_1 = df_1.sort_values(by='food')
         df_display = df_1[['food', nutrient]]
 
         table = DataTable(df_display)

@@ -1,6 +1,6 @@
 # Executive Summary
 
-### GitHub Repository URL: https://github.com/XXXX/XXXXX.git
+### GitHub Repository URL: https://github.com/UniKatya/Milestone2_Group19.git
 
 ---
 
