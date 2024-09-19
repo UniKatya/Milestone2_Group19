@@ -62,14 +62,27 @@ Include screenshots for each step demonstrating the use of this feature.
 Allows for the user to input a minimum and maximum value for specified nutrients and show the foods that fall within these ranges as list.
 
 ### Steps
-1. Step-by-step instructions for using this feature.
-2. Add additional steps as needed.
+1. The user selects 'Range Filter' from the navigation bar.
+2. The user selects a nutrient from the choice box.
+3. The user enters a minimum value for the nutrient.
+4. The user enters a maximum value for the nutrient.
+5. The user clicks the 'Enter' button. 
 
 ### Screenshots
 Include screenshots for each step demonstrating the use of this feature.    
-![1](./visual_design.png)
+![1](./images/Range1.png)
 
-![2](./visual_design.png)
+![2](./images/Range2.png)
+
+![3](./images/Range3.png)
+
+![4](./images/Range4.png)
+
+![5](./images/Range5.png)
+
+
+
+
 
 
 ---
