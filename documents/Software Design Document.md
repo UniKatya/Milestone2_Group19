@@ -378,7 +378,10 @@ Our application has been meticulously designed to be user-friendly, with a simpl
 
 The user interface for the database includes a main screen, a daily meal planner, food search screen, nutrition breakdown screen, and two separate screens for ordering nutrients by level and range. There is a navigation bar at the top of each screen, this is done to make it simple and easier for users to navigate through the application. 
 
+<span style="color:red">Each screen has been altered so that at the very top 'Nutrition Database' is displayed and the screen that the user is currently on will be shaded slightly on the navigation bar to show which screen they are currently on.</span>
+
 The 'Home' Screen displays a list of all the services the app provides. This is provided for first-time users who are just getting a feel for the app and want to understand what the program has to offer. From there users can make use of the functions by using the navigation bar at the top of the screen. This is done for easy navigation of the program. 
+
 
 ![Home Screen Wireframe](images/HomeScreen.drawio.png)
 
@@ -386,11 +389,15 @@ The 'Home' Screen displays a list of all the services the app provides. This is 
 
 The ‘Search’ Screen displays the search bar at the top of the screen where the user can enter the food they want. Once the search has been entered the nutritional information on the food will be displayed beneath the search bar. If there is an error, the error will be provided below instead. This makes the process simple and concise, only requiring the user to type and click a button to access nutritional information.
 
+<span style="color:red">This wireframe has been altered to display a table rather than text for food details. There is also extra text below the food enter part that instruct the user to enter a food name, this will change to the food name when the user enters a valid item.</span>
+
 ![Food Search Wireframe](images/SearchFood.drawio.png)
 
 **Figure 2:** _Food Search Wireframe_
 
 For the added option of viewing the information in a pie chart or bar graph form the user can navigate to the ‘Nutritional Breakdown’ Screen, search the food by name through an input box and the graphs will then be displayed beneath the search bar. If there is an error, the error will be displayed below rather than the graph and chart. This is designed to be simple and not include too many elements that might confuse the user. 
+
+<span style="color:red">This wireframe has been slightly altered so that the input bar and enter button are shifted to the far right. Also, the chosen food name is shown at the top of the chart and graph as a title. </span>
 
 ![Nutritional Breakdown Wireframe](images/NutritionBreakdown.drawio.png)
 
@@ -399,18 +406,24 @@ For the added option of viewing the information in a pie chart or bar graph form
 The ‘Level Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Then the user can select the levels that operate as three separate radio buttons that allow the user to choose between low, medium, and high. This is done to make the process more simple and less error-prone. 
 Once the enter button is clicked the search will show all the foods that contain the nutrient searched at the level required. If there isn’t any results, the error message will be displayed there instead. 
 
+<span style="color:red">This wireframe has been altered so that instead of the filtered foods to be represented as a list they are a table. </span>
+
 ![Nutrient Level Filter Wireframe](images/LevelFilter.drawio.png)
 
 **Figure 4:** _Nutrient Level Filter Wireframe_
 
 The ‘Range Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Next to this there are minimum and maximum filters that allow the user to input a value of their choosing. Once entered the search will show all the foods that contain the selected nutrient that is within the range. This will be ordered as a list by their food name. All of this is done for simplicity and require limited actions from the user. 
 
+<span style="color:red">This wireframe has been altered so that instead of the filtered foods to be represented as a list they are a table. </span>
+
 ![Nutrient Range Filter Wireframe](images/RangeFilter.drawio.png)
 
 **Figure 5:** _Nutrient Range Filter Wireframe_
 
-The ‘Meal Planner’ Screen has an input area where the user can add a food they want to put in and its quantity. Each time food is entered the number of calories is updated at the top. As well as this, the user can click on a previously inputted foods names and view their quantity and calories on the top right of the screen. This helps in making the meal planning easier for the user. 
-The order of the meal plan list is determined by the update time, the first inputted value is at the top, the second below, and so on. Making the ordering simple and intuitive to use for the user. Also, each time an item is added the user can delete food with the ‘Delete’ button displayed next to each item. This allows for easier meal planning, so that if they make a mistake they can delete rather than restarting the whole meal plan.
+The ‘Meal Planner’ Screen has an input area where the user can add a food they want to put in and its quantity. Each time food is entered the number of calories is updated at the top. As well as this, the user can <span style="color:red">search</span> previously inputted foods names <span style="color:red">on the bottom right </span>and view their quantity and calories on the top right of the screen. This helps in making the meal planning easier for the user. 
+The order of the meal plan list is determined by the update time, the first inputted value is at the top, the second below, and so on. Making the ordering simple and intuitive to use for the user. Also, each time an item is added the user can delete food with the ‘Delete’ button displayed <span style="color:red">on the top right when the user searches for a certain meal item</span>. This allows for easier meal planning, so that if they make a mistake they can delete rather than restarting the whole meal plan.
+
+<span style="color:red">The following wireframe below has been altered to align with the current GUI. These changes include moving the delete button to the selected food part on the top right of the screen. As well as added a new part on the bottom right that allows for the searching of meal items. </span>
 
 <img src="images/MealPlanner.drawio.png" width="500" height="350">
 
