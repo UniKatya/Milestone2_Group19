@@ -425,6 +425,6 @@ The order of the meal plan list is determined by the update time, the first inpu
 
 <span style="color:red">The following wireframe below has been altered to align with the current GUI. These changes include moving the delete button to the selected food part on the top right of the screen. As well as added a new part on the bottom right that allows for the searching of meal items. </span>
 
-<img src="images/MealPlanner.drawio.png" width="500" height="350">
+<img src="images/MealPlanner.drawio.png">
 
 **Figure 6:** _Meal Planner Wireframe_

@@ -135,7 +135,7 @@
                 <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Home</property>
-                  <property name="select">1</property>
+                  <property name="select">0</property>
                   <object class="wxPanel" expanded="true">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -1733,7 +1733,7 @@
                 <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Level Filter</property>
-                  <property name="select">0</property>
+                  <property name="select">1</property>
                   <object class="wxPanel" expanded="true">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -2025,7 +2025,7 @@
                               <property name="gripper">0</property>
                               <property name="hidden">0</property>
                               <property name="id">wxID_ANY</property>
-                              <property name="label">Medium</property>
+                              <property name="label">Mid</property>
                               <property name="max_size"></property>
                               <property name="maximize_button">0</property>
                               <property name="maximum_size"></property>

@@ -36,7 +36,7 @@ class MyFrame1 ( wx.Frame ):
 		gSizer7 = wx.GridSizer( 1, 1, 0, 0 )
 
 		self.m_richText6 = wx.richtext.RichTextCtrl( self.m_panelHome, wx.ID_ANY, u"Search Food : Allows for the user to search for a food by name through an input box. \nThe system will then provide the food and it's nutritional information.\n\nNutritional Breakdown : Allows for the user to view nutritional breakdown through a bar graph and pie chart of their selected food item.\n\nRange Filter: Allows for the user to filter a list of foods through the range they give into the system. The system will then filter and return a list of foods that fit inside of this range.\n\nLevel Filter : Allows for the user to filter food through entering content levels (low, medium, high) for their chosen nutrient such as protein or fats.\n\nMeal Planner : Allows for the user to create a meal plan by selecting a food and the quantity which the system will then calculate and add to the meal plan.\n\n\n", wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
-		gSizer7.Add( self.m_richText6, 1, wx.EXPAND |wx.ALL, 5 )
+		gSizer7.Add( self.m_richText6, 1, wx.EXPAND|wx.ALL, 5 )
 
 
 		self.m_panelHome.SetSizer( gSizer7 )
@@ -110,7 +110,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelSearch.SetSizer( bSizerSearchFrame )
 		self.m_panelSearch.Layout()
 		bSizerSearchFrame.Fit( self.m_panelSearch )
-		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", True )
+		self.m_notebook1.AddPage( self.m_panelSearch, u"Search", False )
 		self.m_panelBreakdown = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizerBreakdownFrame = wx.BoxSizer( wx.VERTICAL )
 
@@ -251,7 +251,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_radioBtnLow = wx.RadioButton( self.m_panelLevelFilter, wx.ID_ANY, u"Low", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizerFilterTop.Add( self.m_radioBtnLow, 0, wx.ALL, 8 )
 
-		self.m_radioBtnMedium = wx.RadioButton( self.m_panelLevelFilter, wx.ID_ANY, u"Medium", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtnMedium = wx.RadioButton( self.m_panelLevelFilter, wx.ID_ANY, u"Mid", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizerFilterTop.Add( self.m_radioBtnMedium, 0, wx.ALL, 8 )
 
 		self.m_radioBtnHigh = wx.RadioButton( self.m_panelLevelFilter, wx.ID_ANY, u"High", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -294,7 +294,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelLevelFilter.SetSizer( bSizerLevelFilter )
 		self.m_panelLevelFilter.Layout()
 		bSizerLevelFilter.Fit( self.m_panelLevelFilter )
-		self.m_notebook1.AddPage( self.m_panelLevelFilter, u"Level Filter", False )
+		self.m_notebook1.AddPage( self.m_panelLevelFilter, u"Level Filter", True )
 		self.m_panelMealPlanner = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer22 = wx.BoxSizer( wx.VERTICAL )
 
