@@ -368,6 +368,7 @@ The application will feature a sticky navigation bar at the top of the screen, e
 
 Our application has been meticulously designed to be user-friendly, with a simple and easy-to-navigate interface. We have ensured consistency in the navigation bar and layout across screens to enhance the user experience and make the interface easy to learn. For example, the input boxes will be always be at the top of the screen and the results below for consistency. 
 
+<span style="color:red">The following structure design has been slightly altered in the meal planner part as the 'Display Selected Food' has been added to match the GUI.</span>
 
 ![Structure_Design](images/Structure_Design.png)
 
