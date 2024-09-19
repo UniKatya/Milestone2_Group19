@@ -1,50 +1,20 @@
 import wx.grid
-import pandas as pd
-import re
-
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
+import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('WXAgg')
 
-from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
-import matplotlib.pyplot as plt
+from template_frame import MyFrame1 as MyFrame
+from all_functions import *
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
 
 df = pd.read_csv('Food_Nutrition_Dataset.csv')
 
-from template_frame import MyFrame1 as MyFrame
-
-class DataTable(wx.grid.GridTableBase):
-    def __init__(self, data=None):
-        wx.grid.GridTableBase.__init__(self)
-        self.headerRows = 1
-        self.data = data
-
-    def GetNumberRows(self):
-        return len(self.data.index)
-
-    def GetNumberCols(self):
-        return len(self.data.columns)
-
-    def GetValue(self, row, col):
-        return self.data.iloc[row, col]
-
-    def SetValue(self, row, col, value):
-        self.data.iloc[row, col] = value
-
-    def GetColLabelValue(self, col):
-        return self.data.columns[col]
-
-    def GetAttr(self, row, col, prop):
-        attr = wx.grid.GridCellAttr()
-        if row % 2 == 1:
-            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
-        return attr
-
 
 class MyMainFrame(MyFrame):
-    def __init__(self,parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.meal_plan = {}
         self.selected_meal_food = ""
@@ -61,39 +31,29 @@ class MyMainFrame(MyFrame):
     def display_nutritional_info(self, event):
         food_name = self.m_textCtrlSearch.GetValue()
         food_name = food_name.lower()
-        result = self.get_nutritional_info(food_name)
+        result = get_nutritional_info(food_name)
         if result == {}:
             wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
         self.m_staticTextTitle.SetLabel(food_name.capitalize())
-        self.m_richText2.SetValue(f'Caloric Value: {result.get("Caloric Value")}     Fat: {result.get("Fat")}     Vitamin D: {result.get("Vitamin D")}     Selenium: {result.get("Selenium")}     '
-                                  f'Saturated Fats: {result.get("Saturated Fats")}     Monounsaturated Fats: {result.get("Monounsaturated Fats")}      Vitamin E: {result.get("Vitamin E")}     '
-                                  f'Zinc: {result.get("Zinc")}     Polyunsaturated Fats: {result.get("Polyunsaturated Fats")}     Carbohydrates: {result.get("Carbohydrates")}     '
-                                  f'Vitamin K: {result.get("Vitamin K")}     Density: {result.get("Nutrition Density")}     Sugars: {result.get("Sugars")}     Protein: {result.get("Protein")}     '
-                                  f'Calcium: {result.get("Calcium")}     Dietary Fiber: {result.get("Dietary Fiber")}     Cholesteral: {result.get("Cholesterol")}     Copper: {result.get("Copper")}     '
-                                  f'Sodium: {result.get("Sodium")}     Water: {result.get("Water")}     Iron: {result.get("Iron")}     Vitamin A: {result.get("Vitamin A")}     Vitamin B1: {result.get("Vitamin B1")}     '
-                                  f"Magnesium: {result.get('Magnesium')}      Vitamin B12: {result.get('Vitamin B12')}      Vitamin B2: {result.get('Vitamin B2')}       Manganese: {result.get('Manganese')}"
-                                  f"     Vitamin B3: {result.get('Vitamin B3')}     Vitamin B5: {result.get('Vitamin B5')}      Phosphorus: {result.get('Phosphorus')}      Vitamin B6: {result.get('Vitamin B6')}        "
-                                  f"Vitamin C: {result.get('Vitamin C')}     Potassium: {result.get('Potassium')}")
+        self.m_richText2.SetValue(
+            f'Caloric Value: {result.get("Caloric Value")}     Fat: {result.get("Fat")}     Vitamin D: {result.get("Vitamin D")}     Selenium: {result.get("Selenium")}     '
+            f'Saturated Fats: {result.get("Saturated Fats")}     Monounsaturated Fats: {result.get("Monounsaturated Fats")}      Vitamin E: {result.get("Vitamin E")}     '
+            f'Zinc: {result.get("Zinc")}     Polyunsaturated Fats: {result.get("Polyunsaturated Fats")}     Carbohydrates: {result.get("Carbohydrates")}     '
+            f'Vitamin K: {result.get("Vitamin K")}     Density: {result.get("Nutrition Density")}     Sugars: {result.get("Sugars")}     Protein: {result.get("Protein")}     '
+            f'Calcium: {result.get("Calcium")}     Dietary Fiber: {result.get("Dietary Fiber")}     Cholesteral: {result.get("Cholesterol")}     Copper: {result.get("Copper")}     '
+            f'Sodium: {result.get("Sodium")}     Water: {result.get("Water")}     Iron: {result.get("Iron")}     Vitamin A: {result.get("Vitamin A")}     Vitamin B1: {result.get("Vitamin B1")}     '
+            f"Magnesium: {result.get('Magnesium')}      Vitamin B12: {result.get('Vitamin B12')}      Vitamin B2: {result.get('Vitamin B2')}       Manganese: {result.get('Manganese')}"
+            f"     Vitamin B3: {result.get('Vitamin B3')}     Vitamin B5: {result.get('Vitamin B5')}      Phosphorus: {result.get('Phosphorus')}      Vitamin B6: {result.get('Vitamin B6')}        "
+            f"Vitamin C: {result.get('Vitamin C')}     Potassium: {result.get('Potassium')}")
 
         self.Layout()
 
-    def search_food_by_name(self, name):
-        found = name in df['food'].values
-        return found
-
-    def get_nutritional_info(self, name):
-        if not self.search_food_by_name(name):
-            return {}
-        food_row = df[df['food'] == name].iloc[0]
-        nutritional_info = food_row.to_dict()
-        nutritional_info.pop('food', None)
-        return nutritional_info
 
     def display_charts(self, event):
         food_name = self.m_textCtrl3.GetValue().lower()
-        nutritional_info = self.get_nutritional_info(food_name)
+        nutritional_info = get_nutritional_info(food_name)
         self.m_staticText58.SetLabel(food_name.capitalize())
 
         if not nutritional_info:
@@ -144,17 +104,17 @@ class MyMainFrame(MyFrame):
     def filter_food_by_nutrition_range(self, event):
         nutrient = self.m_choiceNutrientRange.GetStringSelection()
 
-        #min & max values
+        # min & max values
         min_val = float(self.m_textCtrlMinVal.GetValue())
         max_val = float(self.m_textCtrlMaxVal.GetValue())
 
-        df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <=max_val)]
-        
+        df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
+
         df_display = df_1[['food', nutrient]]
-        
-        tabel = DataTable(df_display)
+
+        table = DataTable(df_display)
         self.m_gridRangeFilter.ClearGrid()
-        self.m_gridRangeFilter.SetTable(tabel, True)
+        self.m_gridRangeFilter.SetTable(table, True)
         self.m_gridRangeFilter.AutoSize()
         self.Layout()
 
@@ -164,13 +124,13 @@ class MyMainFrame(MyFrame):
 
         try:
             quantity = int(quantity.strip())
-            nutritional_info = self.get_nutritional_info(food_name)
+            nutritional_info = get_nutritional_info(food_name)
             if not nutritional_info:
                 wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
                 return
 
-            self.generate_meal_plan(food_name, quantity)
-            total_calories = self.generate_total_calories()
+            generate_meal_plan(self.meal_plan, food_name, quantity)
+            total_calories = generate_total_calories(self.meal_plan)
             self.m_staticText38.SetLabel(f"{total_calories}")
 
             self.m_grid1.ClearGrid()
@@ -209,25 +169,6 @@ class MyMainFrame(MyFrame):
                 self.m_staticText44.SetLabel(f"  {total_calories} calories")
                 self.selected_meal_food = food_name
 
-
-    def generate_meal_plan(self, name, quantity):
-        if name in self.meal_plan:
-            self.meal_plan[name] += quantity
-        else:
-            self.meal_plan[name] = quantity
-
-        return name, quantity
-
-
-    def generate_total_calories(self):
-        c_total = 0
-        for key, value in self.meal_plan.items():
-            food_row = df[df['food'] == key].iloc[0]
-            caloric_value = food_row['Caloric Value']
-            c_total += caloric_value * value
-
-        return c_total
-
     def remove_food_from_meal_plan(self, event):
         del self.meal_plan[self.selected_meal_food]
 
@@ -239,8 +180,6 @@ class MyMainFrame(MyFrame):
         self.m_grid1.ForceRefresh()
 
         self.Show(True)
-
-
 
 if __name__ == "__main__":
     app = wx.App()
