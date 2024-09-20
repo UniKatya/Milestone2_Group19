@@ -99,9 +99,31 @@ class MyMainFrame(MyFrame):
     def filter_food_by_nutrition_range(self, event):
         nutrient = self.m_choiceNutrientRange.GetStringSelection()
 
-        # min & max values
-        min_val = float(self.m_textCtrlMinVal.GetValue())
-        max_val = float(self.m_textCtrlMaxVal.GetValue())
+        min_val_check = self.m_textCtrlMinVal.GetValue().strip()
+        max_val_check = self.m_textCtrlMaxVal.GetValue().strip()
+
+
+        # check to see if min and max inputs are empty
+        if not min_val_check:
+            wx.MessageBox("Minimum value is not given.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        if not max_val_check:
+            wx.MessageBox("Maximum value is not given.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        # check to see if min and max inputs are numbers
+        if min_val_check.isalpha():
+            wx.MessageBox("Please enter valid numeric value for minimum.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        else:
+            min_val = float(min_val_check) # convert minimum string to float
+
+        if max_val_check.isalpha():
+            wx.MessageBox("Please enter valid numeric value for maximum.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        else:
+            max_val = float(min_val_check) # convert maximum string to float
 
         df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
         df_1 = df_1.sort_values(by='food')
