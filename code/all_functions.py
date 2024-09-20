@@ -1,6 +1,8 @@
 import wx.grid
 import pandas as pd
+import matplotlib.pyplot as plt
 
+MAX_SLICES = 8
 EVEN_ROW_COLOUR = '#CCE6FF'
 
 class DataTable(wx.grid.GridTableBase):
@@ -30,6 +32,12 @@ class DataTable(wx.grid.GridTableBase):
             attr.SetBackgroundColour(EVEN_ROW_COLOUR)
         return attr
 
+def load_data(file_path):
+    try:
+        return pd.read_csv(file_path)
+    except FileNotFoundError:
+        raise FileNotFoundError
+
 def search_food_by_name(name):
     df = pd.read_csv('Food_Nutrition_Dataset.csv')
     found = name in df['food'].values
@@ -43,6 +51,42 @@ def get_nutritional_info(name):
     nutritional_info = food_row.to_dict()
     nutritional_info.pop('food', None)
     return nutritional_info
+
+def filter_nutritional_info(categories, sizes):
+    if len(categories) > MAX_SLICES:
+        sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
+        large_items = sorted_items[:MAX_SLICES]
+        other_items = sorted_items[MAX_SLICES:]
+        filtered_categories = [item[0] for item in large_items] + ['Others']
+        filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
+    else:
+        filtered_categories = categories
+        filtered_sizes = sizes
+
+    explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
+    if len(explode) != len(filtered_categories):
+        explode = [0.0] * len(filtered_categories)
+
+    return filtered_categories, filtered_sizes, explode
+
+def create_pie_chart(filtered_sizes, filtered_categories, explode, ax):
+    ax.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", explode=explode,
+            textprops={'fontsize': 5}, shadow=True)
+    return ax.pie
+
+def create_bar_graph(filtered_categories, filtered_sizes, ax):
+    ax.bar(filtered_categories, filtered_sizes, color='skyblue')
+    ax.set_xlabel('Nutrients', fontsize=6)
+    ax.set_ylabel('Values', fontsize=8)
+    plt.yticks(rotation=0)
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    return ax.bar
+
+def filter_food_by_nutrition(df, nutrient, min_val, max_val):
+    df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
+    df_filtered = df_filtered.sort_values(by='food')
+    return df_filtered[['food', nutrient]]
 
 def generate_meal_plan(meal_plan, name, quantity):
     if name in meal_plan:

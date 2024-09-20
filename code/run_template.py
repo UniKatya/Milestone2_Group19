@@ -10,8 +10,7 @@ from all_functions import *
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
 
-df = pd.read_csv('Food_Nutrition_Dataset.csv')
-
+df = load_data('Food_Nutrition_Dataset.csv')
 
 class MyMainFrame(MyFrame):
     def __init__(self, parent=None):
@@ -45,7 +44,6 @@ class MyMainFrame(MyFrame):
         self.m_grid4.AutoSize()
         self.Layout()
 
-
     def display_charts(self, event):
         food_name = self.m_textCtrl3.GetValue().lower()
         nutritional_info = get_nutritional_info(food_name)
@@ -63,29 +61,9 @@ class MyMainFrame(MyFrame):
         fig, ax = plt.subplots(1, 2, figsize=(8, 4))
         ax1, ax2 = ax
 
-        max_slices = 8
-        if len(categories) > max_slices:
-            sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
-            large_items = sorted_items[:max_slices]
-            other_items = sorted_items[max_slices:]
-            filtered_categories = [item[0] for item in large_items] + ['Others']
-            filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
-        else:
-            filtered_categories = categories
-            filtered_sizes = sizes
-
-        explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
-        if len(explode) != len(filtered_categories):
-            explode = [0.0] * len(filtered_categories)
-
-        ax1.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", explode=explode,
-                textprops={'fontsize': 5}, shadow=True)
-
-        ax2.bar(filtered_categories, filtered_sizes, color=['blue', 'green', 'red', 'purple'])
-        ax2.set_xlabel('Nutrients', fontsize=6)
-        ax2.set_ylabel('Values', fontsize=8)
-        plt.yticks(rotation=0)
-        plt.xticks(rotation=45, ha='right')
+        filtered_categories, filtered_sizes, explode = filter_nutritional_info(categories, sizes)
+        create_pie_chart(filtered_sizes, filtered_categories, explode, ax1)
+        create_bar_graph(filtered_categories, filtered_sizes, ax2)
 
         plt.tight_layout()
 
@@ -96,12 +74,11 @@ class MyMainFrame(MyFrame):
         canvas.SetSize((h, w))
         self.Layout()
 
-    def filter_food_by_nutrition_range(self, event):
+    def display_range(self, event):
         nutrient = self.m_choiceNutrientRange.GetStringSelection()
 
         min_val_check = self.m_textCtrlMinVal.GetValue().strip()
         max_val_check = self.m_textCtrlMaxVal.GetValue().strip()
-
 
         # check to see if min and max inputs are empty
         if not min_val_check:
@@ -117,17 +94,15 @@ class MyMainFrame(MyFrame):
             wx.MessageBox("Please enter valid numeric value for minimum.", "Error", wx.OK | wx.ICON_ERROR)
             return
         else:
-            min_val = float(min_val_check) # convert minimum string to float
+            min_val = float(min_val_check)  # convert minimum string to float
 
         if max_val_check.isalpha():
             wx.MessageBox("Please enter valid numeric value for maximum.", "Error", wx.OK | wx.ICON_ERROR)
             return
         else:
-            max_val = float(min_val_check) # convert maximum string to float
+            max_val = float(max_val_check)  # convert maximum string to float
 
-        df_1 = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
-        df_1 = df_1.sort_values(by='food')
-        df_display = df_1[['food', nutrient]]
+        df_display = filter_food_by_nutrition(df, nutrient, min_val, max_val)
 
         table = DataTable(df_display)
         self.m_gridRangeFilter.ClearGrid()
