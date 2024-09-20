@@ -144,22 +144,15 @@ class MyMainFrame(MyFrame):
             wx.MessageBox("Please enter a food name to search.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        meal_found = False
-        if food_name in [key.lower() for key in self.meal_plan.keys()]:
-            meal_found = True
+        food_key, quantity, total_calories = get_food_details(df, food_name, self.meal_plan)
 
-        if meal_found:
-            food_key = [key for key in self.meal_plan.keys() if key.lower() == food_name][0]  # Get original name
-            quantity = self.meal_plan[food_key]
-            food_row = df[df['food'].str.strip().str.lower() == food_name]
-            if not food_row.empty:
-                caloric_value = food_row.iloc[0]['Caloric Value']
-                total_calories = caloric_value * quantity
-
-                self.m_staticText43.SetLabel(f"{food_name}")
-                self.m_staticText47.SetLabel(f"     {quantity}  ")
-                self.m_staticText44.SetLabel(f"  {total_calories} calories")
-                self.selected_meal_food = food_name
+        if food_key:
+            self.m_staticText43.SetLabel(f"{food_key}")
+            self.m_staticText47.SetLabel(f"     {quantity}  ")
+            self.m_staticText44.SetLabel(f"  {total_calories} calories")
+            self.selected_meal_food = food_name
+        else:
+            wx.MessageBox("Food item not found in the meal plan.", "Error", wx.OK | wx.ICON_ERROR)
 
     def display_removed_food(self, event):
         remove_food_from_meal_plan(self.meal_plan, self.selected_meal_food)

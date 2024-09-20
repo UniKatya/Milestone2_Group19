@@ -88,6 +88,21 @@ def filter_food_by_nutrition(df, nutrient, min_val, max_val):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
+def get_food_details(df, food_name, meal_plan):
+    meal_found = False
+    if food_name in [key.lower() for key in meal_plan.keys()]:
+        meal_found = True
+
+    if meal_found:
+        food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
+        quantity = meal_plan[food_key]
+        food_row = df[df['food'].str.strip().str.lower() == food_name]
+        if not food_row.empty:
+            caloric_value = food_row.iloc[0]['Caloric Value']
+            total_calories = caloric_value * quantity
+            return food_key, quantity, total_calories
+    return None, None, None
+
 def generate_meal_plan(meal_plan, name, quantity):
     if name in meal_plan:
         meal_plan[name] += quantity
