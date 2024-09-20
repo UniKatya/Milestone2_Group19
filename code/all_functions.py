@@ -105,3 +105,6 @@ def generate_total_calories(meal_plan):
         c_total += caloric_value * value
 
     return c_total
+
+def remove_food_from_meal_plan(meal_plan, selected_meal_food):
+    del meal_plan[selected_meal_food]

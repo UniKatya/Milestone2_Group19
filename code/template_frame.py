@@ -529,7 +529,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_buttonBreakdown.Bind( wx.EVT_BUTTON, self.display_charts )
 		self.m_buttonRangeSearch.Bind(wx.EVT_BUTTON, self.display_range)
 		self.m_button7.Bind( wx.EVT_BUTTON, self.display_meal_plan )
-		self.m_button8.Bind( wx.EVT_BUTTON, self.remove_food_from_meal_plan )
+		self.m_button8.Bind(wx.EVT_BUTTON, self.display_removed_food)
 		self.m_button9.Bind( wx.EVT_BUTTON, self.display_food )
 
 	def __del__( self ):
@@ -549,7 +549,7 @@ class MyFrame1 ( wx.Frame ):
 	def display_meal_plan( self, event ):
 		event.Skip()
 
-	def remove_food_from_meal_plan( self, event ):
+	def display_removed_food(self, event):
 		event.Skip()
 
 	def display_food( self, event ):

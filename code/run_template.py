@@ -161,9 +161,8 @@ class MyMainFrame(MyFrame):
                 self.m_staticText44.SetLabel(f"  {total_calories} calories")
                 self.selected_meal_food = food_name
 
-    def remove_food_from_meal_plan(self, event):
-        del self.meal_plan[self.selected_meal_food]
-
+    def display_removed_food(self, event):
+        remove_food_from_meal_plan(self.meal_plan, self.selected_meal_food)
         self.m_grid1.ClearGrid()
         self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
         self.table = DataTable(self.ml)
