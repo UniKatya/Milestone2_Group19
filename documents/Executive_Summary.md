@@ -45,14 +45,20 @@ Allows for the user to see a pie chart and bar graph showing the breakdown of di
 Allow for the user to search for specific nutrient (including fat, protein, carbohydrates, sugar, and nutritional density) based on a particular level (low, medium, high).
 
 ### Steps
-1. Step-by-step instructions for using this feature.
-2. Add additional steps as needed.
+1. User selects 'Level Filter' from the navigation bar.
+2. User selects a nutrient from the choice box.
+3. User selects a level from one of the three radio boxes (low, medium, high).
+4. User clicks the 'Enter' button.
 
 ### Screenshots
 Include screenshots for each step demonstrating the use of this feature.    
-![1](./visual_design.png)
+![1](./images/LevelFilter1.png)
 
-![2](./visual_design.png)
+![2](./images/LevelFilter2.png)
+
+![3](./images/LevelFilter3.png)
+
+![4](./images/LevelFilter4.png)
 
 
 ---
