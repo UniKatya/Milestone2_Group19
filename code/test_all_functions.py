@@ -15,6 +15,32 @@ def sample_data():
 def meal_plan():
     return {'apple': 2, 'banana': 1}
 
+@pytest.fixture
+def test_csv(sample_data, tmpdir):
+    file_path = tmpdir.join('Food_Nutrition_Dataset.csv')
+    sample_data.to_csv(file_path, index=False)
+    return file_path
+
+def test_load_data_valid():
+    df = load_data('part_wine_reviews.csv')
+    assert isinstance(df, pd.DataFrame)
+    assert not df.empty
+
+def test_load_data_invalid():
+    with pytest.raises(FileNotFoundError) as exc_info:
+        load_data('non_existent_file.csv')
+    assert exc_info.type is FileNotFoundError
+
+def test_search_food_by_name_valid(test_csv):
+    df = pd.read_csv(test_csv)
+    df.to_csv('Food_Nutrition_Dataset.csv', index=False)
+    assert search_food_by_name('apple') == True
+
+def test_search_food_by_name_invalid(test_csv):
+    df = pd.read_csv(test_csv)
+    df.to_csv('Food_Nutrition_Dataset.csv', index=False)
+    assert search_food_by_name('pudding') == False
+
 def test_get_nutritional_info(sample_data, mocker):
     mocker.patch('all_functions.pd.read_csv', return_value=sample_data)
     result = get_nutritional_info('apple')
@@ -46,8 +72,8 @@ def test_create_bar_graph():
     bar = create_bar_graph(filtered_categories, filtered_sizes, ax)
     assert bar is not None
 
-def test_filter_food_by_nutrition(sample_data):
-    result = filter_food_by_nutrition(sample_data, 'Caloric Value', 50, 100)
+def test_filter_food_by_range(sample_data):
+    result = filter_food_by_range(sample_data, 'Caloric Value', 50, 100)
     expected = sample_data[sample_data['food'].isin(['apple', 'banana'])]
     pd.testing.assert_frame_equal(result, expected[['food', 'Caloric Value']])
 

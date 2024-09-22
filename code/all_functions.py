@@ -40,7 +40,8 @@ def load_data(file_path):
 
 def search_food_by_name(name):
     df = pd.read_csv('Food_Nutrition_Dataset.csv')
-    return name in df['food'].values
+    found = name in df['food'].values
+    return found
 
 def get_nutritional_info(name):
     df = pd.read_csv('Food_Nutrition_Dataset.csv')
