@@ -52,13 +52,13 @@ Allow for the user to search for specific nutrient (including fat, protein, carb
 
 ### Screenshots
 Include screenshots for each step demonstrating the use of this feature.    
-![1](./images/LevelFilter1.png)
+![1](./images/Level1.png)
 
-![2](./images/LevelFilter2.png)
+![2](./images/Level2.png)
 
-![3](./images/LevelFilter3.png)
+![3](./images/Level3.png)
 
-![4](./images/LevelFilter4.png)
+![4](./images/Level4.png)
 
 
 ---
