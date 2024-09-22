@@ -1,7 +1,8 @@
 # Unit Testing Report
 
 Please provide your GitHub repository link.
-### GitHub Repository URL: https://github.com/XXXX/XXXXX.git
+### GitHub Repository URL: https://github.com/UniKatya/Milestone2_Group19.git
+
 
 ---
 
@@ -13,11 +14,20 @@ the five required features.</span> There is no need to test the GUI components. 
 list all tested functions related to the five required features and the corresponding test functions designed to test 
 those functions, for example:
 
-| **Tested Functions** | **Test Functions**                               |
-|----------------------|--------------------------------------------------|
-| `add(x1,x2)`         | `test_add_valid()` <br> `test_add_invalid`       |
-| `divide(x1,x2)`      | `test_divide_valid()` <br> `test_divide_invalid` |
-| `...`                | `...`                                            |
+| **Tested Functions**                                                 | **Test Functions**                                                                         |
+|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| `search_food_by_name(name)`                                          | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`               |
+| `get_nutritional_info(name)`                                         | `test_get_nutritional_info_valid()` <br> `test_get_nutritional_info_invalid()`             |
+| `filter_nutritional_info(categories, sizes)`                         | `test_filter_nutritional_info_valid()`<br> `test_filter_nutritional_info_invalid()`        |
+| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                     |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                     |
+| `filter_food_by_range(df, nutrient, min_val, max_val)`               | `test_filter_food_by_range_valid()` <br> `test_filter_food_by_range_invalid()`             |
+| `filter_food_by_level(df, nutrient, level)`                          | `test_filter_food_by_level_valid()` <br> `test_filter_food_by_level_invalid()`             |
+| `get_food_details(df, food_name, meal_plan)`                         | `test_get_food_details_valid()` <br> `test_get_food_details_invalid()`                     |
+| `generate_meal_plan(meal_plan, name, quantity)`                      | `test_generate_meal_plan_valid()` <br> `test_generate_meal_plan_invalid()`                 |
+| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid()` <br> `test_generate_total_calories_invalid()`       |
+| `remove_food_from_meal_plan(meal_plan, selected_meal_food)`          | `test_remove_food_from_meal_plan_valid()` <br> `test_remove_food_from_meal_plan_invalid()` |
+
 
 ---
 
@@ -25,12 +35,13 @@ those functions, for example:
 
 ### Test Case 1:
 - **Test Function/Module**
-  - `test_divide_valid()`
-  - `test_divide_invalid()`
+- `test_search_food_by_name_valid()`
+- `test_search_food_by_name_invalid()`
+
 - **Tested Function/Module**
-  - `divide(a, b)`
+  - `search_food_by_name(name)`
 - **Description**
-  - A brief description of the tested function's usage, including its purpose, input, and output.
+  -The function reads the CSV file and checks if the specified food name exists in the dataset. A string name representing the food item to search for is the input. While the output is a boolean value (True if the food item exists, False otherwise).
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**               | **Expected Output** |
