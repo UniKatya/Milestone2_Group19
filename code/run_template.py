@@ -1,11 +1,12 @@
 import wx.grid
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 import matplotlib.pyplot as plt
+import pandas as pd
 import matplotlib
 matplotlib.use('WXAgg')
 
 from template_frame import MyFrame1 as MyFrame
-from all_functions import *
+from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'

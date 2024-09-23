@@ -1,6 +1,7 @@
 import pytest
+import matplotlib.pyplot as plt
+from all_functions import load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, get_food_details
 import pandas as pd
-from all_functions import *
 
 @pytest.fixture
 def sample_data():
