@@ -53,15 +53,10 @@ class MyMainFrame(MyFrame):
             wx.MessageBox("Food item not found or has no nutritional information.", "Error", wx.OK | wx.ICON_ERROR)
             return
 
-        filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
-
-        categories = list(filtered_nutritional_info.keys())
-        sizes = list(filtered_nutritional_info.values())
-
         fig, ax = plt.subplots(1, 2, figsize=(8, 4))
         ax1, ax2 = ax
 
-        filtered_categories, filtered_sizes, explode = filter_nutritional_info(categories, sizes)
+        filtered_categories, filtered_sizes, explode = filter_nutritional_info(nutritional_info)
         create_pie_chart(filtered_sizes, filtered_categories, explode, ax1)
         create_bar_graph(filtered_categories, filtered_sizes, ax2)
 
@@ -102,7 +97,7 @@ class MyMainFrame(MyFrame):
         else:
             max_val = float(max_val_check)  # convert maximum string to float
 
-        df_display = filter_food_by_nutrition(df, nutrient, min_val, max_val)
+        df_display = filter_food_by_range(df, nutrient, min_val, max_val)
 
         table = DataTable(df_display)
         self.m_gridRangeFilter.ClearGrid()

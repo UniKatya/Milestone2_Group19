@@ -39,12 +39,12 @@ def load_data(file_path):
         raise FileNotFoundError
 
 def search_food_by_name(name):
-    df = pd.read_csv('Food_Nutrition_Dataset.csv')
+    df = load_data('Food_Nutrition_Dataset.csv')
     found = name in df['food'].values
     return found
 
 def get_nutritional_info(name):
-    df = pd.read_csv('Food_Nutrition_Dataset.csv')
+    df = load_data('Food_Nutrition_Dataset.csv')
     if not search_food_by_name(name):
         return {}
     food_row = df[df['food'] == name].iloc[0]
@@ -52,29 +52,39 @@ def get_nutritional_info(name):
     nutritional_info.pop('food', None)
     return nutritional_info
 
-def filter_nutritional_info(categories, sizes):
-    if len(categories) > MAX_SLICES:
-        sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
-        large_items = sorted_items[:MAX_SLICES]
-        other_items = sorted_items[MAX_SLICES:]
-        filtered_categories = [item[0] for item in large_items] + ['Others']
-        filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
+def filter_nutritional_info(nutritional_info):
+    if nutritional_info == {}:
+        return [], [], []
     else:
-        filtered_categories = categories
-        filtered_sizes = sizes
+        filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
+        categories = list(filtered_nutritional_info.keys())
+        sizes = list(filtered_nutritional_info.values())
+        if len(categories) > MAX_SLICES:
+            sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
+            large_items = sorted_items[:MAX_SLICES]
+            other_items = sorted_items[MAX_SLICES:]
+            filtered_categories = [item[0] for item in large_items] + ['Others']
+            filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
+        else:
+            filtered_categories = categories
+            filtered_sizes = sizes
 
-    explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
-    if len(explode) != len(filtered_categories):
-        explode = [0.0] * len(filtered_categories)
+        explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
+        if len(explode) != len(filtered_categories):
+            explode = [0.0] * len(filtered_categories)
 
-    return filtered_categories, filtered_sizes, explode
+        return filtered_categories, filtered_sizes, explode
 
 def create_pie_chart(filtered_sizes, filtered_categories, explode, ax):
-    ax.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", explode=explode,
-            textprops={'fontsize': 5}, shadow=True)
-    return ax.pie
+    if not filtered_sizes or not filtered_categories:
+        raise ValueError
+    wedges, texts, autotexts = ax.pie(filtered_sizes, labels=filtered_categories, autopct="%1.1f%%", explode=explode,
+                                     textprops={'fontsize': 5}, shadow=True)
+    return wedges, texts, autotexts
 
 def create_bar_graph(filtered_categories, filtered_sizes, ax):
+    if not filtered_categories or not filtered_sizes:
+        raise ValueError
     ax.bar(filtered_categories, filtered_sizes, color='skyblue')
     ax.set_xlabel('Nutrients', fontsize=6)
     ax.set_ylabel('Values', fontsize=8)
@@ -83,7 +93,7 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     plt.tight_layout()
     return ax.bar
 
-def filter_food_by_nutrition(df, nutrient, min_val, max_val):
+def filter_food_by_range(df, nutrient, min_val, max_val):
     df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]

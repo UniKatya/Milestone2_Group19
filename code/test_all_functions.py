@@ -12,6 +12,10 @@ def sample_data():
     })
 
 @pytest.fixture
+def info():
+    return {'Caloric Value': 100, 'Protein': 10, 'Fat': 5}
+
+@pytest.fixture
 def meal_plan():
     return {'apple': 2, 'banana': 1}
 
@@ -22,7 +26,7 @@ def test_csv(sample_data, tmpdir):
     return file_path
 
 def test_load_data_valid():
-    df = load_data('part_wine_reviews.csv')
+    df = load_data('Food_Nutrition_Dataset.csv')
     assert isinstance(df, pd.DataFrame)
     assert not df.empty
 
@@ -31,51 +35,65 @@ def test_load_data_invalid():
         load_data('non_existent_file.csv')
     assert exc_info.type is FileNotFoundError
 
-def test_search_food_by_name_valid(test_csv):
-    df = pd.read_csv(test_csv)
-    df.to_csv('Food_Nutrition_Dataset.csv', index=False)
+def test_search_food_by_name_valid():
     assert search_food_by_name('apple') == True
+    assert search_food_by_name('banana') == True
 
-def test_search_food_by_name_invalid(test_csv):
-    df = pd.read_csv(test_csv)
-    df.to_csv('Food_Nutrition_Dataset.csv', index=False)
+def test_search_food_by_name_invalid():
     assert search_food_by_name('pudding') == False
+    assert search_food_by_name('12') == False
 
-def test_get_nutritional_info(sample_data, mocker):
-    mocker.patch('all_functions.pd.read_csv', return_value=sample_data)
-    result = get_nutritional_info('apple')
-    expected = {'Caloric Value': 52, 'Protein': 0.3, 'Fat': 0.2}
-    assert result == expected
+def test_get_nutritional_info_valid():
+    information = get_nutritional_info("cream cheese")
+    assert information["Caloric Value"] == 51
+    assert information["Protein"] == 0.9
 
-def test_filter_nutritional_info():
-    categories = ['Protein', 'Fat', 'Carbs']
-    sizes = [10, 20, 30]
-    filtered_categories, filtered_sizes, explode = filter_nutritional_info(categories, sizes)
-    assert filtered_categories == ['Protein', 'Fat', 'Carbs']
-    assert filtered_sizes == [10, 20, 30]
-    assert explode == [0.1, 0.0, 0.0]
+def test_get_nutritional_info_invalid():
+    information = get_nutritional_info("pudding")
+    assert information == {}
 
-def test_create_pie_chart():
-    import matplotlib.pyplot as plt
+def test_filter_nutritional_info_valid(info):
+    filtered_categories, filtered_sizes, explode = filter_nutritional_info(info)
+    assert len(filtered_categories) > 0
+    assert len(filtered_sizes) > 0
+    assert "Caloric Value" in filtered_categories
+
+def test_filter_nutritional_info_invalid():
+    filtered_categories, filtered_sizes, explode = filter_nutritional_info({})
+    assert len(filtered_categories) == 0
+    assert len(filtered_sizes) == 0
+    assert len(explode) == 0
+
+def test_create_pie_chart_valid():
     fig, ax = plt.subplots()
-    filtered_sizes = [10, 20, 30]
-    filtered_categories = ['Protein', 'Fat', 'Carbs']
-    explode = [0.1, 0.0, 0.0]
-    pie = create_pie_chart(filtered_sizes, filtered_categories, explode, ax)
-    assert pie is not None
+    wedges, texts, autotexts = create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], ax)
+    assert len(wedges) == 3
 
-def test_create_bar_graph():
-    import matplotlib.pyplot as plt
+def test_create_pie_chart_invalid():
     fig, ax = plt.subplots()
-    filtered_categories = ['Protein', 'Fat', 'Carbs']
-    filtered_sizes = [10, 20, 30]
-    bar = create_bar_graph(filtered_categories, filtered_sizes, ax)
-    assert bar is not None
+    with pytest.raises(ValueError):
+        create_pie_chart([], [], [], ax)
 
-def test_filter_food_by_range(sample_data):
-    result = filter_food_by_range(sample_data, 'Caloric Value', 50, 100)
-    expected = sample_data[sample_data['food'].isin(['apple', 'banana'])]
-    pd.testing.assert_frame_equal(result, expected[['food', 'Caloric Value']])
+def test_create_bar_graph_valid():
+    fig, ax = plt.subplots()
+    create_bar_graph(["A", "B", "C"], [10, 20, 30], ax)
+    assert len(ax.patches) == 3
+
+def test_create_bar_graph_invalid():
+    fig, ax = plt.subplots()
+    with pytest.raises(ValueError):
+        create_bar_graph([], [], ax)
+
+def test_filter_food_by_range_valid(sample_data):
+    filtered = filter_food_by_range(sample_data, "Fat", 0.1, 0.3)
+    assert len(filtered) == 3
+    assert "apple" in filtered["food"].values
+    assert "banana" in filtered["food"].values
+    assert "carrot" in filtered["food"].values
+
+def test_filter_food_by_range_invalid(sample_data):
+    with pytest.raises(KeyError):
+        filter_food_by_range(sample_data, "pudding", 50, 90)
 
 def test_get_food_details(sample_data, meal_plan):
     food_key, quantity, total_calories = get_food_details(sample_data, 'apple', meal_plan)
