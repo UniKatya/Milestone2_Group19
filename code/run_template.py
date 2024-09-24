@@ -130,7 +130,7 @@ class MyMainFrame(MyFrame):
         df_display = pd.DataFrame(filtered_foods, columns=['Food'])
         nutrient_values = df[df['food'].isin(filtered_foods)][nutrient].values
 
-        # Add the nutrient values to the DataFrame
+
         df_display[nutrient] = nutrient_values
 
         if df_display.empty:
