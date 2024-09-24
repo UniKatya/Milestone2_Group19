@@ -98,6 +98,26 @@ def filter_food_by_range(df, nutrient, min_val, max_val):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
+
+def filter_food_by_nutrient_level(df, nutrient, level):
+    max_value = df[nutrient].max()
+    filtered_level = []
+
+    for index, food_item in df.iterrows():
+        nutrient_value = food_item[nutrient]
+
+        if level == "Low" and nutrient_value < (0.33 * max_value):
+            filtered_level.append(food_item['food'])
+
+        elif level == "Mid" and (0.33 * max_value) <= nutrient_value < (0.66 * max_value):
+            filtered_level.append(food_item['food'])
+
+        elif level == "High" and nutrient_value >= (0.66 * max_value):
+            filtered_level.append(food_item['food'])
+
+    return filtered_level
+
+
 def get_food_details(df, food_name, meal_plan):
     meal_found = False
     if food_name in [key.lower() for key in meal_plan.keys()]:
