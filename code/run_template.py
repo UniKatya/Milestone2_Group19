@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('WXAgg')
 
 from template_frame import MyFrame1 as MyFrame
-from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan
+from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan, filter_food_by_nutrient_level
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
@@ -104,6 +104,39 @@ class MyMainFrame(MyFrame):
         self.m_gridRangeFilter.ClearGrid()
         self.m_gridRangeFilter.SetTable(table, True)
         self.m_gridRangeFilter.AutoSize()
+        self.Layout()
+
+    def display_level(self, event):
+        nutrient = self.m_choiceNutrientLevel.GetStringSelection()
+
+        if not nutrient:
+            wx.MessageBox("Please select a nutrient.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        # nutrient level selected
+        level = None
+        if self.m_radioBtnLow.GetValue():
+            level = 'Low'
+        elif self.m_radioBtnMedium.GetValue():
+            level = 'Mid'
+        elif self.m_radioBtnHigh.GetValue():
+            level = 'High'
+
+        if not level:
+            wx.MessageBox("Please select a nutrient level (Low, Mid, High).", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        filtered_foods = filter_food_by_nutrient_level(df, nutrient, level)
+
+        df_display = pd.DataFrame(filtered_foods, columns=['Food'])
+
+        if df_display.empty:
+            wx.MessageBox("No foods found for the selected nutrient level.", "Information", wx.OK | wx.ICON_INFORMATION)
+            return
+
+        table = DataTable(df_display)
+        self.m_gridLevelFilter.ClearGrid()
+        self.m_gridLevelFilter.SetTable(table, True)
+        self.m_gridLevelFilter.AutoSize()
         self.Layout()
 
     def display_meal_plan(self, event):
