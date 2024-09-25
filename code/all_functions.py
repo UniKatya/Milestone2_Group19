@@ -5,6 +5,14 @@ import matplotlib.pyplot as plt
 MAX_SLICES = 8
 EVEN_ROW_COLOUR = '#CCE6FF'
 
+def load_data(file_path):
+    try:
+        return pd.read_csv(file_path)
+    except FileNotFoundError:
+        raise FileNotFoundError
+
+df = load_data('Food_Nutrition_Dataset.csv')
+
 class DataTable(wx.grid.GridTableBase):
     def __init__(self, data=None):
         wx.grid.GridTableBase.__init__(self)
@@ -36,27 +44,23 @@ class DataTable(wx.grid.GridTableBase):
             attr.SetBackgroundColour(EVEN_ROW_COLOUR)
         return attr
 
-def load_data(file_path):
-    try:
-        return pd.read_csv(file_path)
-    except FileNotFoundError:
-        raise FileNotFoundError
-
 def search_food_by_name(name):
-    df = load_data('Food_Nutrition_Dataset.csv')
+    global df
     found = name in df['food'].values
     return found
 
 def get_nutritional_info(name):
-    df = load_data('Food_Nutrition_Dataset.csv')
-    if not search_food_by_name(name):
-        return {}
+    if not name or name.isdigit() or not search_food_by_name(name):
+        raise ValueError
+    global df
     food_row = df[df['food'] == name].iloc[0]
     nutritional_info = food_row.to_dict()
     nutritional_info.pop('food', None)
     return nutritional_info
 
 def filter_nutritional_info(nutritional_info):
+    if not nutritional_info:
+        raise ValueError
     if nutritional_info == {}:
         return [], [], []
     else:
@@ -92,11 +96,23 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     return ax.bar
 
 def filter_food_by_nutrient_range(df, nutrient, min_val, max_val):
+    if not min_val:
+        raise ValueError
+    if not max_val:
+        raise ValueError
+    if not isinstance(min_val, (int, float)):
+        raise ValueError
+    if not isinstance(max_val, (int, float)):
+        raise ValueError
+
     df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
 def filter_food_by_nutrient_level(df, nutrient, level):
+    if level not in ['Low', 'Mid', 'High']:
+        raise ValueError
+
     max_value = df[nutrient].max()
     low_threshold = max_value * 0.33
     mid_threshold = max_value * 0.66
@@ -112,6 +128,9 @@ def filter_food_by_nutrient_level(df, nutrient, level):
     return df_filtered[['food', nutrient]]
 
 def get_food_details(df, food_name, meal_plan):
+    if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
+        raise ValueError
+
     meal_found = False
     if food_name in [key.lower() for key in meal_plan.keys()]:
         meal_found = True
@@ -120,12 +139,17 @@ def get_food_details(df, food_name, meal_plan):
         food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
         quantity = meal_plan[food_key]
         food_row = df[df['food'].str.strip().str.lower() == food_name]
+        if food_row.empty:
+            raise ValueError
         caloric_value = food_row.iloc[0]['Caloric Value']
         total_calories = caloric_value * quantity
         return food_key, quantity, total_calories
     return None, None, None
 
 def generate_meal_plan(meal_plan, name, quantity):
+    if not isinstance(quantity, int) or name.isdigit() or not search_food_by_name(name):
+        raise ValueError
+
     if name in meal_plan:
         meal_plan[name] += quantity
     else:
@@ -134,14 +158,18 @@ def generate_meal_plan(meal_plan, name, quantity):
     return name, quantity
 
 def generate_total_calories(meal_plan):
-    df = pd.read_csv('Food_Nutrition_Dataset.csv')
+    global df
     c_total = 0
     for key, value in meal_plan.items():
         food_row = df[df['food'] == key].iloc[0]
+        if food_row.empty:
+            raise ValueError
         caloric_value = food_row['Caloric Value']
         c_total += caloric_value * value
 
     return c_total
 
 def remove_food_from_meal_plan(meal_plan, selected_meal_food):
+    if selected_meal_food not in meal_plan:
+        raise KeyError
     del meal_plan[selected_meal_food]
