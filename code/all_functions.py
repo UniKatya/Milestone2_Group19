@@ -18,9 +18,13 @@ class DataTable(wx.grid.GridTableBase):
         return len(self.data.columns)
 
     def GetValue(self, row, col):
+        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
+            raise IndexError("Row or column index out of bounds")
         return self.data.iloc[row, col]
 
     def SetValue(self, row, col, value):
+        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
+            raise IndexError("Row or column index out of bounds")
         self.data.iloc[row, col] = value
 
     def GetColLabelValue(self, col):
@@ -93,7 +97,7 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     plt.tight_layout()
     return ax.bar
 
-def filter_food_by_range(df, nutrient, min_val, max_val):
+def filter_food_by_nutrient_range(df, nutrient, min_val, max_val):
     df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
@@ -101,21 +105,18 @@ def filter_food_by_range(df, nutrient, min_val, max_val):
 
 def filter_food_by_nutrient_level(df, nutrient, level):
     max_value = df[nutrient].max()
-    filtered_level = []
+    low_threshold = max_value * 0.33
+    mid_threshold = max_value * 0.66
 
-    for index, food_item in df.iterrows():
-        nutrient_value = food_item[nutrient]
+    if level == 'Low':
+        df_filtered = df[df[nutrient] <= low_threshold]
+    elif level == 'Mid':
+        df_filtered = df[(df[nutrient] > low_threshold) & (df[nutrient] <= mid_threshold)]
+    else:
+        df_filtered = df[df[nutrient] > mid_threshold]
 
-        if level == "Low" and nutrient_value < (0.33 * max_value):
-            filtered_level.append(food_item['food'])
-
-        elif level == "Mid" and (0.33 * max_value) <= nutrient_value < (0.66 * max_value):
-            filtered_level.append(food_item['food'])
-
-        elif level == "High" and nutrient_value >= (0.66 * max_value):
-            filtered_level.append(food_item['food'])
-
-    return filtered_level
+    df_filtered = df_filtered.sort_values(by='food')
+    return df_filtered[['food', nutrient]]
 
 
 def get_food_details(df, food_name, meal_plan):

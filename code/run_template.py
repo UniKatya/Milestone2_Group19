@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('WXAgg')
 
 from template_frame import MyFrame1 as MyFrame
-from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan, filter_food_by_nutrient_level
+from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan, filter_food_by_nutrient_level
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
@@ -98,7 +98,7 @@ class MyMainFrame(MyFrame):
         else:
             max_val = float(max_val_check)  # convert maximum string to float
 
-        df_display = filter_food_by_range(df, nutrient, min_val, max_val)
+        df_display = filter_food_by_nutrient_range(df, nutrient, min_val, max_val)
 
         table = DataTable(df_display)
         self.m_gridRangeFilter.ClearGrid()
@@ -109,35 +109,21 @@ class MyMainFrame(MyFrame):
     def display_level(self, event):
         nutrient = self.m_choiceNutrientLevel.GetStringSelection()
 
-        if not nutrient:
-            wx.MessageBox("Please select a nutrient.", "Error", wx.OK | wx.ICON_ERROR)
-            return
-
-        # nutrient level selected
-        level = None
         if self.m_radioBtnLow.GetValue():
             level = 'Low'
         elif self.m_radioBtnMedium.GetValue():
             level = 'Mid'
         elif self.m_radioBtnHigh.GetValue():
             level = 'High'
+        else:
+            level = None
 
-        if not level:
-            wx.MessageBox("Please select a nutrient level (Low, Mid, High).", "Error", wx.OK | wx.ICON_ERROR)
+        if level == None:
+            wx.MessageBox("Please select a nutrient level.", "Error", wx.OK | wx.ICON_ERROR)
             return
-        filtered_foods = filter_food_by_nutrient_level(df, nutrient, level)
+        filtered_df = filter_food_by_nutrient_level(df, nutrient, level)
 
-        df_display = pd.DataFrame(filtered_foods, columns=['Food'])
-        nutrient_values = df[df['food'].isin(filtered_foods)][nutrient].values
-
-
-        df_display[nutrient] = nutrient_values
-
-        if df_display.empty:
-            wx.MessageBox("No foods found for the selected nutrient level.", "Information", wx.OK | wx.ICON_INFORMATION)
-            return
-
-        table = DataTable(df_display)
+        table = DataTable(filtered_df)
         self.m_gridLevelFilter.ClearGrid()
         self.m_gridLevelFilter.SetTable(table, True)
         self.m_gridLevelFilter.AutoSize()

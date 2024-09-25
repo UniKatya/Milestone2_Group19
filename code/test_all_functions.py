@@ -1,7 +1,9 @@
 import pytest
 import matplotlib.pyplot as plt
-from all_functions import load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_range, get_food_details
+from all_functions import DataTable, load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, filter_food_by_nutrient_level, get_food_details, generate_meal_plan, generate_total_calories, remove_food_from_meal_plan
 import pandas as pd
+
+EVEN_ROW_COLOUR = '#CCE6FF'
 
 @pytest.fixture
 def sample_data():
@@ -9,8 +11,12 @@ def sample_data():
         'food': ['apple', 'banana', 'carrot'],
         'Caloric Value': [52, 89, 41],
         'Protein': [0.3, 1.1, 0.9],
-        'Fat': [0.2, 0.3, 0.2]
+        'Fat': [0.1, 0.3, 0.2]
     })
+
+@pytest.fixture
+def data_table(sample_data):
+    return DataTable(sample_data)
 
 @pytest.fixture
 def info():
@@ -25,6 +31,58 @@ def test_csv(sample_data, tmpdir):
     file_path = tmpdir.join('Food_Nutrition_Dataset.csv')
     sample_data.to_csv(file_path, index=False)
     return file_path
+
+def test_DataTable_GetNumberRows_valid(data_table):
+    assert data_table.GetNumberRows() == 3
+
+def test_DataTable_GetNumberRows_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetNumberRows()
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetNumberCols_valid(data_table):
+    assert data_table.GetNumberCols() == 4
+
+def test_DataTable_GetNumberCols_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetNumberCols()
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetValue_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+    assert data_table.GetValue(1, 1) == 89
+
+def test_DataTable_GetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.GetValue(10, 10)
+
+def test_DataTable_SetValue_valid(data_table):
+    data_table.SetValue(0, 0, 'grape')
+    assert data_table.GetValue(0, 0) == 'grape'
+
+def test_DataTable_SetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.SetValue(10, 10, 'Invalid')
+
+def test_DataTable_GetColLabelValue_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+
+def test_DataTable_GetColLabelValue_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetColLabelValue(-1)
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetAttr_valid(data_table):
+    attr = data_table.GetAttr(1, 0, None)
+    assert attr.GetBackgroundColour() == EVEN_ROW_COLOUR
+
+def test_DataTable_GetAttr_invalid(data_table):
+    attr = data_table.GetAttr(0, 0, None)
+    assert not attr.HasBackgroundColour()
 
 def test_load_data_valid():
     df = load_data('Food_Nutrition_Dataset.csv')
@@ -85,19 +143,57 @@ def test_create_bar_graph_invalid():
     with pytest.raises(ValueError):
         create_bar_graph([], [], ax)
 
-def test_filter_food_by_range_valid(sample_data):
-    filtered = filter_food_by_range(sample_data, "Fat", 0.1, 0.3)
+def test_filter_food_by_nutrient_range_valid(sample_data):
+    filtered = filter_food_by_nutrient_range(sample_data, "Fat", 0.1, 0.3)
     assert len(filtered) == 3
     assert "apple" in filtered["food"].values
     assert "banana" in filtered["food"].values
     assert "carrot" in filtered["food"].values
 
-def test_filter_food_by_range_invalid(sample_data):
+def test_filter_food_by_nutrient_range_invalid(sample_data):
     with pytest.raises(KeyError):
-        filter_food_by_range(sample_data, "pudding", 50, 90)
+        filter_food_by_nutrient_range(sample_data, "pudding", 50, 90)
+
+def test_filter_food_by_nutrient_level_valid(sample_data):
+    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "High")
+    assert len(filtered) == 2
+    assert "banana" in filtered["food"].values
+    assert "carrot" in filtered["food"].values
+
+    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "Mid")
+    assert len(filtered) == 1
+    assert "apple" in filtered["food"].values
+
+    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "Low")
+    assert len(filtered) == 0
 
 def test_get_food_details(sample_data, meal_plan):
     food_key, quantity, total_calories = get_food_details(sample_data, 'apple', meal_plan)
     assert food_key == 'apple'
     assert quantity == 2
     assert total_calories == 104
+
+def test_generate_meal_plan_new_item(meal_plan):
+    name, quantity = generate_meal_plan(meal_plan, 'fig', 2)
+    assert meal_plan['fig'] == 2
+    assert name == 'fig'
+    assert quantity == 2
+
+def test_generate_meal_plan_existing_item(meal_plan):
+    name, quantity = generate_meal_plan(meal_plan, 'apple', 3)
+    assert meal_plan['apple'] == 5
+    assert name == 'apple'
+    assert quantity == 3
+
+def test_generate_total_calories_valid(meal_plan):
+    total_calories = generate_total_calories(meal_plan)
+    assert total_calories == 324
+
+def test_remove_food_from_meal_plan_valid(meal_plan):
+    remove_food_from_meal_plan(meal_plan, 'apple')
+    assert 'fig' not in meal_plan
+    assert meal_plan == {'banana': 1}
+
+def test_remove_food_from_meal_plan_invalid(meal_plan):
+    with pytest.raises(KeyError):
+        remove_food_from_meal_plan(meal_plan, 'carrot')

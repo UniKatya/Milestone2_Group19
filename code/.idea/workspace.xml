@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="badab633-ba99-4e16-b392-9fa16a78b9a2" name="Changes" comment="" />
+    <list default="true" id="badab633-ba99-4e16-b392-9fa16a78b9a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_all_functions.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,21 +18,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "UniKatya"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;UniKatya&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/UniKatya/Milestone2_Group19.git",
-    "accountId": "8ce3b0b1-43c5-474d-b414-c0ece584805a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/UniKatya/Milestone2_Group19.git&quot;,
+    &quot;accountId&quot;: &quot;8ce3b0b1-43c5-474d-b414-c0ece584805a&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2mS2fe0FzLpiBzMvY7j9kgJ5ZTz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,6 +41,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python tests.pytest in test_all_functions.py.executor": "Run",
+    "Python.all_functions.executor": "Run",
+    "Python.run_template.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Griffiths University/Trimester 2 2024/1. Software Technologies 2810ICT/GROUP ASSIGNMENT/Github/Milestone2_Group19/code"
