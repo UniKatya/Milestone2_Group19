@@ -61,8 +61,6 @@ class MyMainFrame(MyFrame):
         create_pie_chart(filtered_sizes, filtered_categories, explode, ax1)
         create_bar_graph(filtered_categories, filtered_sizes, ax2)
 
-        plt.tight_layout()
-
         h, w = self.m_panelFoodInfo.GetSize()
         fig.set_size_inches(h / fig.get_dpi(), w / fig.get_dpi())
 
@@ -118,7 +116,7 @@ class MyMainFrame(MyFrame):
         else:
             level = None
 
-        if level == None:
+        if level is None:
             wx.MessageBox("Please select a nutrient level.", "Error", wx.OK | wx.ICON_ERROR)
             return
         filtered_df = filter_food_by_nutrient_level(df, nutrient, level)

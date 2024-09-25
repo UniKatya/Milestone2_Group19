@@ -74,8 +74,6 @@ def filter_nutritional_info(nutritional_info):
             filtered_sizes = sizes
 
         explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
-        if len(explode) != len(filtered_categories):
-            explode = [0.0] * len(filtered_categories)
 
         return filtered_categories, filtered_sizes, explode
 
@@ -102,7 +100,6 @@ def filter_food_by_nutrient_range(df, nutrient, min_val, max_val):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
-
 def filter_food_by_nutrient_level(df, nutrient, level):
     max_value = df[nutrient].max()
     low_threshold = max_value * 0.33
@@ -118,7 +115,6 @@ def filter_food_by_nutrient_level(df, nutrient, level):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
-
 def get_food_details(df, food_name, meal_plan):
     meal_found = False
     if food_name in [key.lower() for key in meal_plan.keys()]:
@@ -128,10 +124,9 @@ def get_food_details(df, food_name, meal_plan):
         food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
         quantity = meal_plan[food_key]
         food_row = df[df['food'].str.strip().str.lower() == food_name]
-        if not food_row.empty:
-            caloric_value = food_row.iloc[0]['Caloric Value']
-            total_calories = caloric_value * quantity
-            return food_key, quantity, total_calories
+        caloric_value = food_row.iloc[0]['Caloric Value']
+        total_calories = caloric_value * quantity
+        return food_key, quantity, total_calories
     return None, None, None
 
 def generate_meal_plan(meal_plan, name, quantity):

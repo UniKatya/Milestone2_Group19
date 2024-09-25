@@ -23,14 +23,12 @@ def info():
     return {'Caloric Value': 100, 'Protein': 10, 'Fat': 5}
 
 @pytest.fixture
-def meal_plan():
-    return {'apple': 2, 'banana': 1}
+def long_info():
+    return {'Caloric Value': 100, 'Protein': 10, 'Fat': 5, 'Carbs': 20, 'Sugar': 15, 'Fiber': 5, 'Sodium': 10, 'Cholesterol': 5, 'Vitamin A': 10, 'Vitamin C': 10}
 
 @pytest.fixture
-def test_csv(sample_data, tmpdir):
-    file_path = tmpdir.join('Food_Nutrition_Dataset.csv')
-    sample_data.to_csv(file_path, index=False)
-    return file_path
+def meal_plan():
+    return {'apple': 2, 'banana': 1}
 
 def test_DataTable_GetNumberRows_valid(data_table):
     assert data_table.GetNumberRows() == 3
@@ -111,11 +109,20 @@ def test_get_nutritional_info_invalid():
     information = get_nutritional_info("pudding")
     assert information == {}
 
-def test_filter_nutritional_info_valid(info):
+def test_filter_nutritional_info_valid(info, long_info):
     filtered_categories, filtered_sizes, explode = filter_nutritional_info(info)
     assert len(filtered_categories) > 0
     assert len(filtered_sizes) > 0
     assert "Caloric Value" in filtered_categories
+
+    assert len(explode) == len(filtered_categories)
+
+    filtered_categories, filtered_sizes, explode = filter_nutritional_info(long_info)
+    assert len(filtered_categories) > 0
+    assert len(filtered_sizes) > 0
+    assert "Caloric Value" in filtered_categories
+
+    assert len(explode) == len(filtered_categories)
 
 def test_filter_nutritional_info_invalid():
     filtered_categories, filtered_sizes, explode = filter_nutritional_info({})
@@ -167,11 +174,17 @@ def test_filter_food_by_nutrient_level_valid(sample_data):
     filtered = filter_food_by_nutrient_level(sample_data, "Fat", "Low")
     assert len(filtered) == 0
 
-def test_get_food_details(sample_data, meal_plan):
+def test_get_food_details_valid(sample_data, meal_plan):
     food_key, quantity, total_calories = get_food_details(sample_data, 'apple', meal_plan)
     assert food_key == 'apple'
     assert quantity == 2
     assert total_calories == 104
+
+def test_get_food_details_invalid(sample_data, meal_plan):
+    food_key, quantity, total_calories = get_food_details(sample_data, 'nonexistent_food', meal_plan)
+    assert food_key is None
+    assert quantity is None
+    assert total_calories is None
 
 def test_generate_meal_plan_new_item(meal_plan):
     name, quantity = generate_meal_plan(meal_plan, 'fig', 2)
