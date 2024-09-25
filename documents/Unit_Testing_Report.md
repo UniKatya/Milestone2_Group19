@@ -46,45 +46,43 @@ those functions, for example:
 
 | **Valid Input**               | **Expected Output** |
 |-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| `search_food_by_name('apple')`  | `True`              |
+| `search_food_by_name('banana')` | `True`              |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_search_food_by_name_valid():
+    assert search_food_by_name('apple') == True
+    assert search_food_by_name('banana') == True
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**              | **Expected Output** |
+|--------------------------------|---------------------|
+| `search_food_by_name('pudding')` | `False`             |
+| `search_food_by_name('12')`      | `False`             |
+| `search_food_by_name(' ')`       | `False`             |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_search_food_by_name_invalid():
+    assert search_food_by_name('pudding') == False
+    assert search_food_by_name('12') == False
+    assert search_food_by_name(' ') == False
 ```
 ### Test Case 2:
 - **Test Function/Module**
-  - `test_divide_valid()`
-  - `test_divide_invalid()`
+  - `get_nutritional_info_valid()`
+  - `get_nutritional_info_invalid()`
 - **Tested Function/Module**
-  - `divide(a, b)`
+  - `get_nutritional_info(name)`
 - **Description**
-  - A brief description of the tested function's usage, including its purpose, input, and output.
+  - This function retrieves the nutritional information of the food selected by the user. The input is the food name, which identifies which food must be fetched from the database. And the output is nutritional_info (dictionary) which is the nutritional information of the chosen food.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                        | **Expected Output** |
+|----------------------------------------|---------------------|
+| `get_nutritional_info('cream cheese')` | `5`                 |
 
 - **1) Code for the Test Function**
 ```python
@@ -94,17 +92,15 @@ def test_divide_valid():
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                 | **Expected Output** |
+|-----------------------------------|---------------------|
+| `get_nutritional_info('pudding')` | `{}`                |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_get_nutritional_info_invalid():
+    information = get_nutritional_info("pudding")
+    assert information == {}
 ```
 
 ### Test Case 3:

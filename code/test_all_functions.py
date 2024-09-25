@@ -99,6 +99,7 @@ def test_search_food_by_name_valid():
 def test_search_food_by_name_invalid():
     assert search_food_by_name('pudding') == False
     assert search_food_by_name('12') == False
+    assert search_food_by_name(' ') == False
 
 def test_get_nutritional_info_valid():
     information = get_nutritional_info("cream cheese")
