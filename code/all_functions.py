@@ -63,15 +63,11 @@ def filter_nutritional_info(nutritional_info):
         filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
         categories = list(filtered_nutritional_info.keys())
         sizes = list(filtered_nutritional_info.values())
-        if len(categories) > MAX_SLICES:
-            sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
-            large_items = sorted_items[:MAX_SLICES]
-            other_items = sorted_items[MAX_SLICES:]
-            filtered_categories = [item[0] for item in large_items] + ['Others']
-            filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
-        else:
-            filtered_categories = categories
-            filtered_sizes = sizes
+        sorted_items = sorted(zip(categories, sizes), key=lambda x: x[1], reverse=True)
+        large_items = sorted_items[:MAX_SLICES]
+        other_items = sorted_items[MAX_SLICES:]
+        filtered_categories = [item[0] for item in large_items] + ['Others']
+        filtered_sizes = [item[1] for item in large_items] + [sum(item[1] for item in other_items)]
 
         explode = [0.1] + [0.0] * (len(filtered_categories) - 1)
 

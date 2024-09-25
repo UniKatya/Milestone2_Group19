@@ -30,6 +30,45 @@ def long_info():
 def meal_plan():
     return {'apple': 2, 'banana': 1}
 
+@pytest.fixture
+def cream_cheese_info():
+    return {
+    'Caloric Value': 51,
+    'Fat': 5,
+    'Saturated Fats': 2.9,
+    'Monounsaturated Fats': 1.3,
+    'Polyunsaturated Fats': 0.2,
+    'Carbohydrates': 0.8,
+    'Sugars': 0.5,
+    'Protein': 0.9,
+    'Dietary Fiber': 0,
+    'Cholesterol': 14.6,
+    'Sodium': 0.016,
+    'Water': 7.6,
+    'Vitamin A': 0.2,
+    'Vitamin B1': 0.033,
+    'Vitamin B11': 0.064,
+    'Vitamin B12': 0.092,
+    'Vitamin B2': 0.097,
+    'Vitamin B3': 0.084,
+    'Vitamin B5': 0.052,
+    'Vitamin B6': 0.096,
+    'Vitamin C': 0.004,
+    'Vitamin D': 0,
+    'Vitamin E': 0,
+    'Vitamin K': 0.1,
+    'Calcium': 0.008,
+    'Copper': 14.1,
+    'Iron': 0.082,
+    'Magnesium': 0.027,
+    'Manganese': 1.3,
+    'Phosphorus': 0.091,
+    'Potassium': 15.5,
+    'Selenium': 19.1,
+    'Zinc': 0.039,
+    'Nutrition Density': 7.07
+}
+
 def test_DataTable_GetNumberRows_valid(data_table):
     assert data_table.GetNumberRows() == 3
 
@@ -101,29 +140,19 @@ def test_search_food_by_name_invalid():
     assert search_food_by_name('12') == False
     assert search_food_by_name(' ') == False
 
-def test_get_nutritional_info_valid():
+def test_get_nutritional_info_valid(cream_cheese_info):
     information = get_nutritional_info("cream cheese")
-    assert information["Caloric Value"] == 51
-    assert information["Protein"] == 0.9
+    assert information == cream_cheese_info
 
 def test_get_nutritional_info_invalid():
     information = get_nutritional_info("pudding")
     assert information == {}
 
-def test_filter_nutritional_info_valid(info, long_info):
-    filtered_categories, filtered_sizes, explode = filter_nutritional_info(info)
-    assert len(filtered_categories) > 0
-    assert len(filtered_sizes) > 0
-    assert "Caloric Value" in filtered_categories
-
-    assert len(explode) == len(filtered_categories)
-
-    filtered_categories, filtered_sizes, explode = filter_nutritional_info(long_info)
-    assert len(filtered_categories) > 0
-    assert len(filtered_sizes) > 0
-    assert "Caloric Value" in filtered_categories
-
-    assert len(explode) == len(filtered_categories)
+def test_filter_nutritional_info_valid(cream_cheese_info):
+    categories, sizes, explode = filter_nutritional_info(cream_cheese_info)
+    assert categories == ['Caloric Value', 'Selenium', 'Potassium', 'Cholesterol', 'Copper', 'Water', 'Nutrition Density', 'Fat', 'Others']
+    assert sizes == [51, 19.1, 15.5, 14.6, 14.1, 7.6, 7.07, 5, 8.984999999999996]
+    assert explode == [0.1] + [0.0] * (len(categories) - 1)
 
 def test_filter_nutritional_info_invalid():
     filtered_categories, filtered_sizes, explode = filter_nutritional_info({})

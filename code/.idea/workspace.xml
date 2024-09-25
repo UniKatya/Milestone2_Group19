@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="badab633-ba99-4e16-b392-9fa16a78b9a2" name="Changes" comment="" />
+    <list default="true" id="badab633-ba99-4e16-b392-9fa16a78b9a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/../.coverage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_all_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/Unit_Testing_Report.md" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/Unit_Testing_Report.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,16 +39,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.pytest in test_all_functions.py.executor": "Run",
-    "Python.all_functions.executor": "Run",
-    "Python.run_template.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Griffiths University/Trimester 2 2024/1. Software Technologies 2810ICT/GROUP ASSIGNMENT/Github/Milestone2_Group19/code"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.pytest in test_all_functions.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.all_functions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_template.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Griffiths University/Trimester 2 2024/1. Software Technologies 2810ICT/GROUP ASSIGNMENT/Github/Milestone2_Group19/code&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

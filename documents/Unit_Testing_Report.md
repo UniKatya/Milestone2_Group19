@@ -82,13 +82,13 @@ def test_search_food_by_name_invalid():
 
 | **Valid Input**                        | **Expected Output** |
 |----------------------------------------|---------------------|
-| `get_nutritional_info('cream cheese')` | `5`                 |
+| `get_nutritional_info('cream cheese')` | `cream_cheese_info` |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_get_nutritional_info_valid(cream_cheese_info):
+    information = get_nutritional_info("cream cheese")
+    assert information == cream_cheese_info
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -105,12 +105,12 @@ def test_get_nutritional_info_invalid():
 
 ### Test Case 3:
 - **Test Function/Module**
-  - `test_divide_valid()`
-  - `test_divide_invalid()`
+  - `filter_nutritional_info_valid()`
+  - `filter_nutritional_info_invalid()`
 - **Tested Function/Module**
-  - `divide(a, b)`
+  - `filter_nutritional_info(nutritional_info)`
 - **Description**
-  - A brief description of the tested function's usage, including its purpose, input, and output.
+  - This function filters the nutritional information to exclude zero values and returns the filtered categories, sizes, and explode values for charting.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**               | **Expected Output** |
@@ -129,8 +129,7 @@ def test_divide_valid():
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| `filter_nutritional_info({})` | `[], [], []`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -142,12 +141,12 @@ def test_divide_invalid():
 
 ### Test Case 4:
 - **Test Function/Module**
-  - `test_divide_valid()`
-  - `test_divide_invalid()`
+  - `test_create_pie_chart_valid()`
+  - `test_create_pie_chart_invalid()`
 - **Tested Function/Module**
-  - `divide(a, b)`
+  - `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)`
 - **Description**
-  - A brief description of the tested function's usage, including its purpose, input, and output.
+  - This function creates a pie chart using the filtered nutritional information. The input is the filtered sizes, categories, explode values, and ax. The output is a pie chart.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**               | **Expected Output** |
@@ -180,12 +179,12 @@ def test_divide_invalid():
 
 ### Test Case 5:
 - **Test Function/Module**
-  - `test_divide_valid()`
-  - `test_divide_invalid()`
+- `test_create_bar_graph_valid()`
+- `test_create_bar_graph_invalid()`
 - **Tested Function/Module**
-  - `divide(a, b)`
+  - `create_bar_graph(filtered_categories, filtered_sizes, ax)`
 - **Description**
-  - A brief description of the tested function's usage, including its purpose, input, and output.
+  - This function creates a bar graph using the filtered nutritional information. The input is the filtered categories, sizes, and ax. The output is a bar graph.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**               | **Expected Output** |
@@ -216,8 +215,226 @@ def test_divide_invalid():
 ```
 
 ### Test Case 6:
+- **Test Function/Module**
+- `filter_food_by_nutrient_range_valid()`
+- `filter_food_by_nutrient_range_invalid()`
+- **Tested Function/Module**
+  - `filter_food_by_nutrient_range(df, nutrient, min_val, max_val)`
+- **Description**
+  - This function filters foods by a nutrient range. The input is the dataframe, nutrient, min_val, and max_val. The output is the filtered dataframe.
+- **1) Valid Input and Expected Output**  
 
-add more test cases if necessary.
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
+
+### Test Case 7:
+- **Test Function/Module**
+- `test_filter_food_by_level_valid()`
+- `test_filter_food_by_level_invalid()`
+- **Tested Function/Module**
+  - `filter_food_by_nutrient_level(df, nutrient, level)`
+- **Description**
+  - This function filters foods by nutrient level (Low, Mid, High). The input is the dataframe, nutrient, and level. The output is the filtered dataframe.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
+
+### Test Case 8:
+- **Test Function/Module**
+- `test_get_food_details_valid()`
+- `test_get_food_details_invalid()`
+- **Tested Function/Module**
+  - `get_food_details(df, food_name, meal_plan)`
+- **Description**
+  - This function retrieves food details from the meal plan. The input is the dataframe, food_name, and meal_plan. The output is the food details.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
+
+### Test Case 9:
+- **Test Function/Module**
+- `test_generate_meal_plan_valid()`
+- `test_generate_meal_plan_invalid()`
+- **Tested Function/Module**
+  - `generate_meal_plan(meal_plan, name, quantity)`
+- **Description**
+  - This function generates a meal plan by adding food items and their quantities. The input is the meal_plan, name, and quantity. The output is the updated meal plan.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
+
+### Test Case 10:
+- **Test Function/Module**
+- `test_generate_total_calories_valid()`
+- `test_generate_total_calories_invalid()`
+- **Tested Function/Module**
+  - `generate_total_calories(meal_plan)`
+- **Description**
+  - This function calculates the total calories in the meal plan. The input is the meal plan. The output is the total calories.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
+
+### Test Case 11:
+- **Test Function/Module**
+- `test_remove_food_from_meal_plan_valid()`
+- `test_remove_food_from_meal_plan_invalid()`
+- **Tested Function/Module**
+  - `remove_food_from_meal_plan(meal_plan, selected_meal_food)`
+- **Description**
+  - This function removes a food item from the meal plan. The input is the meal plan and the selected meal food. The output is the updated meal plan.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 2)`               | `5`                 |
+| `divide(10, -2)`              | `-5`                |
+| `add more cases in necessary` | `...`               |
+
+- **1) Code for the Test Function**
+```python
+def test_divide_valid():
+    assert divide(10, 2) == 5
+    assert divide(10, -2) == -5
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `divide(10, 0)`               | `Handle Exception`  |
+| `add more cases in necessary` | `...`               |
+
+- **2) Code for the Test Function**
+```python
+def test_divide_invalid():
+    with pytest.raises(ValueError) as exc_info:
+        divide(10, 0)
+    assert exc_info.type is ValueError
+```
 
 ## 3. **Testing Report Summary**
 Include a screenshot of unit_test.html showing the results of all the above tests. 
