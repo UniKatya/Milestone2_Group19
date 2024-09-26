@@ -96,13 +96,8 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     return ax.bar
 
 def filter_food_by_nutrient_range(nutrient, min_val, max_val):
-    if not min_val:
-        raise ValueError
-    if not max_val:
-        raise ValueError
-    if not isinstance(min_val, (int, float)):
-        raise ValueError
-    if not isinstance(max_val, (int, float)):
+    if not min_val or not max_val or not isinstance(min_val, float) or not isinstance(max_val, float)\
+            or min_val >= max_val:
         raise ValueError
 
     df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
