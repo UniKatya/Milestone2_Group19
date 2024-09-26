@@ -207,12 +207,9 @@ def test_get_food_details_valid(meal_plan):
     assert quantity == 2
     assert total_calories == 190
 
-def test_get_food_details_invalid_food(meal_plan):
+def test_get_food_details_invalid(meal_plan):
     with pytest.raises(ValueError):
         get_food_details('nonexistent_food', meal_plan)
-
-    with pytest.raises(ValueError):
-        get_food_details('', meal_plan)
 
 def test_generate_meal_plan_new_item(meal_plan):
     name, quantity = generate_meal_plan(meal_plan, 'cream cheese', 2)

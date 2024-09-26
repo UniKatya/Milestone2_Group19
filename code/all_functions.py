@@ -61,8 +61,6 @@ def get_nutritional_info(food_name):
 def filter_nutritional_info(nutritional_info):
     if not nutritional_info:
         raise ValueError
-    if not nutritional_info:
-        raise ValueError
     else:
         filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
         categories = list(filtered_nutritional_info.keys())
@@ -123,22 +121,16 @@ def filter_food_by_nutrient_level(nutrient, level):
     return df_filtered[['food', nutrient]]
 
 def get_food_details(food_name, meal_plan):
-    meal_found = False
 
     if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
         raise ValueError
 
-    if food_name in [key.lower() for key in meal_plan.keys()]:
-        meal_found = True
-
-    if meal_found:
-        food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
-        quantity = meal_plan[food_key]
-        food_row = df[df['food'].str.strip().str.lower() == food_name]
-        caloric_value = food_row.iloc[0]['Caloric Value']
-        total_calories = caloric_value * quantity
-        return food_key, quantity, total_calories
-    return None, None, None
+    food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
+    quantity = meal_plan[food_key]
+    food_row = df[df['food'].str.strip().str.lower() == food_name]
+    caloric_value = food_row.iloc[0]['Caloric Value']
+    total_calories = caloric_value * quantity
+    return food_key, quantity, total_calories
 
 def generate_meal_plan(meal_plan, food_name, quantity):
     if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name):
