@@ -121,8 +121,7 @@ def filter_food_by_nutrient_level(nutrient, level):
     return df_filtered[['food', nutrient]]
 
 def get_food_details(food_name, meal_plan):
-
-    if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
+    if not food_name in meal_plan or food_name.isdigit():
         raise ValueError
 
     food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
@@ -133,7 +132,7 @@ def get_food_details(food_name, meal_plan):
     return food_key, quantity, total_calories
 
 def generate_meal_plan(meal_plan, food_name, quantity):
-    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name):
+    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name) or quantity <= 0:
         raise ValueError
 
     if food_name in meal_plan:
@@ -153,7 +152,10 @@ def generate_total_calories(meal_plan):
 
     return c_total
 
-def remove_food_from_meal_plan(meal_plan, food_name):
+def remove_food_from_meal_plan(meal_plan, food_name, quantity):
     if food_name not in meal_plan:
         raise KeyError
-    del meal_plan[food_name]
+    if meal_plan[food_name] <= quantity:
+        del meal_plan[food_name]
+    else:
+        meal_plan[food_name] -= quantity

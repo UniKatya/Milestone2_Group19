@@ -15,6 +15,7 @@ class MyMainFrame(MyFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.selected_meal_food = ""
+        self.selected_quantity = 0
         self.meal_plan = {}
         self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
         self.df = load_data('Food_Nutrition_Dataset.csv')
@@ -108,6 +109,7 @@ class MyMainFrame(MyFrame):
             self.m_grid1.AutoSize()
             self.m_grid1.ForceRefresh()
             self.Show(True)
+
         except ValueError:
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 
@@ -120,6 +122,7 @@ class MyMainFrame(MyFrame):
                 self.m_staticText47.SetLabel(f"     {quantity}  ")
                 self.m_staticText44.SetLabel(f"  {total_calories} calories")
                 self.selected_meal_food = food_name
+                self.selected_quantity = quantity
             else:
                 wx.MessageBox("Food item not found in the meal plan.", "Error", wx.OK | wx.ICON_ERROR)
         except ValueError:
@@ -127,7 +130,7 @@ class MyMainFrame(MyFrame):
 
     def display_removed_food(self, event):
         try:
-            remove_food_from_meal_plan(self.meal_plan, self.selected_meal_food)
+            remove_food_from_meal_plan(self.meal_plan, self.selected_meal_food, self.selected_quantity)
             total_calories = generate_total_calories(self.meal_plan)
 
             self.m_staticText38.SetLabel(f"{total_calories}")
@@ -138,6 +141,10 @@ class MyMainFrame(MyFrame):
             self.m_grid1.AutoSize()
             self.m_grid1.ForceRefresh()
             self.Show(True)
+
+            self.m_staticText43.SetLabel("Food")
+            self.m_staticText47.SetLabel("Quantity")
+            self.m_staticText44.SetLabel("xxxx Calories")
         except KeyError:
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 
