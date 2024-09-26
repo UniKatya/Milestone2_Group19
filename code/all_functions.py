@@ -44,16 +44,16 @@ class DataTable(wx.grid.GridTableBase):
             attr.SetBackgroundColour(EVEN_ROW_COLOUR)
         return attr
 
-def search_food_by_name(name):
+def search_food_by_name(food_name):
     global df
-    found = name in df['food'].values
+    found = food_name in df['food'].values
     return found
 
-def get_nutritional_info(name):
-    if not name or name.isdigit() or not search_food_by_name(name):
+def get_nutritional_info(food_name):
+    if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
         raise ValueError
     global df
-    food_row = df[df['food'] == name].iloc[0]
+    food_row = df[df['food'] == food_name].iloc[0]
     nutritional_info = food_row.to_dict()
     nutritional_info.pop('food', None)
     return nutritional_info
@@ -61,8 +61,8 @@ def get_nutritional_info(name):
 def filter_nutritional_info(nutritional_info):
     if not nutritional_info:
         raise ValueError
-    if nutritional_info == {}:
-        return [], [], []
+    if not nutritional_info:
+        raise ValueError
     else:
         filtered_nutritional_info = {k: v for k, v in nutritional_info.items() if v != 0.0}
         categories = list(filtered_nutritional_info.keys())
@@ -95,7 +95,7 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     plt.tight_layout()
     return ax.bar
 
-def filter_food_by_nutrient_range(df, nutrient, min_val, max_val):
+def filter_food_by_nutrient_range(nutrient, min_val, max_val):
     if not min_val:
         raise ValueError
     if not max_val:
@@ -109,7 +109,7 @@ def filter_food_by_nutrient_range(df, nutrient, min_val, max_val):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
-def filter_food_by_nutrient_level(df, nutrient, level):
+def filter_food_by_nutrient_level(nutrient, level):
     if level not in ['Low', 'Mid', 'High']:
         raise ValueError
 
@@ -127,11 +127,12 @@ def filter_food_by_nutrient_level(df, nutrient, level):
     df_filtered = df_filtered.sort_values(by='food')
     return df_filtered[['food', nutrient]]
 
-def get_food_details(df, food_name, meal_plan):
+def get_food_details(food_name, meal_plan):
+    meal_found = False
+
     if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
         raise ValueError
 
-    meal_found = False
     if food_name in [key.lower() for key in meal_plan.keys()]:
         meal_found = True
 
@@ -146,30 +147,28 @@ def get_food_details(df, food_name, meal_plan):
         return food_key, quantity, total_calories
     return None, None, None
 
-def generate_meal_plan(meal_plan, name, quantity):
-    if not isinstance(quantity, int) or name.isdigit() or not search_food_by_name(name):
+def generate_meal_plan(meal_plan, food_name, quantity):
+    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name):
         raise ValueError
 
-    if name in meal_plan:
-        meal_plan[name] += quantity
+    if food_name in meal_plan:
+        meal_plan[food_name] += quantity
     else:
-        meal_plan[name] = quantity
+        meal_plan[food_name] = quantity
 
-    return name, quantity
+    return food_name, quantity
 
 def generate_total_calories(meal_plan):
     global df
     c_total = 0
     for key, value in meal_plan.items():
         food_row = df[df['food'] == key].iloc[0]
-        if food_row.empty:
-            raise ValueError
         caloric_value = food_row['Caloric Value']
         c_total += caloric_value * value
 
     return c_total
 
-def remove_food_from_meal_plan(meal_plan, selected_meal_food):
-    if selected_meal_food not in meal_plan:
+def remove_food_from_meal_plan(meal_plan, food_name):
+    if food_name not in meal_plan:
         raise KeyError
-    del meal_plan[selected_meal_food]
+    del meal_plan[food_name]

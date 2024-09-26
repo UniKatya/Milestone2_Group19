@@ -14,8 +14,8 @@ GRID_LINE_COLOUR = '#ccc'
 class MyMainFrame(MyFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.meal_plan = {}
         self.selected_meal_food = ""
+        self.meal_plan = {}
         self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])
         self.df = load_data('Food_Nutrition_Dataset.csv')
 
@@ -64,7 +64,7 @@ class MyMainFrame(MyFrame):
         min_val = self.m_textCtrlMinVal.GetValue().strip()
         max_val = self.m_textCtrlMaxVal.GetValue().strip()
         try:
-            df_display = filter_food_by_nutrient_range(self.df, nutrient, float(min_val), float(max_val))
+            df_display = filter_food_by_nutrient_range(nutrient, float(min_val), float(max_val))
             table = DataTable(df_display)
             self.m_gridRangeFilter.ClearGrid()
             self.m_gridRangeFilter.SetTable(table, True)
@@ -83,7 +83,7 @@ class MyMainFrame(MyFrame):
         elif self.m_radioBtnHigh.GetValue():
             level = 'High'
         try:
-            filtered_df = filter_food_by_nutrient_level(self.df, nutrient, level)
+            filtered_df = filter_food_by_nutrient_level(nutrient, level)
             table = DataTable(filtered_df)
             self.m_gridLevelFilter.ClearGrid()
             self.m_gridLevelFilter.SetTable(table, True)
@@ -114,7 +114,7 @@ class MyMainFrame(MyFrame):
     def display_food(self, event):
         food_name = self.m_textCtrl10.GetValue().strip().lower()
         try:
-            food_key, quantity, total_calories = get_food_details(self.df, food_name, self.meal_plan)
+            food_key, quantity, total_calories = get_food_details(food_name, self.meal_plan)
             if food_key:
                 self.m_staticText43.SetLabel(f"{food_key}")
                 self.m_staticText47.SetLabel(f"     {quantity}  ")
@@ -129,6 +129,7 @@ class MyMainFrame(MyFrame):
         try:
             remove_food_from_meal_plan(self.meal_plan, self.selected_meal_food)
             total_calories = generate_total_calories(self.meal_plan)
+
             self.m_staticText38.SetLabel(f"{total_calories}")
             self.m_grid1.ClearGrid()
             self.ml = pd.DataFrame(list(self.meal_plan.items()), columns=['Food', 'Quantity'])

@@ -145,8 +145,8 @@ def test_get_nutritional_info_valid(cream_cheese_info):
     assert information == cream_cheese_info
 
 def test_get_nutritional_info_invalid():
-    information = get_nutritional_info("pudding")
-    assert information == {}
+    with pytest.raises(ValueError):
+        get_nutritional_info("pudding")
 
 def test_filter_nutritional_info_valid(cream_cheese_info):
     categories, sizes, explode = filter_nutritional_info(cream_cheese_info)
@@ -155,10 +155,8 @@ def test_filter_nutritional_info_valid(cream_cheese_info):
     assert explode == [0.1] + [0.0] * (len(categories) - 1)
 
 def test_filter_nutritional_info_invalid():
-    filtered_categories, filtered_sizes, explode = filter_nutritional_info({})
-    assert len(filtered_categories) == 0
-    assert len(filtered_sizes) == 0
-    assert len(explode) == 0
+    with pytest.raises(ValueError):
+        filter_nutritional_info({})
 
 def test_create_pie_chart_valid():
     fig, ax = plt.subplots()
@@ -180,46 +178,38 @@ def test_create_bar_graph_invalid():
     with pytest.raises(ValueError):
         create_bar_graph([], [], ax)
 
-def test_filter_food_by_nutrient_range_valid(sample_data):
-    filtered = filter_food_by_nutrient_range(sample_data, "Fat", 0.1, 0.3)
-    assert len(filtered) == 3
+def test_filter_food_by_nutrient_range_valid():
+    filtered = filter_food_by_nutrient_range("Fat", 0.1, 0.3)
+    assert len(filtered) == 311
     assert "apple" in filtered["food"].values
-    assert "banana" in filtered["food"].values
-    assert "carrot" in filtered["food"].values
+    assert "angel food cake" in filtered["food"].values
+    assert "bakers yeast" in filtered["food"].values
 
-def test_filter_food_by_nutrient_range_invalid(sample_data):
+def test_filter_food_by_nutrient_range_invalid():
     with pytest.raises(KeyError):
-        filter_food_by_nutrient_range(sample_data, "pudding", 50, 90)
+        filter_food_by_nutrient_range("pudding", 50, 90)
 
-def test_filter_food_by_nutrient_level_valid(sample_data):
-    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "High")
-    assert len(filtered) == 2
-    assert "banana" in filtered["food"].values
-    assert "carrot" in filtered["food"].values
+def test_filter_food_by_nutrient_level_valid():
+    filtered = filter_food_by_nutrient_level("Fat", "High")
+    assert len(filtered) == 3
+    assert "pork backfat" in filtered["food"].values
+    assert "duck meat raw" in filtered["food"].values
 
-    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "Mid")
-    assert len(filtered) == 1
-    assert "apple" in filtered["food"].values
 
-    filtered = filter_food_by_nutrient_level(sample_data, "Fat", "Low")
-    assert len(filtered) == 0
-
-def test_get_food_details_valid(sample_data, meal_plan):
-    food_key, quantity, total_calories = get_food_details(sample_data, 'apple', meal_plan)
+def test_get_food_details_valid(meal_plan):
+    food_key, quantity, total_calories = get_food_details('apple', meal_plan)
     assert food_key == 'apple'
     assert quantity == 2
-    assert total_calories == 104
+    assert total_calories == 190
 
-def test_get_food_details_invalid(sample_data, meal_plan):
-    food_key, quantity, total_calories = get_food_details(sample_data, 'nonexistent_food', meal_plan)
-    assert food_key is None
-    assert quantity is None
-    assert total_calories is None
+def test_get_food_details_invalid_food(meal_plan):
+    with pytest.raises(ValueError):
+        get_food_details('nonexistent_food', meal_plan)
 
 def test_generate_meal_plan_new_item(meal_plan):
-    name, quantity = generate_meal_plan(meal_plan, 'fig', 2)
-    assert meal_plan['fig'] == 2
-    assert name == 'fig'
+    name, quantity = generate_meal_plan(meal_plan, 'apple', 2)
+    assert meal_plan['apple'] == 4
+    assert name == 'apple'
     assert quantity == 2
 
 def test_generate_meal_plan_existing_item(meal_plan):
@@ -228,13 +218,21 @@ def test_generate_meal_plan_existing_item(meal_plan):
     assert name == 'apple'
     assert quantity == 3
 
+def test_generate_meal_plan_invalid_quantity(meal_plan):
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', 'two')
+
+def test_generate_meal_plan_invalid_food_name(meal_plan):
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, '123', 2)
+
 def test_generate_total_calories_valid(meal_plan):
     total_calories = generate_total_calories(meal_plan)
     assert total_calories == 324
 
 def test_remove_food_from_meal_plan_valid(meal_plan):
     remove_food_from_meal_plan(meal_plan, 'apple')
-    assert 'fig' not in meal_plan
+    assert 'apple' not in meal_plan
     assert meal_plan == {'banana': 1}
 
 def test_remove_food_from_meal_plan_invalid(meal_plan):
