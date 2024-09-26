@@ -14,21 +14,26 @@ the five required features.</span> There is no need to test the GUI components. 
 list all tested functions related to the five required features and the corresponding test functions designed to test 
 those functions, for example:
 
-| **Tested Functions**                                                 | **Test Functions**                                                                         |
-|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| `search_food_by_name(name)`                                          | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`               |
-| `get_nutritional_info(name)`                                         | `test_get_nutritional_info_valid()` <br> `test_get_nutritional_info_invalid()`             |
-| `filter_nutritional_info(categories, sizes)`                         | `test_filter_nutritional_info_valid()`<br> `test_filter_nutritional_info_invalid()`        |
-| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                     |
-| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                     |
-| `filter_food_by_range(df, nutrient, min_val, max_val)`               | `test_filter_food_by_range_valid()` <br> `test_filter_food_by_range_invalid()`             |
-| `filter_food_by_level(df, nutrient, level)`                          | `test_filter_food_by_level_valid()` <br> `test_filter_food_by_level_invalid()`             |
-| `get_food_details(df, food_name, meal_plan)`                         | `test_get_food_details_valid()` <br> `test_get_food_details_invalid()`                     |
-| `generate_meal_plan(meal_plan, name, quantity)`                      | `test_generate_meal_plan_valid()` <br> `test_generate_meal_plan_invalid()`                 |
-| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid()` <br> `test_generate_total_calories_invalid()`       |
-| `remove_food_from_meal_plan(meal_plan, selected_meal_food)`          | `test_remove_food_from_meal_plan_valid()` <br> `test_remove_food_from_meal_plan_invalid()` |
-
-
+| **Tested Functions**                                                 | **Test Functions**                                                                                           |
+|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                                     |
+| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                                 |
+| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`              |
+| `filter_nutritional_info(categories, sizes)`                         | `test_filter_nutritional_info_valid()`<br> `test_filter_nutritional_info_invalid()`                          |
+| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                                       |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                                       |
+| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`             |
+| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`             |
+| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`                     |
+| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`                 |
+| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)` <br> `test_generate_total_calories_invalid(meal_plan)`       |
+| `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
+| `DataTable.GetNumberRows()`                                          | `test_DataTable_GetNumberRows_valid(data_table)` <br> `test_DataTable_GetNumberRows_invalid()`               |
+| `DataTable.GetNumberCols()`                                          | `test_DataTable_GetNumberCols_valid(data_table)` <br> `test_DataTable_GetNumberCols_invalid()`               |
+| `DataTable.GetValue()`                                               | `test_DataTable_GetValue_valid(data_table)` <br> `test_DataTable_GetValue_invalid(data_table)`               |
+| `DataTable.SetValue()`                                               | `test_DataTable_SetValue_valid(data_table)` <br> `test_DataTable_SetValue_invalid(data_table)`               |
+| `DataTable.GetColLabelValue()`                                       | `test_DataTable_GetColLabelValue_valid(data_table)` <br> `test_DataTable_GetColLabelValue_invalid()`         |
+| `DataTable.GetAttr()`                                                | `test_DataTable_GetAttr_valid(data_table)` <br> `test_DataTable_GetAttr_invalid(data_table)`                 |
 ---
 
 ## 2. **Test Case Details**
@@ -44,8 +49,8 @@ those functions, for example:
   -The function reads the CSV file and checks if the specified food name exists in the dataset. A string name representing the food item to search for is the input. While the output is a boolean value (True if the food item exists, False otherwise).
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
+| **Valid Input**                 | **Expected Output** |
+|---------------------------------|---------------------|
 | `search_food_by_name('apple')`  | `True`              |
 | `search_food_by_name('banana')` | `True`              |
 
@@ -57,8 +62,8 @@ def test_search_food_by_name_valid():
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**              | **Expected Output** |
-|--------------------------------|---------------------|
+| **Invalid Input**                | **Expected Output** |
+|----------------------------------|---------------------|
 | `search_food_by_name('pudding')` | `False`             |
 | `search_food_by_name('12')`      | `False`             |
 | `search_food_by_name(' ')`       | `False`             |

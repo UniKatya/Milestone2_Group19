@@ -13,37 +13,6 @@ def load_data(file_path):
 
 df = load_data('Food_Nutrition_Dataset.csv')
 
-class DataTable(wx.grid.GridTableBase):
-    def __init__(self, data=None):
-        wx.grid.GridTableBase.__init__(self)
-        self.headerRows = 1
-        self.data = data
-
-    def GetNumberRows(self):
-        return len(self.data.index)
-
-    def GetNumberCols(self):
-        return len(self.data.columns)
-
-    def GetValue(self, row, col):
-        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
-            raise IndexError("Row or column index out of bounds")
-        return self.data.iloc[row, col]
-
-    def SetValue(self, row, col, value):
-        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
-            raise IndexError("Row or column index out of bounds")
-        self.data.iloc[row, col] = value
-
-    def GetColLabelValue(self, col):
-        return self.data.columns[col]
-
-    def GetAttr(self, row, col, prop):
-        attr = wx.grid.GridCellAttr()
-        if row % 2 == 1:
-            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
-        return attr
-
 def search_food_by_name(food_name):
     global df
     found = food_name in df['food'].values
@@ -143,6 +112,9 @@ def generate_meal_plan(meal_plan, food_name, quantity):
     return food_name, quantity
 
 def generate_total_calories(meal_plan):
+    if not meal_plan:
+        raise ValueError
+
     global df
     c_total = 0
     for key, value in meal_plan.items():
@@ -159,3 +131,34 @@ def remove_food_from_meal_plan(meal_plan, food_name, quantity):
         del meal_plan[food_name]
     else:
         meal_plan[food_name] -= quantity
+
+class DataTable(wx.grid.GridTableBase):
+    def __init__(self, data=None):
+        wx.grid.GridTableBase.__init__(self)
+        self.headerRows = 1
+        self.data = data
+
+    def GetNumberRows(self):
+        return len(self.data.index)
+
+    def GetNumberCols(self):
+        return len(self.data.columns)
+
+    def GetValue(self, row, col):
+        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
+            raise IndexError("Row or column index out of bounds")
+        return self.data.iloc[row, col]
+
+    def SetValue(self, row, col, value):
+        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
+            raise IndexError("Row or column index out of bounds")
+        self.data.iloc[row, col] = value
+
+    def GetColLabelValue(self, col):
+        return self.data.columns[col]
+
+    def GetAttr(self, row, col, prop):
+        attr = wx.grid.GridCellAttr()
+        if row % 2 == 1:
+            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
+        return attr

@@ -19,14 +19,6 @@ def data_table(sample_data):
     return DataTable(sample_data)
 
 @pytest.fixture
-def info():
-    return {'Caloric Value': 100, 'Protein': 10, 'Fat': 5}
-
-@pytest.fixture
-def long_info():
-    return {'Caloric Value': 100, 'Protein': 10, 'Fat': 5, 'Carbs': 20, 'Sugar': 15, 'Fiber': 5, 'Sodium': 10, 'Cholesterol': 5, 'Vitamin A': 10, 'Vitamin C': 10}
-
-@pytest.fixture
 def meal_plan():
     return {'apple': 2, 'banana': 1}
 
@@ -68,58 +60,6 @@ def cream_cheese_info():
     'Zinc': 0.039,
     'Nutrition Density': 7.07
 }
-
-def test_DataTable_GetNumberRows_valid(data_table):
-    assert data_table.GetNumberRows() == 3
-
-def test_DataTable_GetNumberRows_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetNumberRows()
-    assert exc_info.type is AttributeError
-
-def test_DataTable_GetNumberCols_valid(data_table):
-    assert data_table.GetNumberCols() == 4
-
-def test_DataTable_GetNumberCols_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetNumberCols()
-    assert exc_info.type is AttributeError
-
-def test_DataTable_GetValue_valid(data_table):
-    assert data_table.GetValue(0, 0) == 'apple'
-    assert data_table.GetValue(1, 1) == 89
-
-def test_DataTable_GetValue_invalid(data_table):
-    with pytest.raises(IndexError):
-        data_table.GetValue(10, 10)
-
-def test_DataTable_SetValue_valid(data_table):
-    data_table.SetValue(0, 0, 'grape')
-    assert data_table.GetValue(0, 0) == 'grape'
-
-def test_DataTable_SetValue_invalid(data_table):
-    with pytest.raises(IndexError):
-        data_table.SetValue(10, 10, 'Invalid')
-
-def test_DataTable_GetColLabelValue_valid(data_table):
-    assert data_table.GetColLabelValue(0) == 'food'
-    assert data_table.GetColLabelValue(1) == 'Caloric Value'
-
-def test_DataTable_GetColLabelValue_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetColLabelValue(-1)
-    assert exc_info.type is AttributeError
-
-def test_DataTable_GetAttr_valid(data_table):
-    attr = data_table.GetAttr(1, 0, None)
-    assert attr.GetBackgroundColour() == EVEN_ROW_COLOUR
-
-def test_DataTable_GetAttr_invalid(data_table):
-    attr = data_table.GetAttr(0, 0, None)
-    assert not attr.HasBackgroundColour()
 
 def test_load_data_valid():
     df = load_data('Food_Nutrition_Dataset.csv')
@@ -199,7 +139,7 @@ def test_filter_food_by_nutrient_level_valid():
 
 def test_filter_food_by_nutrient_level_invalid():
     with pytest.raises(ValueError):
-        filter_food_by_nutrient_level("Fat", "Invalid")
+        filter_food_by_nutrient_level("Fat", "loow")
 
 def test_get_food_details_valid(meal_plan):
     food_key, quantity, total_calories = get_food_details('apple', meal_plan)
@@ -211,29 +151,37 @@ def test_get_food_details_invalid(meal_plan):
     with pytest.raises(ValueError):
         get_food_details('nonexistent_food', meal_plan)
 
-def test_generate_meal_plan_new_item(meal_plan):
+def test_generate_meal_plan_valid(meal_plan):
     name, quantity = generate_meal_plan(meal_plan, 'cream cheese', 2)
     assert meal_plan['cream cheese'] == 2
     assert name == 'cream cheese'
     assert quantity == 2
 
-def test_generate_meal_plan_existing_item(meal_plan):
     name, quantity = generate_meal_plan(meal_plan, 'apple', 3)
     assert meal_plan['apple'] == 5
     assert name == 'apple'
     assert quantity == 3
 
-def test_generate_meal_plan_invalid_quantity(meal_plan):
+def test_generate_meal_plan_invalid(meal_plan):
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'pudding', 2)
+
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', -2)
+
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', 0)
+
     with pytest.raises(ValueError):
         generate_meal_plan(meal_plan, 'apple', 'two')
-
-def test_generate_meal_plan_invalid_food_name(meal_plan):
-    with pytest.raises(ValueError):
-        generate_meal_plan(meal_plan, '123', 2)
 
 def test_generate_total_calories_valid(meal_plan):
     total_calories = generate_total_calories(meal_plan)
     assert total_calories == 324
+
+def test_generate_total_calories_invalid():
+    with pytest.raises(ValueError):
+        generate_total_calories({})
 
 def test_remove_food_from_meal_plan_valid(meal_plan):
     remove_food_from_meal_plan(meal_plan, 'apple', 1)
@@ -247,3 +195,55 @@ def test_remove_food_from_meal_plan_valid(meal_plan):
 def test_remove_food_from_meal_plan_invalid(meal_plan):
     with pytest.raises(KeyError):
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
+
+def test_DataTable_GetNumberRows_valid(data_table):
+    assert data_table.GetNumberRows() == 3
+
+def test_DataTable_GetNumberRows_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetNumberRows()
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetNumberCols_valid(data_table):
+    assert data_table.GetNumberCols() == 4
+
+def test_DataTable_GetNumberCols_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetNumberCols()
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetValue_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+    assert data_table.GetValue(1, 1) == 89
+
+def test_DataTable_GetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.GetValue(10, 10)
+
+def test_DataTable_SetValue_valid(data_table):
+    data_table.SetValue(0, 0, 'grape')
+    assert data_table.GetValue(0, 0) == 'grape'
+
+def test_DataTable_SetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.SetValue(10, 10, 'Invalid')
+
+def test_DataTable_GetColLabelValue_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+
+def test_DataTable_GetColLabelValue_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        invalid_data_table = DataTable()
+        invalid_data_table.GetColLabelValue(-1)
+    assert exc_info.type is AttributeError
+
+def test_DataTable_GetAttr_valid(data_table):
+    attr = data_table.GetAttr(1, 0, None)
+    assert attr.GetBackgroundColour() == EVEN_ROW_COLOUR
+
+def test_DataTable_GetAttr_invalid(data_table):
+    attr = data_table.GetAttr(0, 0, None)
+    assert not attr.HasBackgroundColour()
