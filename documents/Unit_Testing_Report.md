@@ -80,7 +80,7 @@ def test_load_data_invalid():
 - `test_search_food_by_name_invalid()`
 
 - **Tested Function/Module**
-  - `search_food_by_name(name)`
+  - `search_food_by_name(food_name)`
 - **Description**
   -The function reads the CSV file and checks if the specified food name exists in the dataset. A string name representing the food item to search for is the input. While the output is a boolean value (True if the food item exists, False otherwise).
 - **1) Valid Input and Expected Output**  
@@ -114,10 +114,10 @@ def test_search_food_by_name_invalid():
 
 ### Test Case 3:
 - **Test Function/Module**
-  - `get_nutritional_info_valid()`
+  - `get_nutritional_info_valid(cream_cheese_info)`
   - `get_nutritional_info_invalid()`
 - **Tested Function/Module**
-  - `get_nutritional_info(name)`
+  - `get_nutritional_info(food_name)`
 - **Description**
   - This function retrieves the nutritional information of the food selected by the user. The input is the food name, which identifies which food must be fetched from the database. And the output is nutritional_info (dictionary) which is the nutritional information of the chosen food.
 - **1) Valid Input and Expected Output**  
@@ -136,18 +136,18 @@ def test_get_nutritional_info_valid(cream_cheese_info):
 
 | **Invalid Input**                 | **Expected Output** |
 |-----------------------------------|---------------------|
-| `get_nutritional_info('pudding')` | `{}`                |
+| `get_nutritional_info('pudding')` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
 def test_get_nutritional_info_invalid():
-    information = get_nutritional_info("pudding")
-    assert information == {}
+    with pytest.raises(ValueError):
+        get_nutritional_info("pudding")
 ```
 
 ### Test Case 4:
 - **Test Function/Module**
-  - `filter_nutritional_info_valid()`
+  - `filter_nutritional_info_valid(cream_cheese_info)`
   - `filter_nutritional_info_invalid()`
 - **Tested Function/Module**
   - `filter_nutritional_info(nutritional_info)`
@@ -155,30 +155,29 @@ def test_get_nutritional_info_invalid():
   - This function filters the nutritional information to exclude zero values and returns the filtered categories, sizes, and explode values for charting.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                              | **Expected Output**          |
+|----------------------------------------------|------------------------------|
+| `filter_nutritional_info(cream_cheese_info)` | `categories, sizes, explode` |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_filter_nutritional_info_valid(cream_cheese_info):
+    categories, sizes, explode = filter_nutritional_info(cream_cheese_info)
+    assert categories == ['Caloric Value', 'Selenium', 'Potassium', 'Cholesterol', 'Copper', 'Water', 'Nutrition Density', 'Fat', 'Others']
+    assert sizes == [51, 19.1, 15.5, 14.6, 14.1, 7.6, 7.07, 5, 8.984999999999996]
+    assert explode == [0.1] + [0.0] * (len(categories) - 1)
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `filter_nutritional_info({})` | `[], [], []`        |
+| `filter_nutritional_info({})` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_filter_nutritional_info_invalid():
+    with pytest.raises(ValueError):
+        filter_nutritional_info({})
 ```
 
 ### Test Case 5:
@@ -191,31 +190,29 @@ def test_divide_invalid():
   - This function creates a pie chart using the filtered nutritional information. The input is the filtered sizes, categories, explode values, and ax. The output is a pie chart.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                                    | **Expected Output** |
+|--------------------------------------------------------------------|---------------------|
+| `create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], ax)` | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_create_pie_chart_valid():
+    fig, ax = plt.subplots()
+    wedges, texts, autotexts = create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], ax)
+    assert len(wedges) == 3
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                       | **Expected Output** |
+|-----------------------------------------|------------------|
+| `test_create_pie_chart([], [], [], ax)` | `ValueError`               |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_create_pie_chart_invalid():
+    fig, ax = plt.subplots()
+    with pytest.raises(ValueError):
+        create_pie_chart([], [], [], ax)
 ```
 
 
@@ -229,31 +226,29 @@ def test_divide_invalid():
   - This function creates a bar graph using the filtered nutritional information. The input is the filtered categories, sizes, and ax. The output is a bar graph.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                       | **Expected Output** |
+|-------------------------------------------------------|---------------------|
+| `create_bar_graph(["A", "B", "C"], [10, 20, 30], ax)` | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_create_bar_graph_valid():
+    fig, ax = plt.subplots()
+    create_bar_graph(["A", "B", "C"], [10, 20, 30], ax)
+    assert len(ax.patches) == 3
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**              | **Expected Output** |
+|--------------------------------|---------------------|
+| `create_bar_graph([], [], ax)` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_create_bar_graph_invalid():
+    fig, ax = plt.subplots()
+    with pytest.raises(ValueError):
+        create_bar_graph([], [], ax)
 ```
 
 ### Test Case 7:
@@ -266,31 +261,28 @@ def test_divide_invalid():
   - This function filters foods by a nutrient range. The input is the dataframe, nutrient, min_val, and max_val. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                  | **Expected Output** |
+|--------------------------------------------------|--------------------|
+| `filter_food_by_nutrient_range("Fat", 0.1, 0.3)` | `311`                 |
+
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_filter_food_by_nutrient_range_valid():
+    filtered = filter_food_by_nutrient_range("Fat", 0.1, 0.3)
+    assert len(filtered) == 311
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                                  | **Expected Output** |
+|----------------------------------------------------|---------------------|
+| `filter_food_by_nutrient_range("pudding", 11, 10)` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_filter_food_by_nutrient_range_invalid():
+    with pytest.raises(ValueError):
+        filter_food_by_nutrient_range("pudding", 11, 10)
 ```
 
 ### Test Case 8:
@@ -303,31 +295,33 @@ def test_divide_invalid():
   - This function filters foods by nutrient level (Low, Mid, High). The input is the dataframe, nutrient, and level. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                | **Expected Output** |
+|------------------------------------------------|---------------------|
+| `filter_food_by_nutrient_level("Fat", "High")` | `3`                 |
+| `filter_food_by_nutrient_level("Fat", "Mid")`  | `11`                |
+| `filter_food_by_nutrient_level("Fat", "Low")`  | `2381`              |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_filter_food_by_nutrient_level_valid():
+    filtered = filter_food_by_nutrient_level("Fat", "High")
+    assert len(filtered) == 3
+    filtered = filter_food_by_nutrient_level("Fat", "Mid")
+    assert len(filtered) == 11
+    filtered = filter_food_by_nutrient_level("Fat", "Low")
+    assert len(filtered) == 2381
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                              | **Expected Output** |
+|------------------------------------------------|---------------------|
+| `filter_food_by_nutrient_level("Fat", "loow")` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_filter_food_by_nutrient_level_invalid():
+    with pytest.raises(ValueError):
+        filter_food_by_nutrient_level("Fat", "loow")
 ```
 
 ### Test Case 9:
@@ -340,31 +334,31 @@ def test_divide_invalid():
   - This function retrieves food details from the meal plan. The input is the dataframe, food_name, and meal_plan. The output is the food details.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                        | **Expected Output** |
+|----------------------------------------|---------------------|
+| `get_food_details('apple', meal_plan)` | `'apple'`           |
+| `get_food_details('apple', meal_plan)` | `2`                 |
+| `get_food_details('apple', meal_plan)` | `190`               |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_get_food_details_valid(meal_plan):
+    food_key, quantity, total_calories = get_food_details('apple', meal_plan)
+    assert food_key == 'apple'
+    assert quantity == 2
+    assert total_calories == 190
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                                 | **Expected Output** |
+|---------------------------------------------------|---------------------|
+| `get_food_details('nonexistent_food', meal_plan)` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_get_food_details_invalid(meal_plan):
+    with pytest.raises(ValueError):
+        get_food_details('nonexistent_food', meal_plan)
 ```
 
 ### Test Case 10:
@@ -377,31 +371,51 @@ def test_divide_invalid():
   - This function generates a meal plan by adding food items and their quantities. The input is the meal_plan, name, and quantity. The output is the updated meal plan.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                    | **Expected Output** |
+|----------------------------------------------------|---------------------|
+| `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `2`                 |
+| `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `cream cheese`      |
+| `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `2`                 |
+| `generate_meal_plan(meal_plan, 'apple', 3)`        | `5`                 |
+| `generate_meal_plan(meal_plan, 'apple', 3)`        | `'apple'`           |
+| `generate_meal_plan(meal_plan, 'apple', 3)`        | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_generate_meal_plan_valid(meal_plan):
+    name, quantity = generate_meal_plan(meal_plan, 'cream cheese', 2)
+    assert meal_plan['cream cheese'] == 2
+    assert name == 'cream cheese'
+    assert quantity == 2
+
+    name, quantity = generate_meal_plan(meal_plan, 'apple', 3)
+    assert meal_plan['apple'] == 5
+    assert name == 'apple'
+    assert quantity == 3
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| **Invalid Input**                               | **Expected Output** |
+|-------------------------------------------------|---------------------|
+| `generate_meal_plan(meal_plan, 'pudding', 2)`   | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'apple', -2)`    | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'apple', 0)`     | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'apple', 'two')` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_generate_meal_plan_invalid(meal_plan):
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'pudding', 2)
+
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', -2)
+
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', 0)
+
+    with pytest.raises(ValueError):
+        generate_meal_plan(meal_plan, 'apple', 'two')
 ```
 
 ### Test Case 11:
@@ -414,31 +428,27 @@ def test_divide_invalid():
   - This function calculates the total calories in the meal plan. The input is the meal plan. The output is the total calories.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                      | **Expected Output** |
+|--------------------------------------|---------------------|
+| `generate_total_calories(meal_plan)` | `324`               |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_generate_total_calories_valid(meal_plan):
+    total_calories = generate_total_calories(meal_plan)
+    assert total_calories == 324
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| `generate_total_calories({})` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_generate_total_calories_invalid():
+    with pytest.raises(ValueError):
+        generate_total_calories({})
 ```
 
 ### Test Case 12:
@@ -451,31 +461,232 @@ def test_divide_invalid():
   - This function removes a food item from the meal plan. The input is the meal plan and the selected meal food. The output is the updated meal plan.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|---------------------|
-| `divide(10, 2)`               | `5`                 |
-| `divide(10, -2)`              | `-5`                |
-| `add more cases in necessary` | `...`               |
+| **Valid Input**                                     | **Expected Output**         |
+|-----------------------------------------------------|-----------------------------|
+| `remove_food_from_meal_plan(meal_plan, 'apple', 1)` | `{'apple': 1, 'banana': 1}` |
+| `remove_food_from_meal_plan(meal_plan, 'apple', 1)` | `{'banana': 1}`             |
 
 - **1) Code for the Test Function**
 ```python
-def test_divide_valid():
-    assert divide(10, 2) == 5
-    assert divide(10, -2) == -5
+def test_remove_food_from_meal_plan_valid(meal_plan):
+    remove_food_from_meal_plan(meal_plan, 'apple', 1)
+    assert meal_plan == {'apple': 1, 'banana': 1}
+
+    remove_food_from_meal_plan(meal_plan, 'apple', 1)
+    assert meal_plan == {'banana': 1}
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**                                    | **Expected Output** |
+|------------------------------------------------------|---------------------|
+| `remove_food_from_meal_plan(meal_plan, 'carrot', 2)` | `KeyError`          |
+
+- **2) Code for the Test Function**
+```python
+def test_remove_food_from_meal_plan_invalid(meal_plan):
+    with pytest.raises(KeyError):
+        remove_food_from_meal_plan(meal_plan, 'carrot', 2)
+```
+
+### Test Case 13:
+- **Test Function/Module**
+- `test_DataTable_GetNumberRows_valid(data_table)`
+- `test_DataTable_GetNumberRows_invalid()`
+- **Tested Function/Module**
+  - `DataTable.GetNumberRows()`
+- **Description**
+  - This functions obtains the number of rows in the data table. The input is the data table. The output is the number of rows.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**              | **Expected Output** |
+|------------------------------|---------------------|
+| `data_table.GetNumberRows()` | `3`                 |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_GetNumberRows_valid(data_table):
+    assert data_table.GetNumberRows() == 3
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `divide(10, 0)`               | `Handle Exception`  |
-| `add more cases in necessary` | `...`               |
+| `DataTable().GetNumberRows()` | `AttributeError`    |
 
 - **2) Code for the Test Function**
 ```python
-def test_divide_invalid():
-    with pytest.raises(ValueError) as exc_info:
-        divide(10, 0)
-    assert exc_info.type is ValueError
+def test_DataTable_GetNumberRows_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberRows()
+    assert exc_info.type is AttributeError
+```
+
+### Test Case 14:
+- **Test Function/Module**
+- `test_DataTable_GetNumberCols_valid(data_table)`
+- `test_DataTable_GetNumberCols_invalid()`
+- **Tested Function/Module**
+  - `DataTable.GetNumberCols()`
+- **Description**
+  - This functions obtains the number of columns in the data table. The input is the data table. The output is the number of columns.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**              | **Expected Output** |
+|------------------------------|---------------------|
+| `data_table.GetNumberCols()` | `4`                 |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_GetNumberCols_valid(data_table):
+    assert data_table.GetNumberCols() == 4
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `DataTable().GetNumberCols()`               | `AttributeError`    |
+
+- **2) Code for the Test Function**
+```python
+def test_DataTable_GetNumberCols_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberCols()
+    assert exc_info.type is AttributeError
+```
+
+### Test Case 15:
+- **Test Function/Module**
+- `test_DataTable_GetValue_valid(data_table)`
+- `test_DataTable_GetValue_invalid(data_table)`
+- **Tested Function/Module**
+  - `DataTable.GetNumberCols()`
+- **Description**
+  - The function retrieves the value at the specified row and column in the data table. The input is the row and column. The output is the value.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**               | **Expected Output** |
+|-------------------------------|------------------|
+| `data_table.GetValue(0, 0)`               | `'apple'`               |
+| `data_table.GetValue(1, 1)`              | `89`               |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_GetValue_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+    assert data_table.GetValue(1, 1) == 89
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `data_table.GetValue(10, 10)`               | `IndexError`        |
+
+- **2) Code for the Test Function**
+```python
+def test_DataTable_GetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.GetValue(10, 10)
+```
+
+### Test Case 16:
+- **Test Function/Module**
+- `test_DataTable_SetValue_valid(data_table)`
+- `test_DataTable_SetValue_valid(data_table)`
+- **Tested Function/Module**
+  - `DataTable.SetValue()`
+- **Description**
+  - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**             | **Expected Output** |
+|-----------------------------|---------------------|
+| `data_table.SetValue(0, 0, 'grape')` | `'grape'`           |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_SetValue_valid(data_table):
+    data_table.SetValue(0, 0, 'grape')
+    assert data_table.GetValue(0, 0) == 'grape'
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|--------------|
+| ` data_table.SetValue(10, 10, 'Invalid')`               | `IndexError`  |
+
+- **2) Code for the Test Function**
+```python
+def test_DataTable_SetValue_invalid(data_table):
+    with pytest.raises(IndexError):
+        data_table.SetValue(10, 10, 'Invalid')
+```
+
+### Test Case 17:
+- **Test Function/Module**
+- `test_DataTable_GetColLabelValue_valid(data_table)`
+- `test_DataTable_GetColLabelValue_invalid()`
+- **Tested Function/Module**
+  - `DataTable.GetColLabelValue()`
+- **Description**
+  - The function retrieves the column label value at the specified column index in the data table. The input is the column index. The output is the column label value.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**                  | **Expected Output** |
+|----------------------------------|---------------------|
+| `data_table.GetColLabelValue(0)` | `'food'`            |
+| `data_table.GetColLabelValue(1)` | `'Caloric Value'`   |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_GetColLabelValue_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|--------------|
+| `DataTable().GetColLabelValue(-1)`               | `AttributeError`  |
+
+- **2) Code for the Test Function**
+```python
+def test_DataTable_GetColLabelValue_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetColLabelValue(-1)
+    assert exc_info.type is AttributeError
+```
+
+### Test Case 18:
+- **Test Function/Module**
+- `test_DataTable_GetAttr_valid(data_table)`
+- `test_DataTable_GetAttr_invalid(data_table)`
+- **Tested Function/Module**
+  - `DataTable.GetColLabelValue()`
+- **Description**
+  - The function retrieves the attribute at the specified row and column in the data table. The input is the row, column, and default attribute. The output is the attribute.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**                  | **Expected Output** |
+|----------------------------------|-------------------|
+| `attr.GetBackgroundColour()` | `EVEN_ROW_COLOUR`            |
+
+- **1) Code for the Test Function**
+```python
+def test_DataTable_GetAttr_valid(data_table):
+    attr = data_table.GetAttr(1, 0, None)
+    assert attr.GetBackgroundColour() == EVEN_ROW_COLOUR
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `attr.HasBackgroundColour()`               | `False`             |
+
+- **2) Code for the Test Function**
+```python
+def test_DataTable_GetAttr_invalid(data_table):
+    attr = data_table.GetAttr(0, 0, None)
+    assert not attr.HasBackgroundColour()
 ```
 
 ## 3. **Testing Report Summary**

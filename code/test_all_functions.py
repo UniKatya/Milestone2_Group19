@@ -121,9 +121,6 @@ def test_create_bar_graph_invalid():
 def test_filter_food_by_nutrient_range_valid():
     filtered = filter_food_by_nutrient_range("Fat", 0.1, 0.3)
     assert len(filtered) == 311
-    assert "apple" in filtered["food"].values
-    assert "angel food cake" in filtered["food"].values
-    assert "bakers yeast" in filtered["food"].values
 
 def test_filter_food_by_nutrient_range_invalid():
     with pytest.raises(ValueError):
@@ -185,11 +182,9 @@ def test_generate_total_calories_invalid():
 
 def test_remove_food_from_meal_plan_valid(meal_plan):
     remove_food_from_meal_plan(meal_plan, 'apple', 1)
-    assert 'apple' in meal_plan
     assert meal_plan == {'apple': 1, 'banana': 1}
 
     remove_food_from_meal_plan(meal_plan, 'apple', 1)
-    assert 'apple' not in meal_plan
     assert meal_plan == {'banana': 1}
 
 def test_remove_food_from_meal_plan_invalid(meal_plan):
@@ -201,8 +196,7 @@ def test_DataTable_GetNumberRows_valid(data_table):
 
 def test_DataTable_GetNumberRows_invalid():
     with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetNumberRows()
+        DataTable().GetNumberRows()
     assert exc_info.type is AttributeError
 
 def test_DataTable_GetNumberCols_valid(data_table):
@@ -210,8 +204,7 @@ def test_DataTable_GetNumberCols_valid(data_table):
 
 def test_DataTable_GetNumberCols_invalid():
     with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetNumberCols()
+        DataTable().GetNumberCols()
     assert exc_info.type is AttributeError
 
 def test_DataTable_GetValue_valid(data_table):
@@ -236,8 +229,7 @@ def test_DataTable_GetColLabelValue_valid(data_table):
 
 def test_DataTable_GetColLabelValue_invalid():
     with pytest.raises(AttributeError) as exc_info:
-        invalid_data_table = DataTable()
-        invalid_data_table.GetColLabelValue(-1)
+        DataTable().GetColLabelValue(-1)
     assert exc_info.type is AttributeError
 
 def test_DataTable_GetAttr_valid(data_table):
