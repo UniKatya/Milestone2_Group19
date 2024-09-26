@@ -211,6 +211,9 @@ def test_get_food_details_invalid_food(meal_plan):
     with pytest.raises(ValueError):
         get_food_details('nonexistent_food', meal_plan)
 
+    with pytest.raises(ValueError):
+        get_food_details('', meal_plan)
+
 def test_generate_meal_plan_new_item(meal_plan):
     name, quantity = generate_meal_plan(meal_plan, 'cream cheese', 2)
     assert meal_plan['cream cheese'] == 2

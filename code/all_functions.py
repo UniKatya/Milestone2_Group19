@@ -135,8 +135,6 @@ def get_food_details(food_name, meal_plan):
         food_key = [key for key in meal_plan.keys() if key.lower() == food_name][0]  # Get original name
         quantity = meal_plan[food_key]
         food_row = df[df['food'].str.strip().str.lower() == food_name]
-        if food_row.empty:
-            raise ValueError
         caloric_value = food_row.iloc[0]['Caloric Value']
         total_calories = caloric_value * quantity
         return food_key, quantity, total_calories
