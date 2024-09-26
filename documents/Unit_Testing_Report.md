@@ -40,6 +40,42 @@ those functions, for example:
 
 ### Test Case 1:
 - **Test Function/Module**
+- `test_load_data_valid()`
+- `test_load_data_invalid()`
+
+- **Tested Function/Module**
+  - `load_data(file_path)`
+- **Description**
+  - The function reads the CSV file and returns a pandas dataframe. The input is the file path, and the output is the dataframe.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**                           | **Expected Output** |
+|-------------------------------------------|---------------------|
+| `load_data('Food_Nutrition_Dataset.csv')` | `pd.DataFrame`      |
+
+- **1) Code for the Test Function**
+```python
+def test_load_data_valid():
+    df = load_data('Food_Nutrition_Dataset.csv')
+    assert isinstance(df, pd.DataFrame)
+    assert not df.empty
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**                    | **Expected Output** |
+|--------------------------------------|---------------------|
+| `load_data('non_existent_file.csv')` | `FileNotFoundError` |
+
+- **2) Code for the Test Function**
+```python
+def test_load_data_invalid():
+    with pytest.raises(FileNotFoundError) as exc_info:
+        load_data('non_existent_file.csv')
+    assert exc_info.type is FileNotFoundError
+```
+
+### Test Case 2:
+- **Test Function/Module**
 - `test_search_food_by_name_valid()`
 - `test_search_food_by_name_invalid()`
 
@@ -75,7 +111,8 @@ def test_search_food_by_name_invalid():
     assert search_food_by_name('12') == False
     assert search_food_by_name(' ') == False
 ```
-### Test Case 2:
+
+### Test Case 3:
 - **Test Function/Module**
   - `get_nutritional_info_valid()`
   - `get_nutritional_info_invalid()`
@@ -108,7 +145,7 @@ def test_get_nutritional_info_invalid():
     assert information == {}
 ```
 
-### Test Case 3:
+### Test Case 4:
 - **Test Function/Module**
   - `filter_nutritional_info_valid()`
   - `filter_nutritional_info_invalid()`
@@ -144,7 +181,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 4:
+### Test Case 5:
 - **Test Function/Module**
   - `test_create_pie_chart_valid()`
   - `test_create_pie_chart_invalid()`
@@ -182,7 +219,7 @@ def test_divide_invalid():
 ```
 
 
-### Test Case 5:
+### Test Case 6:
 - **Test Function/Module**
 - `test_create_bar_graph_valid()`
 - `test_create_bar_graph_invalid()`
@@ -219,7 +256,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 6:
+### Test Case 7:
 - **Test Function/Module**
 - `filter_food_by_nutrient_range_valid()`
 - `filter_food_by_nutrient_range_invalid()`
@@ -256,7 +293,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 7:
+### Test Case 8:
 - **Test Function/Module**
 - `test_filter_food_by_level_valid()`
 - `test_filter_food_by_level_invalid()`
@@ -293,7 +330,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 8:
+### Test Case 9:
 - **Test Function/Module**
 - `test_get_food_details_valid()`
 - `test_get_food_details_invalid()`
@@ -330,7 +367,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 9:
+### Test Case 10:
 - **Test Function/Module**
 - `test_generate_meal_plan_valid()`
 - `test_generate_meal_plan_invalid()`
@@ -367,7 +404,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 10:
+### Test Case 11:
 - **Test Function/Module**
 - `test_generate_total_calories_valid()`
 - `test_generate_total_calories_invalid()`
@@ -404,7 +441,7 @@ def test_divide_invalid():
     assert exc_info.type is ValueError
 ```
 
-### Test Case 11:
+### Test Case 12:
 - **Test Function/Module**
 - `test_remove_food_from_meal_plan_valid()`
 - `test_remove_food_from_meal_plan_invalid()`
@@ -452,4 +489,4 @@ pytest test_all_functions.py --html=unit_test.html --self-contained-html
 Note: test_all_functions.py should contain all the test functions designed to test the self-defined functions related 
 to the five required features.
 
-![unit_test_summary](./Unit_test.png)
+![unit_test_summary](./images/Unit_test.png)
