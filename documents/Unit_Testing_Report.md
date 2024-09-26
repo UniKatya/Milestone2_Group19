@@ -204,8 +204,8 @@ def test_create_pie_chart_valid():
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**                       | **Expected Output** |
-|-----------------------------------------|------------------|
-| `test_create_pie_chart([], [], [], ax)` | `ValueError`               |
+|-----------------------------------------|---------------------|
+| `test_create_pie_chart([], [], [], ax)` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -262,8 +262,8 @@ def test_create_bar_graph_invalid():
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                                  | **Expected Output** |
-|--------------------------------------------------|--------------------|
-| `filter_food_by_nutrient_range("Fat", 0.1, 0.3)` | `311`                 |
+|--------------------------------------------------|---------------------|
+| `filter_food_by_nutrient_range("Fat", 0.1, 0.3)` | `311`               |
 
 
 - **1) Code for the Test Function**
@@ -544,7 +544,7 @@ def test_DataTable_GetNumberCols_valid(data_table):
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `DataTable().GetNumberCols()`               | `AttributeError`    |
+| `DataTable().GetNumberCols()` | `AttributeError`    |
 
 - **2) Code for the Test Function**
 ```python
@@ -564,10 +564,10 @@ def test_DataTable_GetNumberCols_invalid():
   - The function retrieves the value at the specified row and column in the data table. The input is the row and column. The output is the value.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**               | **Expected Output** |
-|-------------------------------|------------------|
-| `data_table.GetValue(0, 0)`               | `'apple'`               |
-| `data_table.GetValue(1, 1)`              | `89`               |
+| **Valid Input**             | **Expected Output** |
+|-----------------------------|---------------------|
+| `data_table.GetValue(0, 0)` | `'apple'`           |
+| `data_table.GetValue(1, 1)` | `89`                |
 
 - **1) Code for the Test Function**
 ```python
@@ -579,7 +579,7 @@ def test_DataTable_GetValue_valid(data_table):
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `data_table.GetValue(10, 10)`               | `IndexError`        |
+| `data_table.GetValue(10, 10)` | `IndexError`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -598,8 +598,8 @@ def test_DataTable_GetValue_invalid(data_table):
   - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**             | **Expected Output** |
-|-----------------------------|---------------------|
+| **Valid Input**                      | **Expected Output** |
+|--------------------------------------|---------------------|
 | `data_table.SetValue(0, 0, 'grape')` | `'grape'`           |
 
 - **1) Code for the Test Function**
@@ -610,9 +610,9 @@ def test_DataTable_SetValue_valid(data_table):
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|--------------|
-| ` data_table.SetValue(10, 10, 'Invalid')`               | `IndexError`  |
+| **Invalid Input**                         | **Expected Output** |
+|-------------------------------------------|---------------------|
+| ` data_table.SetValue(10, 10, 'Invalid')` | `IndexError`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -644,9 +644,9 @@ def test_DataTable_GetColLabelValue_valid(data_table):
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|--------------|
-| `DataTable().GetColLabelValue(-1)`               | `AttributeError`  |
+| **Invalid Input**                  | **Expected Output** |
+|------------------------------------|---------------------|
+| `DataTable().GetColLabelValue(-1)` | `AttributeError`    |
 
 - **2) Code for the Test Function**
 ```python
@@ -666,9 +666,9 @@ def test_DataTable_GetColLabelValue_invalid():
   - The function retrieves the attribute at the specified row and column in the data table. The input is the row, column, and default attribute. The output is the attribute.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                  | **Expected Output** |
-|----------------------------------|-------------------|
-| `attr.GetBackgroundColour()` | `EVEN_ROW_COLOUR`            |
+| **Valid Input**              | **Expected Output** |
+|------------------------------|---------------------|
+| `attr.GetBackgroundColour()` | `EVEN_ROW_COLOUR`   |
 
 - **1) Code for the Test Function**
 ```python
@@ -678,9 +678,9 @@ def test_DataTable_GetAttr_valid(data_table):
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `attr.HasBackgroundColour()`               | `False`             |
+| **Invalid Input**            | **Expected Output** |
+|------------------------------|---------------------|
+| `attr.HasBackgroundColour()` | `False`             |
 
 - **2) Code for the Test Function**
 ```python
