@@ -145,6 +145,8 @@ class MyMainFrame(MyFrame):
             self.m_staticText43.SetLabel("Food")
             self.m_staticText47.SetLabel("Quantity")
             self.m_staticText44.SetLabel("xxxx Calories")
+            self.selected_meal_food = ""
+            self.selected_quantity = 0
         except KeyError:
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 

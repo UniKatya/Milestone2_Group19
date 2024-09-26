@@ -236,10 +236,14 @@ def test_generate_total_calories_valid(meal_plan):
     assert total_calories == 324
 
 def test_remove_food_from_meal_plan_valid(meal_plan):
-    remove_food_from_meal_plan(meal_plan, 'apple')
+    remove_food_from_meal_plan(meal_plan, 'apple', 1)
+    assert 'apple' in meal_plan
+    assert meal_plan == {'apple': 1, 'banana': 1}
+
+    remove_food_from_meal_plan(meal_plan, 'apple', 1)
     assert 'apple' not in meal_plan
     assert meal_plan == {'banana': 1}
 
 def test_remove_food_from_meal_plan_invalid(meal_plan):
     with pytest.raises(KeyError):
-        remove_food_from_meal_plan(meal_plan, 'carrot')
+        remove_food_from_meal_plan(meal_plan, 'carrot', 2)

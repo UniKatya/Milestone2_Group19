@@ -132,7 +132,7 @@ def get_food_details(food_name, meal_plan):
     return food_key, quantity, total_calories
 
 def generate_meal_plan(meal_plan, food_name, quantity):
-    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name) or quantity <= 0:
+    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name) or quantity <= 0 or quantity > 50:
         raise ValueError
 
     if food_name in meal_plan:
