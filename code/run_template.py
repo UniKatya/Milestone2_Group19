@@ -110,7 +110,7 @@ class MyMainFrame(MyFrame):
             self.m_grid1.ForceRefresh()
             self.Show(True)
 
-        except ValueError:
+        except (ValueError, TypeError):
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 
     def display_food(self, event):
@@ -125,7 +125,7 @@ class MyMainFrame(MyFrame):
                 self.selected_quantity = quantity
             else:
                 wx.MessageBox("Food item not found in the meal plan.", "Error", wx.OK | wx.ICON_ERROR)
-        except ValueError:
+        except (ValueError, TypeError):
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 
     def display_removed_food(self, event):
@@ -147,7 +147,7 @@ class MyMainFrame(MyFrame):
             self.m_staticText44.SetLabel("xxxx Calories")
             self.selected_meal_food = ""
             self.selected_quantity = 0
-        except KeyError:
+        except (KeyError, TypeError):
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
 
 if __name__ == "__main__":

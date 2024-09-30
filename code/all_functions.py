@@ -114,7 +114,8 @@ def generate_meal_plan(meal_plan, food_name, quantity):
 def generate_total_calories(meal_plan):
     c_total = 0
     global df
-
+    if not isinstance(meal_plan, dict):
+        raise TypeError
     if not meal_plan:
         return c_total
 

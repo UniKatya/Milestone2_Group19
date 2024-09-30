@@ -175,10 +175,12 @@ def test_generate_meal_plan_invalid(meal_plan):
 def test_generate_total_calories_valid(meal_plan):
     total_calories = generate_total_calories(meal_plan)
     assert total_calories == 324
+    total_calories = generate_total_calories({})
+    assert total_calories == 0
 
 def test_generate_total_calories_invalid():
-    with pytest.raises(ValueError):
-        generate_total_calories({})
+    with pytest.raises(TypeError):
+        generate_total_calories(None)
 
 def test_remove_food_from_meal_plan_valid(meal_plan):
     remove_food_from_meal_plan(meal_plan, 'apple', 1)
