@@ -19,7 +19,7 @@ those functions, for example:
 | `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                                     |
 | `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                                 |
 | `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`              |
-| `filter_nutritional_info(categories, sizes)`                         | `test_filter_nutritional_info_valid()`<br> `test_filter_nutritional_info_invalid()`                          |
+| `filter_nutritional_info(nutritional_info)`                         | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()`                          |
 | `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                                       |
 | `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                                       |
 | `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`             |
@@ -30,10 +30,10 @@ those functions, for example:
 | `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
 | `DataTable.GetNumberRows()`                                          | `test_DataTable_GetNumberRows_valid(data_table)` <br> `test_DataTable_GetNumberRows_invalid()`               |
 | `DataTable.GetNumberCols()`                                          | `test_DataTable_GetNumberCols_valid(data_table)` <br> `test_DataTable_GetNumberCols_invalid()`               |
-| `DataTable.GetValue()`                                               | `test_DataTable_GetValue_valid(data_table)` <br> `test_DataTable_GetValue_invalid(data_table)`               |
-| `DataTable.SetValue()`                                               | `test_DataTable_SetValue_valid(data_table)` <br> `test_DataTable_SetValue_invalid(data_table)`               |
-| `DataTable.GetColLabelValue()`                                       | `test_DataTable_GetColLabelValue_valid(data_table)` <br> `test_DataTable_GetColLabelValue_invalid()`         |
-| `DataTable.GetAttr()`                                                | `test_DataTable_GetAttr_valid(data_table)` <br> `test_DataTable_GetAttr_invalid(data_table)`                 |
+| `DataTable.GetValue(row, col)`                                               | `test_DataTable_GetValue_valid(data_table)` <br> `test_DataTable_GetValue_invalid(data_table)`               |
+| `DataTable.SetValue(row, col, value)`                                               | `test_DataTable_SetValue_valid(data_table)` <br> `test_DataTable_SetValue_invalid(data_table)`               |
+| `DataTable.GetColLabelValue(col)`                                       | `test_DataTable_GetColLabelValue_valid(data_table)` <br> `test_DataTable_GetColLabelValue_invalid()`         |
+| `DataTable.GetAttr(row, col, prop)`                                                | `test_DataTable_GetAttr_valid(data_table)` <br> `test_DataTable_GetAttr_invalid(data_table)`                 |
 ---
 
 ## 2. **Test Case Details**
