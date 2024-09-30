@@ -7,9 +7,9 @@
 
 | Student No. | Full Name | GitHub Username | Contribution (sum to 100%) | 
 |-------------|-----------|-----------------|----------------------------|
-| s5404039    | Ekaterina Kozub | UniKatya             | 40%                        |
-| s5271400    | Ella Baines-Lang | ellyiian             | 40%                        | 
-| s5303300    | Fiston Kayeye | Sarvinfils         | 20%                        | 
+| s5404039    | Ekaterina Kozub | UniKatya             | 33.33%                        |
+| s5271400    | Ella Baines-Lang | ellyiian             | 33.33%                        | 
+| s5303300    | Fiston Kayeye | Sarvinfils         | 33.33%                        | 
 
 ### Brief Description of Contribution
 
