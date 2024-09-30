@@ -63,8 +63,7 @@ def create_bar_graph(filtered_categories, filtered_sizes, ax):
     return ax.bar
 
 def filter_food_by_nutrient_range(nutrient, min_val, max_val):
-    if not min_val or not max_val or not isinstance(min_val, float) or not isinstance(max_val, float)\
-            or min_val >= max_val:
+    if not min_val or not max_val or min_val >= max_val:
         raise ValueError
 
     df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
@@ -101,7 +100,7 @@ def get_food_details(food_name, meal_plan):
     return food_key, quantity, total_calories
 
 def generate_meal_plan(meal_plan, food_name, quantity):
-    if not isinstance(quantity, int) or food_name.isdigit() or not search_food_by_name(food_name) or quantity <= 0 or quantity > 50:
+    if not search_food_by_name(food_name) or quantity <= 0 or quantity > 50:
         raise ValueError
 
     if food_name in meal_plan:
@@ -115,7 +114,7 @@ def generate_total_calories(meal_plan):
     c_total = 0
     global df
     if not isinstance(meal_plan, dict):
-        raise TypeError
+        raise ValueError
     if not meal_plan:
         return c_total
 
@@ -147,13 +146,9 @@ class DataTable(wx.grid.GridTableBase):
         return len(self.data.columns)
 
     def GetValue(self, row, col):
-        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
-            raise IndexError("Row or column index out of bounds")
         return self.data.iloc[row, col]
 
     def SetValue(self, row, col, value):
-        if row < 0 or row >= self.GetNumberRows() or col < 0 or col >= self.GetNumberCols():
-            raise IndexError("Row or column index out of bounds")
         self.data.iloc[row, col] = value
 
     def GetColLabelValue(self, col):

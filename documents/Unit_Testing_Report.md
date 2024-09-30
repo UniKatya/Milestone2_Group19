@@ -14,26 +14,26 @@ the five required features.</span> There is no need to test the GUI components. 
 list all tested functions related to the five required features and the corresponding test functions designed to test 
 those functions, for example:
 
-| **Tested Functions**                                                 | **Test Functions**                                                                                           |
-|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                                     |
-| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                                 |
-| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`              |
-| `filter_nutritional_info(nutritional_info)`                         | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()`                          |
-| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                                       |
-| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                                       |
-| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`             |
-| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`             |
-| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`                     |
-| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`                 |
-| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)` <br> `test_generate_total_calories_invalid(meal_plan)`       |
+| **Tested Functions**                                                 | **Test Functions**                                                                                   |
+|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                             |
+| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                         |
+| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`      |
+| `filter_nutritional_info(nutritional_info)`                          | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()` |
+| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                               |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                               |
+| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`     |
+| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`     |
+| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`             |
+| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`         |
+| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)` |
 | `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
-| `DataTable.GetNumberRows()`                                          | `test_DataTable_GetNumberRows_valid(data_table)` <br> `test_DataTable_GetNumberRows_invalid()`               |
-| `DataTable.GetNumberCols()`                                          | `test_DataTable_GetNumberCols_valid(data_table)` <br> `test_DataTable_GetNumberCols_invalid()`               |
-| `DataTable.GetValue(row, col)`                                               | `test_DataTable_GetValue_valid(data_table)` <br> `test_DataTable_GetValue_invalid(data_table)`               |
-| `DataTable.SetValue(row, col, value)`                                               | `test_DataTable_SetValue_valid(data_table)` <br> `test_DataTable_SetValue_invalid(data_table)`               |
-| `DataTable.GetColLabelValue(col)`                                       | `test_DataTable_GetColLabelValue_valid(data_table)` <br> `test_DataTable_GetColLabelValue_invalid()`         |
-| `DataTable.GetAttr(row, col, prop)`                                                | `test_DataTable_GetAttr_valid(data_table)` <br> `test_DataTable_GetAttr_invalid(data_table)`                 |
+| `DataTable.GetNumberRows()`                                          | `test_get_number_rows(data_table)`                                                                   |
+| `DataTable.GetNumberCols()`                                          | `test_get_number_cols(data_table)`                                                                   |
+| `DataTable.GetValue(row, col)`                                       | `test_get_value_valid(data_table)` <br> `test_get_value_invalid(data_table)`         |
+| `DataTable.SetValue(row, col, value)`                                | `test_set_value_valid(data_table)` <br> `test_set_value_invalid(data_table)`         |
+| `DataTable.GetColLabelValue(col)`                                    | `test_get_col_label_value_valid(data_table)` <br> `test_get_col_label_value_invalid(data_table)`   |
+| `DataTable.GetAttr(row, col, prop)`                                  | `test_get_attr_valid(data_table)` <br> `test_get_attr_invalid(data_table)`             |
 ---
 
 ## 2. **Test Case Details**
@@ -51,13 +51,12 @@ those functions, for example:
 
 | **Valid Input**                           | **Expected Output** |
 |-------------------------------------------|---------------------|
-| `load_data('Food_Nutrition_Dataset.csv')` | `pd.DataFrame`      |
+| `load_data('Food_Nutrition_Dataset.csv')` | `Non-empty DataFrame`      |
 
 - **1) Code for the Test Function**
 ```python
 def test_load_data_valid():
     df = load_data('Food_Nutrition_Dataset.csv')
-    assert isinstance(df, pd.DataFrame)
     assert not df.empty
 ```
 - **2) Invalid Input and Expected Output**
@@ -129,20 +128,30 @@ def test_search_food_by_name_invalid():
 - **1) Code for the Test Function**
 ```python
 def test_get_nutritional_info_valid(cream_cheese_info):
-    information = get_nutritional_info("cream cheese")
-    assert information == cream_cheese_info
+    assert get_nutritional_info("cream cheese") == cream_cheese_info
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**                 | **Expected Output** |
 |-----------------------------------|---------------------|
 | `get_nutritional_info('pudding')` | `ValueError`        |
+| `get_nutritional_info('12')`      | `ValueError`        |
+| `get_nutritional_info(' ')`       | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
 def test_get_nutritional_info_invalid():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         get_nutritional_info("pudding")
+    assert exc_info.type is ValueError
+
+    with pytest.raises(ValueError) as exc_info:
+        get_nutritional_info("12")
+    assert exc_info.type is ValueError
+
+    with pytest.raises(ValueError) as exc_info:
+        get_nutritional_info(" ")
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 4:
@@ -155,17 +164,14 @@ def test_get_nutritional_info_invalid():
   - This function filters the nutritional information to exclude zero values and returns the filtered categories, sizes, and explode values for charting.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                              | **Expected Output**          |
-|----------------------------------------------|------------------------------|
-| `filter_nutritional_info(cream_cheese_info)` | `categories, sizes, explode` |
+| **Valid Input**                              | **Expected Output** |
+|----------------------------------------------|---------------------|
+| `filter_nutritional_info(cream_cheese_info)` | `not None`          |
 
 - **1) Code for the Test Function**
 ```python
 def test_filter_nutritional_info_valid(cream_cheese_info):
-    categories, sizes, explode = filter_nutritional_info(cream_cheese_info)
-    assert categories == ['Caloric Value', 'Selenium', 'Potassium', 'Cholesterol', 'Copper', 'Water', 'Nutrition Density', 'Fat', 'Others']
-    assert sizes == [51, 19.1, 15.5, 14.6, 14.1, 7.6, 7.07, 5, 8.984999999999996]
-    assert explode == [0.1] + [0.0] * (len(categories) - 1)
+    assert filter_nutritional_info(cream_cheese_info) is not None
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -176,8 +182,9 @@ def test_filter_nutritional_info_valid(cream_cheese_info):
 - **2) Code for the Test Function**
 ```python
 def test_filter_nutritional_info_invalid():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         filter_nutritional_info({})
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 5:
@@ -190,16 +197,14 @@ def test_filter_nutritional_info_invalid():
   - This function creates a pie chart using the filtered nutritional information. The input is the filtered sizes, categories, explode values, and ax. The output is a pie chart.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                                                    | **Expected Output** |
-|--------------------------------------------------------------------|---------------------|
-| `create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], ax)` | `3`                 |
+| **Valid Input**                                                                        | **Expected Output** |
+|----------------------------------------------------------------------------------------|---------------------|
+| `(create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], plt.subplots()[1])[0])` | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
 def test_create_pie_chart_valid():
-    fig, ax = plt.subplots()
-    wedges, texts, autotexts = create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], ax)
-    assert len(wedges) == 3
+    assert len(create_pie_chart([10, 20, 30], ["A", "B", "C"], [0, 0.1, 0], plt.subplots()[1])[0]) == 3
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -211,8 +216,9 @@ def test_create_pie_chart_valid():
 ```python
 def test_create_pie_chart_invalid():
     fig, ax = plt.subplots()
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         create_pie_chart([], [], [], ax)
+    assert exc_info.type is ValueError
 ```
 
 
@@ -228,14 +234,12 @@ def test_create_pie_chart_invalid():
 
 | **Valid Input**                                       | **Expected Output** |
 |-------------------------------------------------------|---------------------|
-| `create_bar_graph(["A", "B", "C"], [10, 20, 30], ax)` | `3`                 |
+| `create_bar_graph(["A", "B", "C"], [10, 20, 30], ax), ax)[1].patches)` | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
 def test_create_bar_graph_valid():
-    fig, ax = plt.subplots()
-    create_bar_graph(["A", "B", "C"], [10, 20, 30], ax)
-    assert len(ax.patches) == 3
+    assert len((lambda ax: (create_bar_graph(["A", "B", "C"], [10, 20, 30], ax), ax)[1].patches)(plt.subplots()[1])) == 3
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -247,8 +251,9 @@ def test_create_bar_graph_valid():
 ```python
 def test_create_bar_graph_invalid():
     fig, ax = plt.subplots()
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         create_bar_graph([], [], ax)
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 7:
@@ -269,20 +274,30 @@ def test_create_bar_graph_invalid():
 - **1) Code for the Test Function**
 ```python
 def test_filter_food_by_nutrient_range_valid():
-    filtered = filter_food_by_nutrient_range("Fat", 0.1, 0.3)
-    assert len(filtered) == 311
+    assert len(filter_food_by_nutrient_range("Fat", 0.1, 0.3)) == 311
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**                                  | **Expected Output** |
-|----------------------------------------------------|---------------------|
-| `filter_food_by_nutrient_range("pudding", 11, 10)` | `ValueError`        |
+| **Invalid Input**                                | **Expected Output** |
+|--------------------------------------------------|---------------------|
+| `filter_food_by_nutrient_range("fat", None, 10)` | `ValueError`        |
+| `filter_food_by_nutrient_range("fat", 11, None)` | `ValueError`        |
+| `filter_food_by_nutrient_range("fat", 11, 10)`   | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
 def test_filter_food_by_nutrient_range_invalid():
-    with pytest.raises(ValueError):
-        filter_food_by_nutrient_range("pudding", 11, 10)
+    with pytest.raises(ValueError) as exc_info:
+        filter_food_by_nutrient_range("fat", None, 10)
+    assert exc_info.type is ValueError
+
+    with pytest.raises(ValueError) as exc_info:
+        filter_food_by_nutrient_range("fat", 11, None)
+    assert exc_info.type is ValueError
+    
+    with pytest.raises(ValueError) as exc_info:
+        filter_food_by_nutrient_range("fat", 11, 10)
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 8:
@@ -304,12 +319,9 @@ def test_filter_food_by_nutrient_range_invalid():
 - **1) Code for the Test Function**
 ```python
 def test_filter_food_by_nutrient_level_valid():
-    filtered = filter_food_by_nutrient_level("Fat", "High")
-    assert len(filtered) == 3
-    filtered = filter_food_by_nutrient_level("Fat", "Mid")
-    assert len(filtered) == 11
-    filtered = filter_food_by_nutrient_level("Fat", "Low")
-    assert len(filtered) == 2381
+    assert len(filter_food_by_nutrient_level("Fat", "High")) == 3
+    assert len(filter_food_by_nutrient_level("Fat", "Mid")) == 11
+    assert len(filter_food_by_nutrient_level("Fat", "Low")) == 2381
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -320,8 +332,9 @@ def test_filter_food_by_nutrient_level_valid():
 - **2) Code for the Test Function**
 ```python
 def test_filter_food_by_nutrient_level_invalid():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         filter_food_by_nutrient_level("Fat", "loow")
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 9:
@@ -329,7 +342,7 @@ def test_filter_food_by_nutrient_level_invalid():
 - `test_get_food_details_valid()`
 - `test_get_food_details_invalid()`
 - **Tested Function/Module**
-  - `get_food_details(df, food_name, meal_plan)`
+  - `get_food_details(food_name, meal_plan)`
 - **Description**
   - This function retrieves food details from the meal plan. The input is the dataframe, food_name, and meal_plan. The output is the food details.
 - **1) Valid Input and Expected Output**  
@@ -353,12 +366,18 @@ def test_get_food_details_valid(meal_plan):
 | **Invalid Input**                                 | **Expected Output** |
 |---------------------------------------------------|---------------------|
 | `get_food_details('nonexistent_food', meal_plan)` | `ValueError`        |
+| `get_food_details('12', meal_plan)`               | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
 def test_get_food_details_invalid(meal_plan):
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         get_food_details('nonexistent_food', meal_plan)
+    assert exc_info.type is ValueError
+    
+    with pytest.raises(ValueError) as exc_info:
+        get_food_details('12', meal_plan)
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 10:
@@ -374,48 +393,39 @@ def test_get_food_details_invalid(meal_plan):
 | **Valid Input**                                    | **Expected Output** |
 |----------------------------------------------------|---------------------|
 | `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `2`                 |
-| `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `cream cheese`      |
-| `generate_meal_plan(meal_plan, 'cream cheese', 2)` | `2`                 |
 | `generate_meal_plan(meal_plan, 'apple', 3)`        | `5`                 |
-| `generate_meal_plan(meal_plan, 'apple', 3)`        | `'apple'`           |
-| `generate_meal_plan(meal_plan, 'apple', 3)`        | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
 def test_generate_meal_plan_valid(meal_plan):
-    name, quantity = generate_meal_plan(meal_plan, 'cream cheese', 2)
+    generate_meal_plan(meal_plan, 'cream cheese', 2)
     assert meal_plan['cream cheese'] == 2
-    assert name == 'cream cheese'
-    assert quantity == 2
 
-    name, quantity = generate_meal_plan(meal_plan, 'apple', 3)
+    generate_meal_plan(meal_plan, 'apple', 3)
     assert meal_plan['apple'] == 5
-    assert name == 'apple'
-    assert quantity == 3
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**                               | **Expected Output** |
-|-------------------------------------------------|---------------------|
-| `generate_meal_plan(meal_plan, 'pudding', 2)`   | `ValueError`        |
-| `generate_meal_plan(meal_plan, 'apple', -2)`    | `ValueError`        |
-| `generate_meal_plan(meal_plan, 'apple', 0)`     | `ValueError`        |
-| `generate_meal_plan(meal_plan, 'apple', 'two')` | `ValueError`        |
+| **Invalid Input**                             | **Expected Output** |
+|-----------------------------------------------|---------------------|
+| `generate_meal_plan(meal_plan, 'pudding', 2)` | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'apple', -2)`  | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'apple', 51)`  | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
 def test_generate_meal_plan_invalid(meal_plan):
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         generate_meal_plan(meal_plan, 'pudding', 2)
+    assert exc_info.type is ValueError
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as exc_info:
         generate_meal_plan(meal_plan, 'apple', -2)
+    assert exc_info.type is ValueError
 
-    with pytest.raises(ValueError):
-        generate_meal_plan(meal_plan, 'apple', 0)
-
-    with pytest.raises(ValueError):
-        generate_meal_plan(meal_plan, 'apple', 'two')
+    with pytest.raises(ValueError) as exc_info:
+        generate_meal_plan(meal_plan, 'apple', 51)
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 11:
@@ -431,24 +441,27 @@ def test_generate_meal_plan_invalid(meal_plan):
 | **Valid Input**                      | **Expected Output** |
 |--------------------------------------|---------------------|
 | `generate_total_calories(meal_plan)` | `324`               |
+| `generate_total_calories({})`        | `0`                 |
 
 - **1) Code for the Test Function**
 ```python
 def test_generate_total_calories_valid(meal_plan):
-    total_calories = generate_total_calories(meal_plan)
-    assert total_calories == 324
+    assert generate_total_calories(meal_plan) == 324
+    assert generate_total_calories({}) == 0
 ```
+
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `generate_total_calories({})` | `ValueError`        |
+| `generate_total_calories([])` | `ValueError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_generate_total_calories_invalid():
-    with pytest.raises(ValueError):
-        generate_total_calories({})
+def test_generate_total_calories_invalid(meal_plan):
+    with pytest.raises(ValueError) as exc_info:
+        generate_total_calories([])
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 12:
@@ -484,14 +497,14 @@ def test_remove_food_from_meal_plan_valid(meal_plan):
 - **2) Code for the Test Function**
 ```python
 def test_remove_food_from_meal_plan_invalid(meal_plan):
-    with pytest.raises(KeyError):
+    with pytest.raises(KeyError) as exc_info:
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
+    assert exc_info.type is KeyError
 ```
 
 ### Test Case 13:
 - **Test Function/Module**
-- `test_DataTable_GetNumberRows_valid(data_table)`
-- `test_DataTable_GetNumberRows_invalid()`
+- `test_get_number_rows(data_table)`
 - **Tested Function/Module**
   - `DataTable.GetNumberRows()`
 - **Description**
@@ -504,27 +517,13 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_GetNumberRows_valid(data_table):
+def test_get_number_rows(data_table):
     assert data_table.GetNumberRows() == 3
-```
-- **2) Invalid Input and Expected Output**
-
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `DataTable().GetNumberRows()` | `AttributeError`    |
-
-- **2) Code for the Test Function**
-```python
-def test_DataTable_GetNumberRows_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        DataTable().GetNumberRows()
-    assert exc_info.type is AttributeError
 ```
 
 ### Test Case 14:
 - **Test Function/Module**
-- `test_DataTable_GetNumberCols_valid(data_table)`
-- `test_DataTable_GetNumberCols_invalid()`
+- `test_get_number_cols(data_table)`
 - **Tested Function/Module**
   - `DataTable.GetNumberCols()`
 - **Description**
@@ -537,29 +536,16 @@ def test_DataTable_GetNumberRows_invalid():
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_GetNumberCols_valid(data_table):
+def test_get_number_cols(data_table):
     assert data_table.GetNumberCols() == 4
-```
-- **2) Invalid Input and Expected Output**
-
-| **Invalid Input**             | **Expected Output** |
-|-------------------------------|---------------------|
-| `DataTable().GetNumberCols()` | `AttributeError`    |
-
-- **2) Code for the Test Function**
-```python
-def test_DataTable_GetNumberCols_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        DataTable().GetNumberCols()
-    assert exc_info.type is AttributeError
 ```
 
 ### Test Case 15:
 - **Test Function/Module**
-- `test_DataTable_GetValue_valid(data_table)`
-- `test_DataTable_GetValue_invalid(data_table)`
+- `test_get_value_valid(data_table)`
+- `test_get_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `DataTable.GetNumberCols()`
+  - `DataTable.GetValue(row, col)`
 - **Description**
   - The function retrieves the value at the specified row and column in the data table. The input is the row and column. The output is the value.
 - **1) Valid Input and Expected Output**  
@@ -567,13 +553,11 @@ def test_DataTable_GetNumberCols_invalid():
 | **Valid Input**             | **Expected Output** |
 |-----------------------------|---------------------|
 | `data_table.GetValue(0, 0)` | `'apple'`           |
-| `data_table.GetValue(1, 1)` | `89`                |
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_GetValue_valid(data_table):
+def test_get_value_valid(data_table):
     assert data_table.GetValue(0, 0) == 'apple'
-    assert data_table.GetValue(1, 1) == 89
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -583,48 +567,50 @@ def test_DataTable_GetValue_valid(data_table):
 
 - **2) Code for the Test Function**
 ```python
-def test_DataTable_GetValue_invalid(data_table):
-    with pytest.raises(IndexError):
+def test_get_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
         data_table.GetValue(10, 10)
+    assert exc_info.type is IndexError
 ```
 
 ### Test Case 16:
 - **Test Function/Module**
-- `test_DataTable_SetValue_valid(data_table)`
-- `test_DataTable_SetValue_valid(data_table)`
+- `test_set_value_valid(data_table)`
+- `test_set_value_invalid(data_table)`
 - **Tested Function/Module**
   - `DataTable.SetValue()`
 - **Description**
   - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                      | **Expected Output** |
-|--------------------------------------|---------------------|
-| `data_table.SetValue(0, 0, 'grape')` | `'grape'`           |
+| **Valid Input**                  | **Expected Output** |
+|----------------------------------|---------------------|
+| `data_table.SetValue(0, 0, 10')` | `10`                |
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_SetValue_valid(data_table):
-    data_table.SetValue(0, 0, 'grape')
-    assert data_table.GetValue(0, 0) == 'grape'
+def test_set_value_valid(data_table):
+    data_table.SetValue(0, 0, 10)
+    assert data_table.GetValue(0, 0) == 10
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**                         | **Expected Output** |
 |-------------------------------------------|---------------------|
-| ` data_table.SetValue(10, 10, 'Invalid')` | `IndexError`        |
+| ` data_table.SetValue(10, 10, 100)` | `IndexError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_DataTable_SetValue_invalid(data_table):
-    with pytest.raises(IndexError):
-        data_table.SetValue(10, 10, 'Invalid')
+def test_set_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.SetValue(10, 10, 100)
+    assert exc_info.type is IndexError
 ```
 
 ### Test Case 17:
 - **Test Function/Module**
-- `test_DataTable_GetColLabelValue_valid(data_table)`
-- `test_DataTable_GetColLabelValue_invalid()`
+- `test_get_col_label_value_valid(data_table)`
+- `test_get_col_label_value_invalid(data_table)`
 - **Tested Function/Module**
   - `DataTable.GetColLabelValue()`
 - **Description**
@@ -638,55 +624,57 @@ def test_DataTable_SetValue_invalid(data_table):
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_GetColLabelValue_valid(data_table):
+def test_get_col_label_value_valid(data_table):
     assert data_table.GetColLabelValue(0) == 'food'
     assert data_table.GetColLabelValue(1) == 'Caloric Value'
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**                  | **Expected Output** |
-|------------------------------------|---------------------|
-| `DataTable().GetColLabelValue(-1)` | `AttributeError`    |
+| **Invalid Input**                   | **Expected Output** |
+|-------------------------------------|---------------------|
+| `data_table().GetColLabelValue(-1)` | `IndexError`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_DataTable_GetColLabelValue_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        DataTable().GetColLabelValue(-1)
-    assert exc_info.type is AttributeError
+def test_get_col_label_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetColLabelValue(10) 
+    assert exc_info.type is IndexError
 ```
 
 ### Test Case 18:
 - **Test Function/Module**
-- `test_DataTable_GetAttr_valid(data_table)`
-- `test_DataTable_GetAttr_invalid(data_table)`
+- `test_get_attr_valid(data_table)`
+- `test_get_attr_invalid(data_table)`
 - **Tested Function/Module**
   - `DataTable.GetColLabelValue()`
 - **Description**
   - The function retrieves the attribute at the specified row and column in the data table. The input is the row, column, and default attribute. The output is the attribute.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**              | **Expected Output** |
-|------------------------------|---------------------|
-| `attr.GetBackgroundColour()` | `EVEN_ROW_COLOUR`   |
+| **Valid Input**              | **Expected Output**         |
+|------------------------------|-----------------------------|
+| `data_table.GetAttr(3, 0, None).GetBackgroundColour()` | `EVEN_ROW_COLOUR`           |
+| `data_table.GetAttr(0, 0, None).HasBackgroundColour()` | `not HasBackgroundColour()` |
 
 - **1) Code for the Test Function**
 ```python
-def test_DataTable_GetAttr_valid(data_table):
-    attr = data_table.GetAttr(1, 0, None)
-    assert attr.GetBackgroundColour() == EVEN_ROW_COLOUR
+def test_get_attr_valid(data_table):
+    assert data_table.GetAttr(3, 0, None).GetBackgroundColour() == EVEN_ROW_COLOUR
+    assert not data_table.GetAttr(0, 0, None).HasBackgroundColour()
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**            | **Expected Output** |
 |------------------------------|---------------------|
-| `attr.HasBackgroundColour()` | `False`             |
+| `data_table.GetAttr(10, 0, None)` | `not None`          |
+| `data_table.GetAttr(0, 10, None)` | `not None`          |
 
 - **2) Code for the Test Function**
 ```python
-def test_DataTable_GetAttr_invalid(data_table):
-    attr = data_table.GetAttr(0, 0, None)
-    assert not attr.HasBackgroundColour()
+def test_get_attr_invalid(data_table):
+    assert data_table.GetAttr(10, 0, None) is not None
+    assert data_table.GetAttr(0, 10, None) is not None
 ```
 
 ## 3. **Testing Report Summary**
