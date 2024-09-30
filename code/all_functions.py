@@ -112,11 +112,12 @@ def generate_meal_plan(meal_plan, food_name, quantity):
     return food_name, quantity
 
 def generate_total_calories(meal_plan):
-    if not meal_plan:
-        raise ValueError
-
-    global df
     c_total = 0
+    global df
+
+    if not meal_plan:
+        return c_total
+
     for key, value in meal_plan.items():
         food_row = df[df['food'] == key].iloc[0]
         caloric_value = food_row['Caloric Value']

@@ -161,9 +161,9 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerRangeTop.Add( self.m_staticTextSelectNutrientFilter, 0, wx.ALL, 8 )
 
-		m_choiceNutrientRangeChoices = [ u"Fat", u"Saturated Fats", u"Monounsaturated Fats", u"Polyunsaturated Fats", u"Carbohydrates", u"Sugars", u"Protein", u"Dietary Fiber", u"Cholesterol", u"Sodium", u"Water", u"Vitamin A", u"Vitamin B1", u"Vitamin B11", u"Vitamin B12", u"Vitamin B2", u"Vitamin B3", u"Vitamin B5", u"Vitamin B6", u"Vitamin C", u"Vitamin D", u"Vitamin E", u"Vitamin K", u"Calcium", u"Copper", u"Iron", u"Magnesium", u"Manganese", u"Phosphorus", u"Potassium", u"Selenium", u"Zinc", wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString ]
+		m_choiceNutrientRangeChoices = [ u"Caloric Value", u"Fat", u"Saturated Fats", u"Monounsaturated Fats", u"Polyunsaturated Fats", u"Carbohydrates", u"Sugars", u"Protein", u"Dietary Fiber", u"Cholesterol", u"Sodium", u"Water", u"Vitamin A", u"Vitamin B1", u"Vitamin B11", u"Vitamin B12", u"Vitamin B2", u"Vitamin B3", u"Vitamin B5", u"Vitamin B6", u"Vitamin C", u"Vitamin D", u"Vitamin E", u"Vitamin K", u"Calcium", u"Copper", u"Iron", u"Magnesium", u"Manganese", u"Phosphorus", u"Potassium", u"Selenium", u"Zinc", u"Nutrition Density" ]
 		self.m_choiceNutrientRange = wx.Choice( self.m_panelRangeFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choiceNutrientRangeChoices, 0 )
-		self.m_choiceNutrientRange.SetSelection( 0 )
+		self.m_choiceNutrientRange.SetSelection( 1 )
 		self.m_choiceNutrientRange.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
 		self.m_choiceNutrientRange.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
@@ -239,9 +239,9 @@ class MyFrame1 ( wx.Frame ):
 
 		bSizerFilterTop.Add( self.m_staticTextSelectNutrientLevel, 0, wx.ALL, 8 )
 
-		m_choiceNutrientLevelChoices = [ u"Fat", u"Saturated Fats", u"Monounsaturated Fats", u"Polyunsaturated Fats", u"Carbohydrates", u"Sugars", u"Protein", u"Dietary Fiber", u"Cholesterol", u"Sodium", u"Water", u"Vitamin A", u"Vitamin B1", u"Vitamin B11", u"Vitamin B12", u"Vitamin B2", u"Vitamin B3", u"Vitamin B5", u"Vitamin B6", u"Vitamin C", u"Vitamin D", u"Vitamin E", u"Vitamin K", u"Calcium", u"Copper", u"Iron", u"Magnesium", u"Manganese", u"Phosphorus", u"Potassium", u"Selenium", u"Zinc", wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString, wx.EmptyString ]
+		m_choiceNutrientLevelChoices = [ u"Caloric Value", u"Fat", u"Saturated Fats", u"Monounsaturated Fats", u"Polyunsaturated Fats", u"Carbohydrates", u"Sugars", u"Protein", u"Dietary Fiber", u"Cholesterol", u"Sodium", u"Water", u"Vitamin A", u"Vitamin B1", u"Vitamin B11", u"Vitamin B12", u"Vitamin B2", u"Vitamin B3", u"Vitamin B5", u"Vitamin B6", u"Vitamin C", u"Vitamin D", u"Vitamin E", u"Vitamin K", u"Calcium", u"Copper", u"Iron", u"Magnesium", u"Manganese", u"Phosphorus", u"Potassium", u"Selenium", u"Zinc", u"Nutrition Density" ]
 		self.m_choiceNutrientLevel = wx.Choice( self.m_panelLevelFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choiceNutrientLevelChoices, 0 )
-		self.m_choiceNutrientLevel.SetSelection( 0 )
+		self.m_choiceNutrientLevel.SetSelection( 1 )
 		self.m_choiceNutrientLevel.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 		self.m_choiceNutrientLevel.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNTEXT ) )
 		self.m_choiceNutrientLevel.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
