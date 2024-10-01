@@ -49,9 +49,9 @@ those functions, for example:
   - The function reads the CSV file and returns a pandas dataframe. The input is the file path, and the output is the dataframe.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                           | **Expected Output** |
-|-------------------------------------------|---------------------|
-| `load_data('Food_Nutrition_Dataset.csv')` | `Non-empty DataFrame`      |
+| **Valid Input**                           | **Expected Output**   |
+|-------------------------------------------|-----------------------|
+| `load_data('Food_Nutrition_Dataset.csv')` | `Non-empty DataFrame` |
 
 - **1) Code for the Test Function**
 ```python
@@ -63,7 +63,7 @@ def test_load_data_valid():
 
 | **Invalid Input**                    | **Expected Output** |
 |--------------------------------------|---------------------|
-| `load_data('non_existent_file.csv')` | `FileNotFoundError` |
+| `load_data('non_existent_file.csv')` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -134,24 +134,24 @@ def test_get_nutritional_info_valid(cream_cheese_info):
 
 | **Invalid Input**                 | **Expected Output** |
 |-----------------------------------|---------------------|
-| `get_nutritional_info('pudding')` | `ValueError`        |
-| `get_nutritional_info('12')`      | `ValueError`        |
-| `get_nutritional_info(' ')`       | `ValueError`        |
+| `get_nutritional_info('pudding')` | `Handle Exception`  |
+| `get_nutritional_info('12')`      | `Handle Exception`  |
+| `get_nutritional_info(' ')`       | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
 def test_get_nutritional_info_invalid():
-    with pytest.raises(IndexError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         get_nutritional_info("pudding")
-    assert exc_info.type is IndexError
+    assert exc_info.type is ValueError
 
-    with pytest.raises(AttributeError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         get_nutritional_info("12")
-    assert exc_info.type is AttributeError
+    assert exc_info.type is ValueError
 
-    with pytest.raises(AttributeError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         get_nutritional_info(" ")
-    assert exc_info.type is AttributeError
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 4:
@@ -177,7 +177,7 @@ def test_filter_nutritional_info_valid(cream_cheese_info):
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `filter_nutritional_info({})` | `ValueError`        |
+| `filter_nutritional_info({})` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -210,7 +210,7 @@ def test_create_pie_chart_valid():
 
 | **Invalid Input**                       | **Expected Output** |
 |-----------------------------------------|---------------------|
-| `test_create_pie_chart([], [], [], ax)` | `ValueError`        |
+| `test_create_pie_chart([], [], [], ax)` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -232,8 +232,8 @@ def test_create_pie_chart_invalid():
   - This function creates a bar graph using the filtered nutritional information. The input is the filtered categories, sizes, and ax. The output is a bar graph.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                                       | **Expected Output** |
-|-------------------------------------------------------|---------------------|
+| **Valid Input**                                                        | **Expected Output** |
+|------------------------------------------------------------------------|---------------------|
 | `create_bar_graph(["A", "B", "C"], [10, 20, 30], ax), ax)[1].patches)` | `3`                 |
 
 - **1) Code for the Test Function**
@@ -245,7 +245,7 @@ def test_create_bar_graph_valid():
 
 | **Invalid Input**              | **Expected Output** |
 |--------------------------------|---------------------|
-| `create_bar_graph([], [], ax)` | `ValueError`        |
+| `create_bar_graph([], [], ax)` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -280,9 +280,9 @@ def test_filter_food_by_nutrient_range_valid():
 
 | **Invalid Input**                                | **Expected Output** |
 |--------------------------------------------------|---------------------|
-| `filter_food_by_nutrient_range("fat", None, 10)` | `ValueError`        |
-| `filter_food_by_nutrient_range("fat", 11, None)` | `ValueError`        |
-| `filter_food_by_nutrient_range("fat", 11, 10)`   | `ValueError`        |
+| `filter_food_by_nutrient_range("fat", None, 10)` | `Handle Exception`  |
+| `filter_food_by_nutrient_range("fat", 11, None)` | `Handle Exception`  |
+| `filter_food_by_nutrient_range("fat", 11, 10)`   | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -327,7 +327,7 @@ def test_filter_food_by_nutrient_level_valid():
 
 | **Invalid Input**                              | **Expected Output** |
 |------------------------------------------------|---------------------|
-| `filter_food_by_nutrient_level("Fat", "loow")` | `ValueError`        |
+| `filter_food_by_nutrient_level("Fat", "loow")` | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -363,10 +363,10 @@ def test_get_food_details_valid(meal_plan):
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**                                 | **Expected Output** |
-|---------------------------------------------------|---------------------|
-| `get_food_details('nonexistent_food', meal_plan)` | `ValueError`        |
-| `get_food_details('12', meal_plan)`               | `ValueError`        |
+| **Invalid Input**                               | **Expected Output** |
+|-------------------------------------------------|---------------------|
+| `get_food_details('nonexistent_food', meal_plan)` | `Handle Exception`        |
+| `get_food_details(12, meal_plan)`               | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -376,7 +376,7 @@ def test_get_food_details_invalid(meal_plan):
     assert exc_info.type is ValueError
     
     with pytest.raises(ValueError) as exc_info:
-        get_food_details('12', meal_plan)
+        get_food_details(12, meal_plan)
     assert exc_info.type is ValueError
 ```
 
@@ -408,9 +408,9 @@ def test_generate_meal_plan_valid(meal_plan):
 
 | **Invalid Input**                             | **Expected Output** |
 |-----------------------------------------------|---------------------|
-| `generate_meal_plan(meal_plan, 'pudding', 2)` | `ValueError`        |
-| `generate_meal_plan(meal_plan, 'apple', -2)`  | `ValueError`        |
-| `generate_meal_plan(meal_plan, 'apple', 51)`  | `ValueError`        |
+| `generate_meal_plan(meal_plan, 'pudding', 2)` | `Handle Exception`  |
+| `generate_meal_plan(meal_plan, 'apple', -2)`  | `Handle Exception`  |
+| `generate_meal_plan(meal_plan, 'apple', 51)`  | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -454,7 +454,7 @@ def test_generate_total_calories_valid(meal_plan):
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `generate_total_calories([])` | `ValueError`        |
+| `generate_total_calories([])` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -492,7 +492,7 @@ def test_remove_food_from_meal_plan_valid(meal_plan):
 
 | **Invalid Input**                                    | **Expected Output** |
 |------------------------------------------------------|---------------------|
-| `remove_food_from_meal_plan(meal_plan, 'carrot', 2)` | `KeyError`          |
+| `remove_food_from_meal_plan(meal_plan, 'carrot', 2)` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -563,7 +563,7 @@ def test_get_value_valid(data_table):
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `data_table.GetValue(10, 10)` | `IndexError`        |
+| `data_table.GetValue(10, 10)` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
@@ -583,9 +583,9 @@ def test_get_value_invalid(data_table):
   - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                  | **Expected Output** |
-|----------------------------------|---------------------|
-| `data_table.SetValue(0, 0, 10')` | `10`                |
+| **Valid Input**                 | **Expected Output** |
+|---------------------------------|---------------------|
+| `data_table.SetValue(0, 0, 10)` | `10`                |
 
 - **1) Code for the Test Function**
 ```python
@@ -597,7 +597,7 @@ def test_set_value_valid(data_table):
 
 | **Invalid Input**                         | **Expected Output** |
 |-------------------------------------------|---------------------|
-| ` data_table.SetValue(10, 10, 100)` | `IndexError`        |
+| ` data_table.SetValue(10, 10, 100)` | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python
@@ -632,7 +632,7 @@ def test_get_col_label_value_valid(data_table):
 
 | **Invalid Input**                   | **Expected Output** |
 |-------------------------------------|---------------------|
-| `data_table().GetColLabelValue(-1)` | `IndexError`        |
+| `data_table().GetColLabelValue(-1)` | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python

@@ -172,31 +172,49 @@ The Use Case Diagram below include Use Cases about the five features. Food Searc
 
 #### 3.2.1 Functions
 
+<span style="color:red">*load_data(file_path):*
+This function will load the data from the Nutritional_Food_Database.csv file into a Pandas DataFrame. The input parameter required is the file path (string) which specifies the location of the database file. The function will then return the database (DataFrame) which contains all the food items and their nutritional information. There are no side effects.</span>
+
 *search_food_by_name(food_name):*
 This function will search the database for foods that match the food name (string) inputted by the user and will then return found (boolean) showing if the food name was found or not. There are no side effects.
 
 *get_nutritional_info(food_name):*
 This function will retrieve the nutritional information of the food selected by the user. The input parameter will be the food name (string), which identifies which food must be fetched from the database. The function will then return nutritional_info (dictionary) which is the nutritional information on the chosen food. There are no side effects.
 
-*create_pie_chart(nutritional_info):* This function will create pie chart of the nutritional information inputted. The input parameter is the nutritional information (dictionary) from the get_nutritional_info() function, this parameter allows the program to know which food item and nutritional value to display in the pie chart. The function will then return a pie chart. There are no side effects.
+<span style="color:red">*filter_nutritional_info(nutritional_info):* This function will filter the nutritional information of the food selected by the user. The input parameter is the nutritional information (dictionary) from the get_nutritional_info() function, this parameter allows the program to know which food item and nutritional value to filter. The function will then return filtered_nutritional_info (dictionary) which is the filtered nutritional information. There are no side effects.</span>
 
-*create_bar_graph(nutritional_info):* This function will create a bar graph of the nutritional information inputted. The input parameter is the nutritional information (dictionary) from the get_nutritional_info() function, this parameter allows the program to know which food item and nutritional value to display in the bar graph. The function will then return a bar graph. There are no side effects.
+*create_pie_chart(nutritional_info):* This function will create a pie chart of the nutritional information inputted. <span style="color:red">The input parameters are the  filtered_categories, filtered_sizes, explode, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the pie chart. </span>The function will then return a pie chart. There are no side effects.
 
-*filter_food_by_nutrition_range(nutrient, min_value, max_value):*
-This function will search the database for foods that are within the minimum and maximum range values inputted by the user. The input parameters required are the nutrient name (string) and the minimum and maximum values (floats). These parameters specify which nutrients to search through, what is the lowest acceptable amount for the nutrient and what is the highest. The function will then return filtered_range (list) that match the requirements of the search. There are no side effects. 
+*create_bar_graph(nutritional_info):* This function will create a bar graph of the nutritional information inputted. <span style="color:red">The input parameter is the  filtered_categories, filtered_sizes, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the bar graph. </span>The function will then return a bar graph. There are no side effects.
 
-*filter_food_by_nutrition_level(nutrient, level):*
-This function will search the database for foods that match the level (low, medium, high), that is inputted by the user. The input parameters required are the nutrient name (string) and the nutrient level (string). These parameters specify which nutrients to search through as well as which level. The function will then return filtered_level (list) that match the requirements of the search. There are no side effects.
+*filter_food_by_nutrient_range(nutrient, min_value, max_value):*
+This function will search the database for foods that are within the minimum and maximum range values inputted by the user. The input parameters required are the nutrient name (string) and the minimum and maximum values (floats). These parameters specify which nutrients to search through, what is the lowest acceptable amount for the nutrient and what is the highest. The function will then return filtered_range (Dataframe) that match the requirements of the search. There are no side effects. 
+
+*filter_food_by_nutrient_level(nutrient, level):*
+This function will search the database for foods that match the level (low, medium, high), that is inputted by the user. The input parameters required are the nutrient name (string) and the nutrient level (string). These parameters specify which nutrients to search through as well as which level. The function will then return filtered_level (DataFrame) that match the requirements of the search. There are no side effects.
+
+<span style="color:red">*get_food_details(food_name, meal_plan):* This function will retrieve the details of the food selected by the user. The input parameters required are the food name (string) and the output dictionary from the meal plan function. The food name specifies the food item chosen by the user while the meal plan specifies the meal plan provided by the user. The function will then return food_key, quantity, and total_calories saving the current food details provided by the user. There are no side effects.</span>
 
 *generate_meal_plan(food_name, quantity):*
-This function will add food selected by the user into the user’s daily meal plan. The input parameters required are the food name (string) and the quantity (integer). The food name specifies the food item chosen by the user while the quantity specifies the amount of the selected food item. The function will then return meal_plan (dictionary) saving the current meal plan provided by the user. The side effect includes updating the meal_plan stored in the session.
+This function will add food selected by the user into the user’s daily meal plan. The input parameters required are the <span style="color:red">meal_plan (dictionary)</span>, food name (string) and the quantity (integer). <span style="color:red">The meal_plan is the current user's meal plan,</span> the food name specifies the food item chosen by the user while the quantity specifies the amount of the selected food item. The function will then return <span style="color:red">food_name and quantity, </span>saving the current meal plan provided by the user. The side effect includes updating the meal_plan stored in the session.
 
 *generate_total_calories(meal_plan):*
 This function will calculate the total calories for the day based on the foods chosen for the user’s meal plan. The input parameter required is the output dictionary from the meal plan function. This provides the information that the function can then use to add up all the calories. The function then returns total_calories (int), which is the total calories of the meal plan. There are no side effects. 
 
-*remove_food_from_meal_plan(food_name, meal_plan):*
-This function removes a particular food from the user's meal plan when the food is selected by the user. The input parameter required is the food name (string) and the output dictionary from the meal plan function. The food parameter specifies which food item is to be removed from the user's meal plan and the meal plan parameter specifies where it is to be removed from. The function then returns meal_plan (dictionary), a meal plan provided by the user. The side effect includes updating the meal_plan stored in the session.
+ <span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity):*</span>
+This function removes a particular food from the user's meal plan when the food is selected by the user. The input parameter required is the food name (string), the output dictionary from the meal plan function, <span style="color:red">and the selected quantity (int)</span>. The food parameter specifies which food item is to be removed from the user's meal plan and the meal plan parameter specifies where it is to be removed from.  <span style="color:red">The function doesn't return any but the side effect includes updating the meal_plan stored in the session.</span>
 
+ <span style="color:red">DataTable.GetNumberRows(): This function will return the number of rows in the data table. There are no side effects.</span>
+
+<span style="color:red">DataTable.GetNumberColumns(): This function will return the number of columns in the data table. There are no side effects.</span>
+
+<span style="color:red">DataTable.GetValue(row, col): This function will return the value at the specified row and column in the data table. The input is the row and col. There are no side effects.</span>
+
+<span style="color:red">DataTable.SetValue(row, col, value): This function will set the value at the specified row and column in the data table. The input is the row, col, and value. There are no side effects.</span>
+
+<span style="color:red">DataTable.GetColLabelValue(col): This function will return the labels in the data table. The input is the col. There are no side effects.</span>
+
+<span style="color:red">DataTable.GetAttr(col): This function will return colouring of the data table. The input is the row, col, and prop. There are no side effects.</span>
 
 #### 3.2.2 Data Structures / Data Sources
 
@@ -204,39 +222,42 @@ This function removes a particular food from the user's meal plan when the food 
 - Type: Pandas DataFrame
 - Usage: The food database is a complete collection of all food items and their nutritional information. It is set up as a DataFrame, with the food names and nutrients as the keys and their detailed data as the values. This setup allows for quick and efficient access to relevant information for users.
 - Functions:
-1. search_food_by_name(food_name): This function searches the food database using the provided food name and returns a boolean.
-2. get_nutritional_info(food_name): This function retrieves and returns the complete nutritional profile for a specified food item from the stored nutritional data in the database.
-3. filter_food_by_nutrition_range(nutrient, min_value, max_value): This function filters the food items in the database based on specified nutrient values within a defined range.
-4. filter_food_by_nutrition_level(nutrient, level): This function categorizes and filters food items according to predefined nutrient levels (low, mid, high) utilizing the structured data within the database.
-5. generate_total_calories(meal_plan): This function calculates the total calories for the day by adding up calories of all the foods included in the meal plan. This requires to search the database to get the total calories. 
+<span style="color:red">
+1. load_data(file_path): Loads the data from the Nutritional_Food_Database.csv file into a Pandas DataFrame. </span>
+2. search_food_by_name(food_name): Searches the database for foods that match the food name inputted by the user. 
+3. get_nutritional_info(food_name): Retrieves the nutritional information of the food selected by the user. 
+4. filter_food_by_nutrient_range(nutrient, min_val, max_val): Searches the database for foods that are within the minimum and maximum range values inputted by the user. 
+5. filter_food_by_nutrient_level(nutrient, level): Searches the database for foods that match the level (low, medium, high) inputted by the user
+6. <span style="color:red">get_food_details(food_name, meal_plan): Retrieves the details of the food selected by the user. This means using the dataframe to check the calories of each food item and then adding them up to get the total calories.</span>
+7. generate_total_calories(meal_plan): Calculates the total calories for the day based on the foods chosen for the user’s meal plan. This means using the dataframe to check the calories of each food item and then adding them up to get the total calories.
 
 **nutritional_info**
 - Type: Dictionary
 - Usage: This data structure is specifically designed for recording the nutritional information associated with the currently selected food item. It utilizes a dictionary format with keys representing nutrient names (such as "Protein," "Fat," and "Carbohydrates" in string format) and corresponding numerical values to indicate the quantity of each nutrient.
 - Function:
 1. get_nutritional_info(food_name): This function retrieves comprehensive nutritional information for a given food item from the stored data.
-2. create_pie_chart(nutritional_info): This function generates a pie chart to visually represent the nutrient distribution of a particular food item based on the stored nutritional data.
-3. create_bar_graph(nutritional_info): This function generates a bar graph to visually represent the nutrient distribution of a particular food item based on the stored nutritional data.
+2. <span style="color:red">filter_nutritional_info(nutritional_info): This function filters the nutritional information of a particular food item based on user-defined criteria, ensuring that the data is tailored to the user's needs.</span>
 
 **meal_plan**
 - Type: Dictionary
 - Usage: The meal_plan is a continually updated dictionary that keeps track of the food items chosen by the user for their daily meals. Each entry in the dictionary is an object containing both the chosen food item and quantity selected by the user. This setup allows for the effective organization and management of meal data, allowing users to create and adjust their meal plans as required.
 - Functions:
-1. generate_meal_plan(food, quantity): This function adds a food item and quantity to the user's meal plan.
-2. remove_food_from_meal_plan(food_name, meal_plan): This function deletes a specific food item from the meal plan to ensure that the meal data accurately reflects the user's choices.
+1. <span style="color:red">get_food_details(food_name, meal_plan): This function retrieves the details of the food selected by the user, including the food name, quantity, and total calories.</span>
+1. generate_meal_plan(meal_plan, food_name, quantity): This function adds a food item and quantity to the user's meal plan.
+2. remove_food_from_meal_plan(meal_plan, food_name, quantity): This function deletes a specific food item from the meal plan to ensure that the meal data accurately reflects the user's choices.
 3. generate_total_calories(meal_plan): This function calculates the total calories for the day by adding up calories of all the foods included in the meal plan.
-
+<span style="color:red"></span>
 **filtered_range**
-- Type: List
+- Type: <span style="color:red">Dataframe</span>
 - Usage: The filtered_range stores foods that fit into the minimum and maximum values of a specific nutrient. This enables precise filtering operations for users searching for foods within a specific nutritional range.
 - Functions:
-1. filter_food_by_nutrition_range(nutrient, min_value, max_value): This function filter and return foods with nutrient values within the defined range, ensuring accurate search results based on user criteria.
+1. filter_food_by_nutrient_range(nutrient, min_value, max_value): This function filter and return foods with nutrient values within the defined range, ensuring accurate search results based on user criteria.
 
 **filtered_level**
-- Type: List
+- Type: <span style="color:red">Dataframe</span>
 - Usage: The filtered_level stores foods that fit into the nutrient level (e.g., "Low," "Mid," or "High").
 - Functions:
-1. filter_food_by_nutrition_level(nutrient, level): This function leverages the nutrient level filters foods that correspond to the selected nutrient level, providing users with a tailored view of the database based on their input.
+1. filter_food_by_nutrient_level(nutrient, level): This function leverages the nutrient level filters foods that correspond to the selected nutrient level, providing users with a tailored view of the database based on their input.
 
 
 #### 3.2.3 Detailed Design
@@ -275,7 +296,7 @@ This function removes a particular food from the user's meal plan when the food 
 - PLOT bar graph with `nutrient_name` and `amount`
 - RETURN the bar graph
 
-##### _filter_food_by_nutrition_range(nutrient, min_value, max_value)_
+##### _filter_food_by_nutrient_range(nutrient, min_value, max_value)_
 
 - **START**
 - INITIALIZE `filtered_range` as EMPTY LIST
@@ -284,7 +305,7 @@ This function removes a particular food from the user's meal plan when the food 
     - ADD `food_item.name` TO `filtered_range`
 - RETURN `filtered_range`
 
-##### _filter_food_by_nutrition_level(nutrient, level)_
+##### _filter_food_by_nutrient_level(nutrient, level)_
 
 - **START**
 - INITIALIZE `filtered_level` as an EMPTY LIST

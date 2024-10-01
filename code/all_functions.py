@@ -19,17 +19,13 @@ def search_food_by_name(food_name):
     return found
 
 def get_nutritional_info(food_name):
-    nutritional_info = {}
-    if food_name.isdigit() or not search_food_by_name(food_name):
-        raise AttributeError
-    try:
-        global df
-        food_row = df[df['food'] == food_name].iloc[0]
-        nutritional_info = food_row.to_dict()
-        nutritional_info.pop('food', None)
-        return nutritional_info
-    except AttributeError:
-        return nutritional_info
+    if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
+        raise ValueError
+    global df
+    food_row = df[df['food'] == food_name].iloc[0]
+    nutritional_info = food_row.to_dict()
+    nutritional_info.pop('food', None)
+    return nutritional_info
 
 def filter_nutritional_info(nutritional_info):
     if not nutritional_info:
@@ -70,9 +66,9 @@ def filter_food_by_nutrient_range(nutrient, min_val, max_val):
     if not min_val or not max_val or min_val >= max_val:
         raise ValueError
 
-    df_filtered = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
-    df_filtered = df_filtered.sort_values(by='food')
-    return df_filtered[['food', nutrient]]
+    filtered_range = df[(df[nutrient] >= min_val) & (df[nutrient] <= max_val)]
+    filtered_range = filtered_range.sort_values(by='food')
+    return filtered_range[['food', nutrient]]
 
 def filter_food_by_nutrient_level(nutrient, level):
     if level not in ['Low', 'Mid', 'High']:
@@ -83,14 +79,14 @@ def filter_food_by_nutrient_level(nutrient, level):
     mid_threshold = max_value * 0.66
 
     if level == 'Low':
-        df_filtered = df[df[nutrient] <= low_threshold]
+        filtered_level = df[df[nutrient] <= low_threshold]
     elif level == 'Mid':
-        df_filtered = df[(df[nutrient] > low_threshold) & (df[nutrient] <= mid_threshold)]
+        filtered_level = df[(df[nutrient] > low_threshold) & (df[nutrient] <= mid_threshold)]
     else:
-        df_filtered = df[df[nutrient] > mid_threshold]
+        filtered_level = df[df[nutrient] > mid_threshold]
 
-    df_filtered = df_filtered.sort_values(by='food')
-    return df_filtered[['food', nutrient]]
+    filtered_level = filtered_level.sort_values(by='food')
+    return filtered_level[['food', nutrient]]
 
 def get_food_details(food_name, meal_plan):
     if not food_name in meal_plan or food_name.isdigit():
@@ -115,19 +111,19 @@ def generate_meal_plan(meal_plan, food_name, quantity):
     return food_name, quantity
 
 def generate_total_calories(meal_plan):
-    c_total = 0
+    total_calories = 0
     global df
     if not isinstance(meal_plan, dict):
         raise ValueError
     if not meal_plan:
-        return c_total
+        return total_calories
 
     for key, value in meal_plan.items():
         food_row = df[df['food'] == key].iloc[0]
         caloric_value = food_row['Caloric Value']
-        c_total += caloric_value * value
+        total_calories += caloric_value * value
 
-    return c_total
+    return total_calories
 
 def remove_food_from_meal_plan(meal_plan, food_name, quantity):
     if food_name not in meal_plan:
