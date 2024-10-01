@@ -49,7 +49,7 @@
 ### 1.1 Problem Background
 The program aims to address the problem of organizing, analysing, and visualizing nutritional data from a database. This is achieved through tools that retrieve, organize, filter, and analyse nutritional information from the Nutritional_Food_Database.csv database. A database that stores a wide range of foods with their nutritional information that includes calories, fats, proteins, vitamins, sugars, carbohydrates, and much more. 
 
-The data inputs include user inputs such as food names (string), quantity for food (int), nutritional information (dict), specific nutrients (string), ranges/levels (float/string) for nutritional values, and meal plan (dict). Data outputs include specified nutritional information for a food (dict), boolean value based on found food, pie charts/bar graphs (visualization), lists of foods that are filtered by the user (list), total calories from the meal plan (int), and a personalized meal plan (dict). The target users are students (who will use this program for their personal/academic projects), researchers (who will use this program for their research/academic projects), and health enthusiasts (who will use this program to plan and manage their diet).
+The data inputs include user inputs such as food names (string), quantity for food (int), nutritional information (dict), specific nutrients (string), ranges/levels (float/string) for nutritional values, and meal plan (dict). Data outputs include specified nutritional information for a food (dict), boolean value based on found food, pie charts/bar graphs (visualization), lists of foods that are filtered by the user (dataframe), total calories from the meal plan (int), and a personalized meal plan (dict). The target users are students (who will use this program for their personal/academic projects), researchers (who will use this program for their research/academic projects), and health enthusiasts (who will use this program to plan and manage their diet).
 
 ### 1.2 System capabilities/overview
 The system will allow for organizing, analysing, and visualizing nutritional data from a database. This will pertain to searching for foods, obtaining nutritional information, visualizing nutritional information into pie charts/bar graphs, filtering foods through ranges/levels, and providing a personalized meal plan. To go into further detail of these key features and functionalities:
@@ -183,9 +183,9 @@ This function will retrieve the nutritional information of the food selected by 
 
 <span style="color:red">*filter_nutritional_info(nutritional_info):* This function will filter the nutritional information of the food selected by the user. The input parameter is the nutritional information (dictionary) from the get_nutritional_info() function, this parameter allows the program to know which food item and nutritional value to filter. The function will then return filtered_nutritional_info (dictionary) which is the filtered nutritional information. There are no side effects.</span>
 
-*create_pie_chart(nutritional_info):* This function will create a pie chart of the nutritional information inputted. <span style="color:red">The input parameters are the  filtered_categories, filtered_sizes, explode, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the pie chart. </span>The function will then return a pie chart. There are no side effects.
+*create_pie_chart(filtered_sizes, filtered_categories, explode, ax):* This function will create a pie chart of the nutritional information inputted. <span style="color:red">The input parameters are the  filtered_categories, filtered_sizes, explode, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size are required for the pie chart. </span>The function will then return a pie chart. There are no side effects.
 
-*create_bar_graph(nutritional_info):* This function will create a bar graph of the nutritional information inputted. <span style="color:red">The input parameter is the  filtered_categories, filtered_sizes, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the bar graph. </span>The function will then return a bar graph. There are no side effects.
+*create_bar_graph(filtered_categories, filtered_sizes, ax):* This function will create a bar graph of the nutritional information inputted. <span style="color:red">The input parameter is the  filtered_categories, filtered_sizes, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the bar graph. </span>The function will then return a bar graph. There are no side effects.
 
 *filter_food_by_nutrient_range(nutrient, min_value, max_value):*
 This function will search the database for foods that are within the minimum and maximum range values inputted by the user. The input parameters required are the nutrient name (string) and the minimum and maximum values (floats). These parameters specify which nutrients to search through, what is the lowest acceptable amount for the nutrient and what is the highest. The function will then return filtered_range (Dataframe) that match the requirements of the search. There are no side effects. 
@@ -195,7 +195,7 @@ This function will search the database for foods that match the level (low, medi
 
 <span style="color:red">*get_food_details(food_name, meal_plan):* This function will retrieve the details of the food selected by the user. The input parameters required are the food name (string) and the output dictionary from the meal plan function. The food name specifies the food item chosen by the user while the meal plan specifies the meal plan provided by the user. The function will then return food_key, quantity, and total_calories saving the current food details provided by the user. There are no side effects.</span>
 
-*generate_meal_plan(food_name, quantity):*
+*generate_meal_plan(meal_plan, food_name, quantity):*
 This function will add food selected by the user into the user’s daily meal plan. The input parameters required are the <span style="color:red">meal_plan (dictionary)</span>, food name (string) and the quantity (integer). <span style="color:red">The meal_plan is the current user's meal plan,</span> the food name specifies the food item chosen by the user while the quantity specifies the amount of the selected food item. The function will then return <span style="color:red">food_name and quantity, </span>saving the current meal plan provided by the user. The side effect includes updating the meal_plan stored in the session.
 
 *generate_total_calories(meal_plan):*
@@ -204,9 +204,9 @@ This function will calculate the total calories for the day based on the foods c
  <span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity):*</span>
 This function removes a particular food from the user's meal plan when the food is selected by the user. The input parameter required is the food name (string), the output dictionary from the meal plan function, <span style="color:red">and the selected quantity (int)</span>. The food parameter specifies which food item is to be removed from the user's meal plan and the meal plan parameter specifies where it is to be removed from.  <span style="color:red">The function doesn't return any but the side effect includes updating the meal_plan stored in the session.</span>
 
- <span style="color:red">DataTable.GetNumberRows(): This function will return the number of rows in the data table. There are no side effects.</span>
+ <span style="color:red">DataTable.GetNumberRows(): This function has no inputs and will return the number of rows in the data table. There are no side effects.</span>
 
-<span style="color:red">DataTable.GetNumberColumns(): This function will return the number of columns in the data table. There are no side effects.</span>
+<span style="color:red">DataTable.GetNumberColumns(): This function has no inputs and will return the number of columns in the data table. There are no side effects.</span>
 
 <span style="color:red">DataTable.GetValue(row, col): This function will return the value at the specified row and column in the data table. The input is the row and col. There are no side effects.</span>
 
@@ -236,7 +236,7 @@ This function removes a particular food from the user's meal plan when the food 
 - Usage: This data structure is specifically designed for recording the nutritional information associated with the currently selected food item. It utilizes a dictionary format with keys representing nutrient names (such as "Protein," "Fat," and "Carbohydrates" in string format) and corresponding numerical values to indicate the quantity of each nutrient.
 - Function:
 1. get_nutritional_info(food_name): This function retrieves comprehensive nutritional information for a given food item from the stored data.
-2. <span style="color:red">filter_nutritional_info(nutritional_info): This function filters the nutritional information of a particular food item based on user-defined criteria, ensuring that the data is tailored to the user's needs.</span>
+2. <span style="color:red">filter_nutritional_info(nutritional_info): This function filters the nutritional information of a particular food item for the pie char and bar graph.</span>
 
 **meal_plan**
 - Type: Dictionary
@@ -267,88 +267,88 @@ This function removes a particular food from the user's meal plan when the food 
 - LOAD data from file_path INTO database 
 - RETURN database
 
-<span style="color:red">*search_food_by_name(food_name)*</span>
+<span style="color:red">*search_food_by_name(food_name)*
 - START 
 - SEARCH for food_name IN database 
 - RETURN found
 
-<span style="color:red">*get_nutritional_info(food_name)*</span>
+<span style="color:red">*get_nutritional_info(food_name)*
 - START 
 - SEARCH for food_name IN database 
 - RETRIEVE nutritional information 
 - RETURN nutritional information
 
-<span style="color:red">*filter_nutritional_info(nutritional_info)*</span>
+<span style="color:red">*filter_nutritional_info(nutritional_info)*
 - START 
 - FILTER nutritional_info BASED ON criteria 
 - RETURN filtered_categories, filtered_sizes, explode
 
-<span style="color:red">*create_pie_chart(filtered_sizes, filtered_categories, explode, ax)*</span>
+<span style="color:red">*create_pie_chart(filtered_sizes, filtered_categories, explode, ax)*
 - START 
 - CREATE pie chart USING filtered_sizes, filtered_categories, explode
 - RETURN wedges, texts, autotexts
 
-<span style="color:red">*create_bar_graph(filtered_categories, filtered_sizes, ax)*</span>
+<span style="color:red">*create_bar_graph(filtered_categories, filtered_sizes, ax)*
 - START 
 - CREATE bar graph USING filtered_categories, filtered_sizes
 - RETURN ax.bar
 
-<span style="color:red">*filter_food_by_nutrient_range(nutrient, min_val, max_val)*</span>
+<span style="color:red">*filter_food_by_nutrient_range(nutrient, min_val, max_val)*
 - START 
 - FILTER database FOR nutrient BETWEEN min_val AND max_val 
 - RETURN filtered_range
 
-<span style="color:red">*filter_food_by_nutrient_level(nutrient, level)*</span>
+<span style="color:red">*filter_food_by_nutrient_level(nutrient, level)*
 - START 
-- FILTER database FOR nutrient AT level 
+- FILTER database FOR nutrient WITH level 
 - RETURN filtered_level
 
-<span style="color:red">*get_food_details(food_name, meal_plan)*</span>
+<span style="color:red">*get_food_details(food_name, meal_plan)*
 - START 
 - RETRIEVE food details FROM meal_plan FOR food_name 
 - RETURN food_key, quantity, total_calories
 
-<span style="color:red">*generate_meal_plan(meal_plan, food_name, quantity)*</span>
+<span style="color:red">*generate_meal_plan(meal_plan, food_name, quantity)*
 - START 
 - ADD food_name AND quantity TO meal_plan 
 - RETURN food_name, quantity
 
-<span style="color:red">*generate_total_calories(meal_plan)*</span>
+<span style="color:red">*generate_total_calories(meal_plan)*
 - START 
-- CALCULATE total calories FROM meal_plan RETURN total_calories
+- CALCULATE total calories FROM meal_plan
 - RETURN total_calories
 
-<span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity)*</span>
+<span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity)*
 - START 
 - REMOVE food_name AND quantity FROM meal_plan
 
-<span style="color:red">*DataTable.GetNumberRows()*</span>
+<span style="color:red">*DataTable.GetNumberRows()*
 - START 
 - RETURN number of rows IN data table
 
-<span style="color:red">*DataTable.GetNumberCols()*</span>
+<span style="color:red">*DataTable.GetNumberCols()*
 - START 
 - RETURN number of columns IN data table
 
-<span style="color:red">*DataTable.GetValue(row, col)*</span>
+<span style="color:red">*DataTable.GetValue(row, col)*
 - START 
 - RETURN value AT row, col IN data table
 
-<span style="color:red">*DataTable.SetValue(row, col, value)*</span>
+<span style="color:red">*DataTable.SetValue(row, col, value)*
 - START 
 - SET value AT row, col IN data table 
 - RETURN None
 
-<span style="color:red">*DataTable.GetColLabelValue(col)*</span>
+<span style="color:red">*DataTable.GetColLabelValue(col)*
 - START 
 - RETURN label OF col IN data table
 
-<span style="color:red">*DataTable.GetAttr(row, col, prop)*</span>
+<span style="color:red">*DataTable.GetAttr(row, col, prop)*
 - START 
 - CREATE GridCellAttr 
 - SET background color FOR even rows 
 - RETURN GridCellAttr
-
+</span>
 
 ## 4. User Interface Design
 
@@ -432,7 +432,7 @@ Once the enter button is clicked the search will show all the foods that contain
 
 **Figure 4:** _Nutrient Level Filter Wireframe_
 
-The ‘Range Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Next to this there are minimum and maximum filters that allow the user to input a value of their choosing. Once entered the search will show all the foods that contain the selected nutrient that is within the range. This will be ordered as a list by their food name. All of this is done for simplicity and require limited actions from the user. 
+The ‘Range Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Next to this there are minimum and maximum filters that allow the user to input a value of their choosing. Once entered the search will show all the foods that contain the selected nutrient that is within the range. This will be ordered as by their food name. All of this is done for simplicity and require limited actions from the user. 
 
 <span style="color:red">This wireframe has been altered so that instead of the filtered foods to be represented as a list they are a table. </span>
 
@@ -440,7 +440,7 @@ The ‘Range Filter’ Screen has a section where the user can enter the nutrien
 
 **Figure 5:** _Nutrient Range Filter Wireframe_
 
-The ‘Meal Planner’ Screen has an input area where the user can add a food they want to put in and its quantity. Each time food is entered the number of calories is updated at the top. As well as this, the user can <span style="color:red">search</span> previously inputted foods names <span style="color:red">on the bottom right </span>and view their quantity and calories on the top right of the screen. This helps in making the meal planning easier for the user. 
+The ‘Meal Planner’ Screen has an input area where the user can add a food they want to put in and its quantity. Each time food is entered the number of calories is updated at the top. As well as this, the user can <span style="color:red">search</span> see previously inputted foods names <span style="color:red">on the bottom right </span>and view their quantity and calories on the top right of the screen. This helps in making the meal planning easier for the user. 
 The order of the meal plan list is determined by the update time, the first inputted value is at the top, the second below, and so on. Making the ordering simple and intuitive to use for the user. Also, each time an item is added the user can delete food with the ‘Delete’ button displayed <span style="color:red">on the top right when the user searches for a certain meal item</span>. This allows for easier meal planning, so that if they make a mistake they can delete rather than restarting the whole meal plan.
 
 <span style="color:red">The following wireframe below has been altered to align with the current GUI. These changes include moving the delete button to the selected food part on the top right of the screen. As well as added a new part on the bottom right that allows for the searching of meal items. </span>
