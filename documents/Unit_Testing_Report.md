@@ -261,7 +261,7 @@ def test_create_bar_graph_invalid():
 - `filter_food_by_nutrient_range_valid()`
 - `filter_food_by_nutrient_range_invalid()`
 - **Tested Function/Module**
-  - `filter_food_by_nutrient_range(df, nutrient, min_val, max_val)`
+  - `filter_food_by_nutrient_range(nutrient, min_val, max_val)`
 - **Description**
   - This function filters foods by a nutrient range. The input is the dataframe, nutrient, min_val, and max_val. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
@@ -305,7 +305,7 @@ def test_filter_food_by_nutrient_range_invalid():
 - `test_filter_food_by_level_valid()`
 - `test_filter_food_by_level_invalid()`
 - **Tested Function/Module**
-  - `filter_food_by_nutrient_level(df, nutrient, level)`
+  - `filter_food_by_nutrient_level(nutrient, level)`
 - **Description**
   - This function filters foods by nutrient level (Low, Mid, High). The input is the dataframe, nutrient, and level. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
@@ -469,7 +469,7 @@ def test_generate_total_calories_invalid(meal_plan):
 - `test_remove_food_from_meal_plan_valid()`
 - `test_remove_food_from_meal_plan_invalid()`
 - **Tested Function/Module**
-  - `remove_food_from_meal_plan(meal_plan, selected_meal_food)`
+  - `remove_food_from_meal_plan(meal_plan, food_name, quantity)`
 - **Description**
   - This function removes a food item from the meal plan. The input is the meal plan and the selected meal food. The output is the updated meal plan.
 - **1) Valid Input and Expected Output**  
@@ -578,7 +578,7 @@ def test_get_value_invalid(data_table):
 - `test_set_value_valid(data_table)`
 - `test_set_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `DataTable.SetValue()`
+  - `DataTable.SetValue(row, col, value)`
 - **Description**
   - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
 - **1) Valid Input and Expected Output**  
@@ -612,7 +612,7 @@ def test_set_value_invalid(data_table):
 - `test_get_col_label_value_valid(data_table)`
 - `test_get_col_label_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `DataTable.GetColLabelValue()`
+  - `DataTable.GetColLabelValue(col)`
 - **Description**
   - The function retrieves the column label value at the specified column index in the data table. The input is the column index. The output is the column label value.
 - **1) Valid Input and Expected Output**  
@@ -647,7 +647,7 @@ def test_get_col_label_value_invalid(data_table):
 - `test_get_attr_valid(data_table)`
 - `test_get_attr_invalid(data_table)`
 - **Tested Function/Module**
-  - `DataTable.GetColLabelValue()`
+  - `DataTable.GetAttr(row, col, prop)`
 - **Description**
   - The function retrieves the attribute at the specified row and column in the data table. The input is the row, column, and default attribute. The output is the attribute.
 - **1) Valid Input and Expected Output**  

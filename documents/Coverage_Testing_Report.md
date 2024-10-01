@@ -40,8 +40,25 @@ list all tested functions related to the five required features:
 
 ### 2.1 Description
 
-To achieve 100% statement coverage, we designed test cases to ensure that every line of code in the functions related to the five required features is executed at least once. This involves creating tests that cover all possible paths through the code, including all branches of conditional statements.
-
+To achieve 100% statement coverage, we designed test cases to ensure that every line of code in the functions related to the five required features is executed at least once. This involves creating tests that cover all possible paths through the code, including valid and invalid inputs. For example:
+- load_data(file_path) tested the function with a valid file path to ensure data is loaded successfully and an invalid file path to ensure the function handles errors properly.
+- search_food_by_name(food_name) tested the function with a valid food name that exists in the database to ensure it returns True and an invalid food name that does not exist to ensure it returns False.
+- get_nutritional_info(food_name) tested the function with a valid food name that exists to ensure it retrieves the correct nutritional information and an invalid food name that does not exist to ensure it handles the error properly.
+- filter_nutritional_info(nutritional_info) tested the function with valid nutritional information to ensure it filters correctly and invalid nutritional information to ensure it handles errors properly.
+- create_pie_chart(filtered_sizes, filtered_categories, explode, ax) tested the function with valid to ensure the pie chart is created and invalid inputs to ensure it handles errors.
+- create_bar_graph(filtered_categories, filtered_sizes, ax) tested the function with valid inputs to ensure the bar graph is created and invalid inputs to ensure it handles errors.
+- filter_food_by_nutrient_range(nutrient, min_val, max_val) tested the function with valid inputs to ensure it filters correctly and invalid inputs (e.g., min_val > max_val) to ensure it handles errors.
+- filter_food_by_nutrient_level(nutrient, level) tested the function with valid levels to ensure it filters correctly and invalid levels to ensure it handles errors.
+- get_food_details(food_name, meal_plan) tested the function with valid foods that exist in the meal plan to ensure it retrieves details and invalid names that does not exist to ensure it handles errors.
+- generate_meal_plan(meal_plan, food_name, quantity) tested the function with valid food name and quantity to ensure it updates the meal plan and invalid food name or quantity (e.g., negative quantity) to ensure it handles errors.
+- generate_total_calories(meal_plan) tested the function with valid meal plan to ensure it calculates total calories and invalid inputs to ensure it handles the case properly.
+- remove_food_from_meal_plan(meal_plan, food_name, quantity) tested the function with valid food name and quantity to ensure it updates the meal plan and food name that does not exist or invalid quantity to ensure it handles errors.
+- DataTable.GetNumberRows() tested the function with valid inputs to ensure it returns the correct number of rows.
+- DataTable.GetNumberCols() tested the function with valid inputs to ensure it returns the correct number of columns.
+- DataTable.GetValue(row, col) tested the function with valid row and column to ensure it returns the correct value and out-of-bounds row or column to ensure it handles errors.
+- DataTable.SetValue(row, col, value) tested the function with valid row, column, and value to ensure it sets the value correctly and out-of-bounds row or column to ensure it handles errors.
+- DataTable.GetColLabelValue(col) tested the function with valid column to ensure it returns the correct label and an out-of-bounds column to ensure it handles errors..
+- DataTable.GetAttr(row, col, prop) tested the function with valid row, column, and property to ensure it returns the correct attribute and out-of-bounds row or column to ensure it handles errors.
 
 ### 2.2 Testing Results
 You can use the following command to run the statement coverage test and generate the report in the terminal. Afterward, include a screenshot of the report. 
@@ -59,7 +76,25 @@ Note: In the command above, the file/module `all_functions` does not include the
 
 ### 3.1 Description
 
-To achieve 100% branch coverage, the test cases in test_all_functions.py were designed to cover all possible branches in the functions related to the five required features. This includes testing all possible outcomes of conditional statements.
+To achieve 100% branch coverage, the test cases in test_all_functions.py were designed to cover all possible branches in the functions related to the five required features. This includes testing all possible outcomes of conditional statements. For example:
+- load_data(file_path) tested the function with a valid file path to ensure data is loaded successfully and an invalid file path to ensure the function handles errors properly.
+- search_food_by_name(food_name) tested the function with a valid food name that exists in the database to ensure it returns True and an invalid food name that does not exist to ensure it returns False.
+- get_nutritional_info(food_name) tested the function with a valid food name that exists to ensure it retrieves the correct nutritional information and an invalid food name that does not exist to ensure it handles the error properly.
+- filter_nutritional_info(nutritional_info) tested the function with valid nutritional information to ensure it filters correctly and invalid nutritional information to ensure it handles errors properly.
+- create_pie_chart(filtered_sizes, filtered_categories, explode, ax) tested the function with valid to ensure the pie chart is created and invalid inputs to ensure it handles errors.
+- create_bar_graph(filtered_categories, filtered_sizes, ax) tested the function with valid inputs to ensure the bar graph is created and invalid inputs to ensure it handles errors.
+- filter_food_by_nutrient_range(nutrient, min_val, max_val) tested the function with valid inputs to ensure it filters correctly and invalid inputs (e.g., min_val > max_val) to ensure it handles errors.
+- filter_food_by_nutrient_level(nutrient, level) tested the function with valid levels to ensure it filters correctly and invalid levels to ensure it handles errors.
+- get_food_details(food_name, meal_plan) tested the function with valid foods that exist in the meal plan to ensure it retrieves details and invalid names that does not exist to ensure it handles errors.
+- generate_meal_plan(meal_plan, food_name, quantity) tested the function with valid food name and quantity to ensure it updates the meal plan and invalid food name or quantity (e.g., negative quantity) to ensure it handles errors.
+- generate_total_calories(meal_plan) tested the function with valid meal plan to ensure it calculates total calories and invalid inputs to ensure it handles the case properly.
+- remove_food_from_meal_plan(meal_plan, food_name, quantity) tested the function with valid food name and quantity to ensure it updates the meal plan and food name that does not exist or invalid quantity to ensure it handles errors.
+- DataTable.GetNumberRows() tested the function with valid inputs to ensure it returns the correct number of rows.
+- DataTable.GetNumberCols() tested the function with valid inputs to ensure it returns the correct number of columns.
+- DataTable.GetValue(row, col) tested the function with valid row and column to ensure it returns the correct value and out-of-bounds row or column to ensure it handles errors.
+- DataTable.SetValue(row, col, value) tested the function with valid row, column, and value to ensure it sets the value correctly and out-of-bounds row or column to ensure it handles errors.
+- DataTable.GetColLabelValue(col) tested the function with valid column to ensure it returns the correct label and an out-of-bounds column to ensure it handles errors..
+- DataTable.GetAttr(row, col, prop) tested the function with valid row, column, and property to ensure it returns the correct attribute and out-of-bounds row or column to ensure it handles errors.
 
 ### 3.2 Testing Results
 You can use the following command to run the branch coverage test and generate the report in the terminal. Afterward, include a screenshot of the report. 
