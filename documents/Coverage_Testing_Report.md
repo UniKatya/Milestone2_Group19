@@ -29,10 +29,10 @@ list all tested functions related to the five required features:
 | `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         |
 | `DataTable.GetNumberRows()`                                          |
 | `DataTable.GetNumberCols()`                                          |
-| `DataTable.GetValue()`                                               |
-| `DataTable.SetValue()`                                               |
-| `DataTable.GetColLabelValue()`                                       |
-| `DataTable.GetAttr()`                                                |
+| `DataTable.GetValue(row, col)`                                       |
+| `DataTable.SetValue(row, col, value)`                                |
+| `DataTable.GetColLabelValue(col)`                                    |
+| `DataTable.GetAttr(row, col, prop)`                                  |
 
 ---
 
