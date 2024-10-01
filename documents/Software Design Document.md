@@ -243,9 +243,9 @@ This function removes a particular food from the user's meal plan when the food 
 - Usage: The meal_plan is a continually updated dictionary that keeps track of the food items chosen by the user for their daily meals. Each entry in the dictionary is an object containing both the chosen food item and quantity selected by the user. This setup allows for the effective organization and management of meal data, allowing users to create and adjust their meal plans as required.
 - Functions:
 1. <span style="color:red">get_food_details(food_name, meal_plan): This function retrieves the details of the food selected by the user, including the food name, quantity, and total calories.</span>
-1. generate_meal_plan(meal_plan, food_name, quantity): This function adds a food item and quantity to the user's meal plan.
-2. remove_food_from_meal_plan(meal_plan, food_name, quantity): This function deletes a specific food item from the meal plan to ensure that the meal data accurately reflects the user's choices.
-3. generate_total_calories(meal_plan): This function calculates the total calories for the day by adding up calories of all the foods included in the meal plan.
+2. generate_meal_plan(meal_plan, food_name, quantity): This function adds a food item and quantity to the user's meal plan.
+3. remove_food_from_meal_plan(meal_plan, food_name, quantity): This function deletes a specific food item from the meal plan to ensure that the meal data accurately reflects the user's choices.
+4. generate_total_calories(meal_plan): This function calculates the total calories for the day by adding up calories of all the foods included in the meal plan.
 
 **filtered_range**
 - Type: <span style="color:red">Dataframe</span>
