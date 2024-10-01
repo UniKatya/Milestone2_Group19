@@ -262,96 +262,92 @@ This function removes a particular food from the user's meal plan when the food 
 
 #### 3.2.3 Detailed Design
 
-##### _load_data(file_path)_
-- **START**
-- LOAD data from `file_path` INTO `database`
-- RETURN `database`
+<span style="color:red">*load_data(file_path)*</span>
+- START 
+- LOAD data from file_path INTO database 
+- RETURN database
 
+<span style="color:red">*search_food_by_name(food_name)*</span>
+- START 
+- SEARCH for food_name IN database 
+- RETURN found
 
-##### _search_food_by_name(food_name)_
+<span style="color:red">*get_nutritional_info(food_name)*</span>
+- START 
+- SEARCH for food_name IN database 
+- RETRIEVE nutritional information 
+- RETURN nutritional information
 
-- **START**
-- RETRIEVE food information for `food_name` FROM `database`
-- RETURN `found`
-</span>
+<span style="color:red">*filter_nutritional_info(nutritional_info)*</span>
+- START 
+- FILTER nutritional_info BASED ON criteria 
+- RETURN filtered_categories, filtered_sizes, explode
 
-##### _get_nutritional_info(food_name)_
+<span style="color:red">*create_pie_chart(filtered_sizes, filtered_categories, explode, ax)*</span>
+- START 
+- CREATE pie chart USING filtered_sizes, filtered_categories, explode
+- RETURN wedges, texts, autotexts
 
-- **START**
-- RETRIEVE nutritional information for `food_name` FROM `database`
-- RETURN `nutritional_info`
+<span style="color:red">*create_bar_graph(filtered_categories, filtered_sizes, ax)*</span>
+- START 
+- CREATE bar graph USING filtered_categories, filtered_sizes
+- RETURN ax.bar
 
-##### _create_pie_chart(nutritional_info)_
-- **START**
-- INITIALIZE `nutrient_name` & `amount` as EMPTY_LISTS
-- FOR each `nutrient_name, amount` IN `nutritional_info`:
-  - RETRIEVE `nutrient_name` and `amount` from `nutritional_info`
-- PLOT pie chart with `nutrient_name` and `amount`
-- RETURN the pie chart
+<span style="color:red">*filter_food_by_nutrient_range(nutrient, min_val, max_val)*</span>
+- START 
+- FILTER database FOR nutrient BETWEEN min_val AND max_val 
+- RETURN filtered_range
 
-##### _create_bar_graph(nutritional_info)_
+<span style="color:red">*filter_food_by_nutrient_level(nutrient, level)*</span>
+- START 
+- FILTER database FOR nutrient AT level 
+- RETURN filtered_level
 
-- **START**
- INITIALIZE `nutrient_name` & `amount` as EMPTY_LISTS
-- FOR each `nutrient_name, amount` IN `nutritional_info`:
-  - RETRIEVE `nutrient_name` and `amount` from `nutritional_info`
-- PLOT bar graph with `nutrient_name` and `amount`
-- RETURN the bar graph
+<span style="color:red">*get_food_details(food_name, meal_plan)*</span>
+- START 
+- RETRIEVE food details FROM meal_plan FOR food_name 
+- RETURN food_key, quantity, total_calories
 
-##### _filter_food_by_nutrient_range(nutrient, min_value, max_value)_
+<span style="color:red">*generate_meal_plan(meal_plan, food_name, quantity)*</span>
+- START 
+- ADD food_name AND quantity TO meal_plan 
+- RETURN food_name, quantity
 
-- **START**
-- INITIALIZE `filtered_range` as EMPTY LIST
-- FOR each `food_item` IN `database`:
-  - IF `food_item[nutrient]` <= `max_value` AND `food_item[nutrient]` >= `min_value`:
-    - ADD `food_item.name` TO `filtered_range`
-- RETURN `filtered_range`
+<span style="color:red">*generate_total_calories(meal_plan)*</span>
+- START 
+- CALCULATE total calories FROM meal_plan RETURN total_calories
+- RETURN total_calories
 
-##### _filter_food_by_nutrient_level(nutrient, level)_
+<span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity)*</span>
+- START 
+- REMOVE food_name AND quantity FROM meal_plan
 
-- **START**
-- INITIALIZE `filtered_level` as an EMPTY LIST
-- `max_value` = GET MAX VALUE OF `nutrient` IN `database` 
-- FOR EACH `food_item` IN `database`:
-    - `nutrient_value` = `food_item[nutrient]`
-    - IF `level` == "Low" AND `nutrient_value` < (0.33 * `max_value`):
-        - ADD `food_item.name` TO `filtered_level`
-   - IF `level` == "Mid" AND `nutrient_value` BETWEEN (0.33 * `max_value`) AND (0.66 * `max_value`):
-        - ADD `food_item.name` TO `filtered_level`
-   - IF `level` == "High" AND `nutrient_value ABOVE `:
-        - ADD `food_item.name` TO `filtered_level`
-- RETURN `filtered_level`
+<span style="color:red">*DataTable.GetNumberRows()*</span>
+- START 
+- RETURN number of rows IN data table
 
-##### _generate_meal_plan(food_name, quantity)_
+<span style="color:red">*DataTable.GetNumberCols()*</span>
+- START 
+- RETURN number of columns IN data table
 
-- **START**
-- RETRIEVE current `meal_plan`
-- INITIALIZE `ON` as False
-- FOR each `meal_item` IN `meal_plan`:
-  - IF `food_name` == `meal_item.name`:
-    - ADD `quantity` to `meal_item.quantity`
-    - `ON` == True
-- IF `ON` == False:
-  - ADD (`food_name`, `quantity`) TO `meal_plan`
-- RETURN `meal_plan`
+<span style="color:red">*DataTable.GetValue(row, col)*</span>
+- START 
+- RETURN value AT row, col IN data table
 
-##### _generate_total_calories(meal_plan)_
+<span style="color:red">*DataTable.SetValue(row, col, value)*</span>
+- START 
+- SET value AT row, col IN data table 
+- RETURN None
 
-- **START**
-- INITIALIZE `total_calories` as int
-- FOR each `meal_item` IN `meal_plan`:
-  - RETRIEVE `calories` WITH `meal_item.name` FROM `database`
-  - MULTIPLY `calories` BY `quantity`
-  - ADD TO `total_calories`
-- RETURN `total_calories`
+<span style="color:red">*DataTable.GetColLabelValue(col)*</span>
+- START 
+- RETURN label OF col IN data table
 
-##### _remove_food_from_meal_plan(food_name, meal_plan)_
-
-- **START**
-- FOR each `meal_item` IN `meal_plan`:
-  - IF `food_name` == `meal_item.name`:
-    - REMOVE `meal_item` FROM `meal_plan`.
-- RETURN `meal_plan`
+<span style="color:red">*DataTable.GetAttr(row, col, prop)*</span>
+- START 
+- CREATE GridCellAttr 
+- SET background color FOR even rows 
+- RETURN GridCellAttr
 
 
 ## 4. User Interface Design
