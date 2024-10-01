@@ -219,7 +219,7 @@ This function removes a particular food from the user's meal plan when the food 
 #### 3.2.2 Data Structures / Data Sources
 
 **Nutritional_Food_Database.csv**
-- Type: Pandas DataFrame
+- Type: DataFrame
 - Usage: The food database is a complete collection of all food items and their nutritional information. It is set up as a DataFrame, with the food names and nutrients as the keys and their detailed data as the values. This setup allows for quick and efficient access to relevant information for users.
 - Functions:
 <span style="color:red">
@@ -246,7 +246,7 @@ This function removes a particular food from the user's meal plan when the food 
 1. generate_meal_plan(meal_plan, food_name, quantity): This function adds a food item and quantity to the user's meal plan.
 2. remove_food_from_meal_plan(meal_plan, food_name, quantity): This function deletes a specific food item from the meal plan to ensure that the meal data accurately reflects the user's choices.
 3. generate_total_calories(meal_plan): This function calculates the total calories for the day by adding up calories of all the foods included in the meal plan.
-<span style="color:red"></span>
+
 **filtered_range**
 - Type: <span style="color:red">Dataframe</span>
 - Usage: The filtered_range stores foods that fit into the minimum and maximum values of a specific nutrient. This enables precise filtering operations for users searching for foods within a specific nutritional range.
@@ -262,16 +262,18 @@ This function removes a particular food from the user's meal plan when the food 
 
 #### 3.2.3 Detailed Design
 
+##### _load_data(file_path)_
+- **START**
+- LOAD data from `file_path` INTO `database`
+- RETURN `database`
+
+
 ##### _search_food_by_name(food_name)_
 
 - **START**
-- FOR each `food_item` IN `database`:
-  - IF `food_item.name` == `food_name`:
-    - `found` == True
-     - RETURN `found` 
-  - ELSE:
-     - `found` == False
+- RETRIEVE food information for `food_name` FROM `database`
 - RETURN `found`
+</span>
 
 ##### _get_nutritional_info(food_name)_
 
@@ -350,6 +352,7 @@ This function removes a particular food from the user's meal plan when the food 
   - IF `food_name` == `meal_item.name`:
     - REMOVE `meal_item` FROM `meal_plan`.
 - RETURN `meal_plan`
+
 
 ## 4. User Interface Design
 
