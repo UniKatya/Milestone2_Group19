@@ -19,13 +19,17 @@ def search_food_by_name(food_name):
     return found
 
 def get_nutritional_info(food_name):
-    if not food_name or food_name.isdigit() or not search_food_by_name(food_name):
-        raise ValueError
-    global df
-    food_row = df[df['food'] == food_name].iloc[0]
-    nutritional_info = food_row.to_dict()
-    nutritional_info.pop('food', None)
-    return nutritional_info
+    nutritional_info = {}
+    if food_name.isdigit() or not search_food_by_name(food_name):
+        raise AttributeError
+    try:
+        global df
+        food_row = df[df['food'] == food_name].iloc[0]
+        nutritional_info = food_row.to_dict()
+        nutritional_info.pop('food', None)
+        return nutritional_info
+    except AttributeError:
+        return nutritional_info
 
 def filter_nutritional_info(nutritional_info):
     if not nutritional_info:

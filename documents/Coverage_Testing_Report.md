@@ -40,7 +40,8 @@ list all tested functions related to the five required features:
 
 ### 2.1 Description
 
-To achieve 100% branch coverage, we designed the test cases in test_all_functions.py to cover all the branches in the functions related to the five required features. This includes testing all possible outcomes of conditional statements.
+To achieve 100% statement coverage, we designed test cases to ensure that every line of code in the functions related to the five required features is executed at least once. This involves creating tests that cover all possible paths through the code, including all branches of conditional statements.
+
 
 ### 2.2 Testing Results
 You can use the following command to run the statement coverage test and generate the report in the terminal. Afterward, include a screenshot of the report. 

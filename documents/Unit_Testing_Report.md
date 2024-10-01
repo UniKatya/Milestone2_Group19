@@ -141,17 +141,17 @@ def test_get_nutritional_info_valid(cream_cheese_info):
 - **2) Code for the Test Function**
 ```python
 def test_get_nutritional_info_invalid():
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(IndexError) as exc_info:
         get_nutritional_info("pudding")
-    assert exc_info.type is ValueError
+    assert exc_info.type is IndexError
 
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(AttributeError) as exc_info:
         get_nutritional_info("12")
-    assert exc_info.type is ValueError
+    assert exc_info.type is AttributeError
 
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(AttributeError) as exc_info:
         get_nutritional_info(" ")
-    assert exc_info.type is ValueError
+    assert exc_info.type is AttributeError
 ```
 
 ### Test Case 4:

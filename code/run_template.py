@@ -30,17 +30,17 @@ class MyMainFrame(MyFrame):
 
     def display_nutritional_info(self, event):
         food_name = self.m_textCtrlSearch.GetValue().strip().lower()
-        try:
-            result = get_nutritional_info(food_name)
-            self.m_staticTextTitle.SetLabel(food_name.capitalize())
-            df_nutritional_info = pd.DataFrame(result.items(), columns=['Nutrient', 'Value'])
-            table = DataTable(df_nutritional_info)
-            self.m_grid4.ClearGrid()
-            self.m_grid4.SetTable(table, takeOwnership=True)
-            self.m_grid4.AutoSize()
-            self.Layout()
-        except ValueError:
+        result = get_nutritional_info(food_name)
+        if not result:
             wx.MessageBox("Error: Not valid input.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        self.m_staticTextTitle.SetLabel(food_name.capitalize())
+        df_nutritional_info = pd.DataFrame(result.items(), columns=['Nutrient', 'Value'])
+        table = DataTable(df_nutritional_info)
+        self.m_grid4.ClearGrid()
+        self.m_grid4.SetTable(table, takeOwnership=True)
+        self.m_grid4.AutoSize()
+        self.Layout()
 
     def display_charts(self, event):
         food_name = self.m_textCtrl3.GetValue().lower()

@@ -83,17 +83,17 @@ def test_get_nutritional_info_valid(cream_cheese_info):
     assert get_nutritional_info("cream cheese") == cream_cheese_info
 
 def test_get_nutritional_info_invalid():
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(AttributeError) as exc_info:
         get_nutritional_info("pudding")
-    assert exc_info.type is ValueError
+    assert exc_info.type is AttributeError
 
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(AttributeError) as exc_info:
         get_nutritional_info("12")
-    assert exc_info.type is ValueError
+    assert exc_info.type is AttributeError
 
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(AttributeError) as exc_info:
         get_nutritional_info(" ")
-    assert exc_info.type is ValueError
+    assert exc_info.type is AttributeError
 
 def test_filter_nutritional_info_valid(cream_cheese_info):
     assert filter_nutritional_info(cream_cheese_info) is not None
