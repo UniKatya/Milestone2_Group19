@@ -35,8 +35,8 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelHome = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		gSizer7 = wx.GridSizer( 1, 1, 0, 0 )
 
-		self.m_richText6 = wx.richtext.RichTextCtrl( self.m_panelHome, wx.ID_ANY, u"Search Food : Allows for the user to search for a food by name through an input box. \nThe system will then provide the food and it's nutritional information.\n\nNutritional Breakdown : Allows for the user to view nutritional breakdown through a bar graph and pie chart of their selected food item.\n\nRange Filter: Allows for the user to filter a list of foods through the range they give into the system. The system will then filter and return a list of foods that fit inside of this range.\n\nLevel Filter : Allows for the user to filter food through entering content levels (low, medium, high) for their chosen nutrient such as protein or fats.\n\nMeal Planner : Allows for the user to create a meal plan by selecting a food and the quantity which the system will then calculate and add to the meal plan.\n\n\n", wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
-		gSizer7.Add( self.m_richText6, 1, wx.EXPAND|wx.ALL, 5 )
+		self.m_richText1 = wx.richtext.RichTextCtrl( self.m_panelHome, wx.ID_ANY, u"Search Food : Allows for the user to search for a food by name through an input box. \nThe system will then provide the food and it's nutritional information.\n\nNutritional Breakdown : Allows for the user to view nutritional breakdown through a bar graph and pie chart of their selected food item.\n\nRange Filter: Allows for the user to filter a list of foods through the range they give into the system. The system will then filter and return a list of foods that fit inside of this range.\n\nLevel Filter : Allows for the user to filter food through entering content levels (low, medium, high) for their chosen nutrient such as protein or fats.\n\nMeal Planner : Allows for the user to create a meal plan by selecting a food and the quantity which the system will then calculate and add to the meal plan.\n\n\n", wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
+		gSizer7.Add( self.m_richText1, 1, wx.EXPAND|wx.ALL, 5 )
 
 
 		self.m_panelHome.SetSizer( gSizer7 )
@@ -294,7 +294,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelLevelFilter.SetSizer( bSizerLevelFilter )
 		self.m_panelLevelFilter.Layout()
 		bSizerLevelFilter.Fit( self.m_panelLevelFilter )
-		self.m_notebook1.AddPage( self.m_panelLevelFilter, u"Level Filter", True )
+		self.m_notebook1.AddPage( self.m_panelLevelFilter, u"Level Filter", False )
 		self.m_panelMealPlanner = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer22 = wx.BoxSizer( wx.VERTICAL )
 
@@ -511,7 +511,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_panelMealPlanner.SetSizer( bSizer22 )
 		self.m_panelMealPlanner.Layout()
 		bSizer22.Fit( self.m_panelMealPlanner )
-		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", False )
+		self.m_notebook1.AddPage( self.m_panelMealPlanner, u"Meal Planner", True )
 
 		bSizer2.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 0 )
 

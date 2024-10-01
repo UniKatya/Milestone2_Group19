@@ -60,25 +60,25 @@
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
-      <object class="wxBoxSizer" expanded="false">
+      <object class="wxBoxSizer" expanded="true">
         <property name="minimum_size"></property>
         <property name="name">bSizer1</property>
         <property name="orient">wxVERTICAL</property>
         <property name="permission">none</property>
-        <object class="sizeritem" expanded="false">
+        <object class="sizeritem" expanded="true">
           <property name="border">0</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
-          <object class="wxBoxSizer" expanded="false">
+          <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer2</property>
             <property name="orient">wxVERTICAL</property>
             <property name="permission">none</property>
-            <object class="sizeritem" expanded="false">
+            <object class="sizeritem" expanded="true">
               <property name="border">0</property>
               <property name="flag">wxEXPAND | wxALL</property>
               <property name="proportion">1</property>
-              <object class="wxNotebook" expanded="false">
+              <object class="wxNotebook" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -132,10 +132,10 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Home</property>
-                  <property name="select">0</property>
+                  <property name="select">1</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -236,7 +236,7 @@
                           <property name="minimize_button">0</property>
                           <property name="minimum_size"></property>
                           <property name="moveable">1</property>
-                          <property name="name">m_richText6</property>
+                          <property name="name">m_richText1</property>
                           <property name="pane_border">1</property>
                           <property name="pane_position"></property>
                           <property name="pane_size"></property>
@@ -263,7 +263,7 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Search</property>
                   <property name="select">0</property>
@@ -702,7 +702,7 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Nutritional Breakdown</property>
                   <property name="select">0</property>
@@ -1110,7 +1110,7 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Range Filter</property>
                   <property name="select">0</property>
@@ -1730,10 +1730,10 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Level Filter</property>
-                  <property name="select">1</property>
+                  <property name="select">0</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -2291,11 +2291,11 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Meal Planner</property>
                   <property name="select">0</property>
-                  <object class="wxPanel" expanded="false">
+                  <object class="wxPanel" expanded="true">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
                     <property name="RightDockable">1</property>
