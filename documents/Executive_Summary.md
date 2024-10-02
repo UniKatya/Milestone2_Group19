@@ -95,7 +95,7 @@ Include screenshots for each step demonstrating the use of this feature.
 
 ## 5. Meal Planner
 ### Description  
-Allows for the user to plan meals and calculate the total calories for a day. This includes features such as the ability to select a food and a specified quantity, calculate the total caloric count, delete certain food items, and display the meal plan to the user.
+Allows for the user to plan meals and calculate the total calories for a day. This includes features such as the ability to input a food and a specific quantity, calculate the total caloric count, delete certain food items, display the meal plan to the user, and display selected food from the meal plan.
 
 ### Steps
 1. The user selects 'Meal Planner' from the navigation bar.
