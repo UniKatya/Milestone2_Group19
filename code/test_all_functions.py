@@ -1,6 +1,6 @@
 import pytest
 import matplotlib.pyplot as plt
-from all_functions import get_number_rows, get_number_cols, get_value, set_value, get_col_label_value, load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, filter_food_by_nutrient_level, get_food_details, generate_meal_plan, generate_total_calories, remove_food_from_meal_plan
+from all_functions import DataTable, load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, filter_food_by_nutrient_level, get_food_details, generate_meal_plan, generate_total_calories, remove_food_from_meal_plan
 import pandas as pd
 
 EVEN_ROW_COLOUR = '#CCE6FF'
@@ -190,52 +190,4 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
     assert exc_info.type is KeyError
 
-def test_get_number_rows_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    assert get_number_rows(df) == 1
 
-def test_get_number_rows_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        get_number_rows({'Caloric Value': 51})
-    assert exc_info.type is AttributeError
-
-def test_get_number_cols_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    assert get_number_cols(df) == len(cream_cheese_info)
-
-def test_get_number_cols_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        get_number_cols({'Caloric Value': 51})
-    assert exc_info.type is AttributeError
-
-def test_get_value_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    assert get_value(df, 0, 0) == 51
-
-def test_get_value_invalid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    with pytest.raises(IndexError) as exc_info:
-        get_value(df, 10, 10)
-    assert exc_info.type is IndexError
-
-def test_set_value_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    set_value(df, 0, 0, 10)
-    assert get_value(df, 0, 0) == 10
-
-def test_set_value_invalid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    with pytest.raises(IndexError) as exc_info:
-        set_value(df, 10, 10, 100)
-    assert exc_info.type is IndexError
-
-def test_get_col_label_value_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    assert get_col_label_value(df, 0) == 'Caloric Value'
-    assert get_col_label_value(df, 1) == 'Fat'
-
-def test_get_col_label_value_invalid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    with pytest.raises(IndexError) as exc_info:
-        get_col_label_value(df, 100)
-    assert exc_info.type is IndexError

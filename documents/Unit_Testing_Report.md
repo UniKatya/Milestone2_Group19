@@ -14,25 +14,26 @@ the five required features.</span> There is no need to test the GUI components. 
 list all tested functions related to the five required features and the corresponding test functions designed to test 
 those functions, for example:
 
-| **Tested Functions**                                                 | **Test Functions**                                                                                             |
-|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                                       |
-| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                                   |
-| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`                |
-| `filter_nutritional_info(nutritional_info)`                          | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()`           |
-| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                                         |
-| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                                         |
-| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`               |
-| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`               |
-| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`                       |
-| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`                   |
-| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)`        |
-| `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)`   |
-| `get_number_rows(data)`                                          | `test_get_number_rows_valid(cream_cheese_info)` <br> `test_get_number_rows_invalid()`                          |
-| `get_number_cols(data)`                                          | `test_get_number_cols_valid(cream_cheese_info)` <br> `test_get_number_cols_invalid()`                          |
-| `get_value(data, row, col)`                                       | `test_get_value_valid(cream_cheese_info)` <br> `test_get_value_invalid(cream_cheese_info)`                     |
-| `set_value(data, row, col, value)`                                | `test_set_value_valid(cream_cheese_info)` <br> `test_set_value_invalid(cream_cheese_info)`                     |
-| `get_col_label_value(data, col)`                                    | `test_get_col_label_value_valid(cream_cheese_info)` <br> `test_get_col_label_value_invalid(cream_cheese_info)` |
+| **Tested Functions**                                                 | **Test Functions**                                                                                   |
+|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                             |
+| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                         |
+| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`      |
+| `filter_nutritional_info(nutritional_info)`                          | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()` |
+| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                               |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                               |
+| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`     |
+| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`     |
+| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`             |
+| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`         |
+| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)` |
+| `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
+| `DataTable.GetNumberRows()`                                          | `test_get_number_rows(data_table)`                                                                   |
+| `DataTable.GetNumberCols()`                                          | `test_get_number_cols(data_table)`                                                                   |
+| `DataTable.GetValue(row, col)`                                       | `test_get_value_valid(data_table)` <br> `test_get_value_invalid(data_table)`         |
+| `DataTable.SetValue(row, col, value)`                                | `test_set_value_valid(data_table)` <br> `test_set_value_invalid(data_table)`         |
+| `DataTable.GetColLabelValue(col)`                                    | `test_get_col_label_value_valid(data_table)` <br> `test_get_col_label_value_invalid(data_table)`   |
+| `DataTable.GetAttr(row, col, prop)`                                  | `test_get_attr_valid(data_table)` <br> `test_get_attr_invalid(data_table)`             |
 ---
 
 ## 2. **Test Case Details**
@@ -503,173 +504,177 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
 
 ### Test Case 13:
 - **Test Function/Module**
-- `test_get_number_rows_valid(cream_cheese_info)`
-- `test_get_number_rows_invalid()`
+- `test_get_number_rows(data_table)`
 - **Tested Function/Module**
-  - `get_number_rows(data)`
+  - `DataTable.GetNumberRows()`
 - **Description**
   - This functions obtains the number of rows in the data table. The input is the data table. The output is the number of rows.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                     | **Expected Output** |
-|-------------------------------------|---------------------|
-| `get_number_rows(pd.DataFrame([cream_cheese_info]))` | `1`                 |
+| **Valid Input**              | **Expected Output** |
+|------------------------------|---------------------|
+| `data_table.GetNumberRows()` | `3`                 |
 
 - **1) Code for the Test Function**
 ```python
-def test_get_number_rows_valid(cream_cheese_info):
-    assert get_number_rows(pd.DataFrame([cream_cheese_info])) == 1
-```
-
-- **2) Invalid Input and Expected Output**
-
-| **Invalid Input**  | **Expected Output** |
-|--------------------|---------------------|
-| `get_number_rows({'Caloric Value': 51})` | `Handle Exception`  |
-
-- **2) Code for the Test Function**
-```python
-def test_get_number_rows_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        get_number_rows({'Caloric Value': 51})
-    assert exc_info.type is AttributeError
+def test_get_number_rows(data_table):
+    assert data_table.GetNumberRows() == 3
 ```
 
 ### Test Case 14:
 - **Test Function/Module**
-- `test_get_number_cols_valid(cream_cheese_info)`
-- `test_get_number_cols_invalid()`
+- `test_get_number_cols(data_table)`
 - **Tested Function/Module**
-  - `get_number_cols(data)`
+  - `DataTable.GetNumberCols()`
 - **Description**
   - This functions obtains the number of columns in the data table. The input is the data table. The output is the number of columns.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**              | **Expected Output** |
-|------------------------------|--------------------|
-| `get_number_cols(pd.DataFrame([cream_cheese_info]))` | `34`                 |
+|------------------------------|---------------------|
+| `data_table.GetNumberCols()` | `4`                 |
 
 - **1) Code for the Test Function**
 ```python
-def test_get_number_cols_valid(cream_cheese_info):
-    assert get_number_cols(pd.DataFrame([cream_cheese_info])) == len(cream_cheese_info)
-```
-
-- **2) Invalid Input and Expected Output**
-
-| **Invalid Input**  | **Expected Output** |
-|--------------------|---------------------|
-| `get_number_rows({'Caloric Value': 51})` | `Handle Exception`  |
-
-- **2) Code for the Test Function**
-```python
-def test_get_number_cols_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        get_number_cols({'Caloric Value': 51})
-    assert exc_info.type is AttributeError
+def test_get_number_cols(data_table):
+    assert data_table.GetNumberCols() == 4
 ```
 
 ### Test Case 15:
 - **Test Function/Module**
-- `test_get_value_valid(cream_cheese_info)`
-- `test_get_value_invalid(cream_cheese_info)`
+- `test_get_value_valid(data_table)`
+- `test_get_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `get_value(data, row, col)`
+  - `DataTable.GetValue(row, col)`
 - **Description**
   - The function retrieves the value at the specified row and column in the data table. The input is the row and column. The output is the value.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**             | **Expected Output** |
 |-----------------------------|---------------------|
-| `get_value(pd.DataFrame([cream_cheese_info]),  0, 0)` | `51'`               |
+| `data_table.GetValue(0, 0)` | `'apple'`           |
 
 - **1) Code for the Test Function**
 ```python
-def test_get_value_valid(cream_cheese_info):
-    assert get_value(pd.DataFrame([cream_cheese_info]),  0, 0) == 51
+def test_get_value_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**             | **Expected Output** |
 |-------------------------------|---------------------|
-| `get_value(pd.DataFrame([cream_cheese_info]), 10, 10)` | `Handle Exception`  |
+| `data_table.GetValue(10, 10)` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
-def test_get_value_invalid(cream_cheese_info):
+def test_get_value_invalid(data_table):
     with pytest.raises(IndexError) as exc_info:
-        get_value(pd.DataFrame([cream_cheese_info]), 10, 10)
+        data_table.GetValue(10, 10)
     assert exc_info.type is IndexError
 ```
 
 ### Test Case 16:
 - **Test Function/Module**
-- `test_set_value_valid(cream_cheese_info)`
-- `test_set_value_invalid(cream_cheese_info)`
+- `test_set_value_valid(data_table)`
+- `test_set_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `set_value(data, row, col, value)`
+  - `DataTable.SetValue(row, col, value)`
 - **Description**
   - The function sets the value at the specified row and column in the data table. The input is the row, column, and value. The output is the updated data table.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                 | **Expected Output** |
 |---------------------------------|---------------------|
-| `set_value(df, 0, 0, 10)` | `10`                |
+| `data_table.SetValue(0, 0, 10)` | `10`                |
 
 - **1) Code for the Test Function**
 ```python
-def test_set_value_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    set_value(df, 0, 0, 10)
-    assert get_value(df, 0, 0) == 10
+def test_set_value_valid(data_table):
+    data_table.SetValue(0, 0, 10)
+    assert data_table.GetValue(0, 0) == 10
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**                         | **Expected Output** |
 |-------------------------------------------|---------------------|
-| ` set_value(pd.DataFrame([cream_cheese_info]), 10, 10, 100)` | `Handle Exception`        |
+| ` data_table.SetValue(10, 10, 100)` | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_set_value_invalid(cream_cheese_info):
+def test_set_value_invalid(data_table):
     with pytest.raises(IndexError) as exc_info:
-        set_value(pd.DataFrame([cream_cheese_info]), 10, 10, 100)
+        data_table.SetValue(10, 10, 100)
     assert exc_info.type is IndexError
 ```
 
 ### Test Case 17:
 - **Test Function/Module**
-- `test_get_col_label_value_valid(cream_cheese_info)`
-- `test_get_col_label_value_invalid(cream_cheese_info)`
+- `test_get_col_label_value_valid(data_table)`
+- `test_get_col_label_value_invalid(data_table)`
 - **Tested Function/Module**
-  - `get_col_label_value(data, col)`
+  - `DataTable.GetColLabelValue(col)`
 - **Description**
   - The function retrieves the column label value at the specified column index in the data table. The input is the column index. The output is the column label value.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                  | **Expected Output** |
 |----------------------------------|---------------------|
-| `get_col_label_value(pd.DataFrame([cream_cheese_info]), 0)` | `'Caloric Value'`   |
-| `get_col_label_value(pd.DataFrame([cream_cheese_info]), 1)` | `'Fat'`             |
+| `data_table.GetColLabelValue(0)` | `'food'`            |
+| `data_table.GetColLabelValue(1)` | `'Caloric Value'`   |
 
 - **1) Code for the Test Function**
 ```python
-def test_get_col_label_value_valid(cream_cheese_info):
-    assert get_col_label_value(pd.DataFrame([cream_cheese_info]), 0) == 'Caloric Value'
-    assert get_col_label_value(pd.DataFrame([cream_cheese_info]), 1) == 'Fat'
+def test_get_col_label_value_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
 ```
 - **2) Invalid Input and Expected Output**
 
 | **Invalid Input**                   | **Expected Output** |
 |-------------------------------------|---------------------|
-| `get_col_label_value(pd.DataFrame([cream_cheese_info]), 100)` | `Handle Exception`        |
+| `data_table().GetColLabelValue(-1)` | `Handle Exception`        |
 
 - **2) Code for the Test Function**
 ```python
-def test_get_col_label_value_invalid(cream_cheese_info):
+def test_get_col_label_value_invalid(data_table):
     with pytest.raises(IndexError) as exc_info:
-        get_col_label_value(pd.DataFrame([cream_cheese_info]), 100)
+        data_table.GetColLabelValue(10) 
     assert exc_info.type is IndexError
+```
+
+### Test Case 18:
+- **Test Function/Module**
+- `test_get_attr_valid(data_table)`
+- `test_get_attr_invalid(data_table)`
+- **Tested Function/Module**
+  - `DataTable.GetAttr(row, col, prop)`
+- **Description**
+  - The function retrieves the attribute at the specified row and column in the data table. The input is the row, column, and default attribute. The output is the attribute.
+- **1) Valid Input and Expected Output**  
+
+| **Valid Input**              | **Expected Output**         |
+|------------------------------|-----------------------------|
+| `data_table.GetAttr(3, 0, None).GetBackgroundColour()` | `EVEN_ROW_COLOUR`           |
+| `data_table.GetAttr(0, 0, None).HasBackgroundColour()` | `not HasBackgroundColour()` |
+
+- **1) Code for the Test Function**
+```python
+def test_get_attr_valid(data_table):
+    assert data_table.GetAttr(3, 0, None).GetBackgroundColour() == EVEN_ROW_COLOUR
+    assert not data_table.GetAttr(0, 0, None).HasBackgroundColour()
+```
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**            | **Expected Output** |
+|------------------------------|---------------------|
+| `data_table.GetAttr(10, 0, None)` | `not None`          |
+| `data_table.GetAttr(0, 10, None)` | `not None`          |
+
+- **2) Code for the Test Function**
+```python
+def test_get_attr_invalid(data_table):
+    assert data_table.GetAttr(10, 0, None) is not None
+    assert data_table.GetAttr(0, 10, None) is not None
 ```
 
 ## 3. **Testing Report Summary**
