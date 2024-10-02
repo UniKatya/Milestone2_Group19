@@ -99,10 +99,10 @@ def test_search_food_by_name_valid():
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**           | **Expected Output** |
-|-----------------------------|---------------------|
-| `search_food_by_name('12')` | `Handle Exception`  |
-| `search_food_by_name(' ')`  | `Handle Exception`  |
+| **Invalid Input**          | **Expected Output** |
+|----------------------------|---------------------|
+| `search_food_by_name(12)`  | `Handle Exception`  |
+| `search_food_by_name(' ')` | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
