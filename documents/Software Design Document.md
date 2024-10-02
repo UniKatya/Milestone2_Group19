@@ -183,9 +183,9 @@ This function will retrieve the nutritional information of the food selected by 
 
 <span style="color:red">*filter_nutritional_info(nutritional_info):* This function will filter the nutritional information of the food selected by the user. The input parameter is the nutritional information (dictionary) from the get_nutritional_info() function, this parameter allows the program to know which food item and nutritional value to filter. The function will then return filtered_nutritional_info (dictionary) which is the filtered nutritional information. There are no side effects.</span>
 
-*create_pie_chart(nutritional_info):* This function will create a pie chart of the nutritional information inputted. <span style="color:red">The input parameters are the  filtered_categories, filtered_sizes, explode, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the pie chart. </span>The function will then return a pie chart. There are no side effects.
+*create_pie_chart(filtered_sizes, filtered_categories, explode, ax):* This function will create a pie chart of the nutritional information inputted. <span style="color:red">The input parameters are the  filtered_categories, filtered_sizes, explode, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the pie chart. </span>The function will then return a pie chart. There are no side effects.
 
-*create_bar_graph(nutritional_info):* This function will create a bar graph of the nutritional information inputted. <span style="color:red">The input parameter is the  filtered_categories, filtered_sizes, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the bar graph. </span>The function will then return a bar graph. There are no side effects.
+*create_bar_graph(filtered_categories, filtered_sizes, ax):* This function will create a bar graph of the nutritional information inputted. <span style="color:red">The input parameter is the  filtered_categories, filtered_sizes, and ax from the filter_nutritional_info() function, this parameter allows the program to know what categories, sizes, and background size for the bar graph. </span>The function will then return a bar graph. There are no side effects.
 
 *filter_food_by_nutrient_range(nutrient, min_value, max_value):*
 This function will search the database for foods that are within the minimum and maximum range values inputted by the user. The input parameters required are the nutrient name (string) and the minimum and maximum values (floats). These parameters specify which nutrients to search through, what is the lowest acceptable amount for the nutrient and what is the highest. The function will then return filtered_range (Dataframe) that match the requirements of the search. There are no side effects. 
@@ -195,7 +195,7 @@ This function will search the database for foods that match the level (low, medi
 
 <span style="color:red">*get_food_details(food_name, meal_plan):* This function will retrieve the details of the food selected by the user. The input parameters required are the food name (string) and the output dictionary from the meal plan function. The food name specifies the food item chosen by the user while the meal plan specifies the meal plan provided by the user. The function will then return food_key, quantity, and total_calories saving the current food details provided by the user. There are no side effects.</span>
 
-*generate_meal_plan(food_name, quantity):*
+*generate_meal_plan(meal_plan, food_name, quantity):*
 This function will add food selected by the user into the user’s daily meal plan. The input parameters required are the <span style="color:red">meal_plan (dictionary)</span>, food name (string) and the quantity (integer). <span style="color:red">The meal_plan is the current user's meal plan,</span> the food name specifies the food item chosen by the user while the quantity specifies the amount of the selected food item. The function will then return <span style="color:red">food_name and quantity, </span>saving the current meal plan provided by the user. The side effect includes updating the meal_plan stored in the session.
 
 *generate_total_calories(meal_plan):*
@@ -432,7 +432,7 @@ Once the enter button is clicked the search will show all the foods that contain
 
 **Figure 4:** _Nutrient Level Filter Wireframe_
 
-The ‘Range Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Next to this there are minimum and maximum filters that allow the user to input a value of their choosing. Once entered the search will show all the foods that contain the selected nutrient that is within the range. This will be ordered as a list by their food name. All of this is done for simplicity and require limited actions from the user. 
+The ‘Range Filter’ Screen has a section where the user can enter the nutrient they wish to search for. Next to this there are minimum and maximum filters that allow the user to input a value of their choosing. Once entered the search will show all the foods that contain the selected nutrient that is within the range. This will be ordered by their food name. All of this is done for simplicity and require limited actions from the user. 
 
 <span style="color:red">This wireframe has been altered so that instead of the filtered foods to be represented as a list they are a table. </span>
 
