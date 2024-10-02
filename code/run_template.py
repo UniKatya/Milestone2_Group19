@@ -6,10 +6,36 @@ import matplotlib
 matplotlib.use('WXAgg')
 
 from template_frame import MyFrame1 as MyFrame
-from all_functions import DataTable, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan, filter_food_by_nutrient_level
-
+from all_functions import get_number_rows, get_number_cols, get_value, set_value, get_col_label_value, load_data, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, generate_meal_plan, generate_total_calories, get_food_details, remove_food_from_meal_plan, filter_food_by_nutrient_level
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
+
+class DataTable(wx.grid.GridTableBase):
+    def __init__(self, data=None):
+        wx.grid.GridTableBase.__init__(self)
+        self.headerRows = 1
+        self.data = data
+
+    def GetNumberRows(self):
+        return get_number_rows(self.data)
+
+    def GetNumberCols(self):
+        return get_number_cols(self.data)
+
+    def GetValue(self, row, col):
+        return get_value(self.data, row, col)
+
+    def SetValue(self, row, col, value):
+        return set_value(self.data, row, col, value)
+
+    def GetColLabelValue(self, col):
+        return get_col_label_value(self.data, col)
+
+    def GetAttr(self, row, col, prop):
+        attr = wx.grid.GridCellAttr()
+        if row % 2 == 1:
+            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
+        return attr
 
 class MyMainFrame(MyFrame):
     def __init__(self, parent=None):
