@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="badab633-ba99-4e16-b392-9fa16a78b9a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_template.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_all_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_all_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/unit_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/Coverage_Testing_Report.md" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/Coverage_Testing_Report.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documents/Unit_Testing_Report.md" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/Unit_Testing_Report.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/images/Unit_test.png" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/images/Unit_test.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/images/branch_coverage.png" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/images/branch_coverage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/images/statement_coverage.png" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/images/statement_coverage.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +55,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-884f5ed5d46b-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.22855.92" />
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
       </set>
     </attachedChunks>
   </component>
