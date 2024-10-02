@@ -315,7 +315,7 @@ This function removes a particular food from the user's meal plan when the food 
 
 <span style="color:red">*generate_total_calories(meal_plan)*</span>
 - START 
-- CALCULATE total calories FROM meal_plan RETURN total_calories
+- CALCULATE total calories FROM meal_plan
 - RETURN total_calories
 
 <span style="color:red">*remove_food_from_meal_plan(meal_plan, food_name, quantity)*</span>
