@@ -205,8 +205,13 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 def test_get_number_rows_valid(cream_cheese_info):
     assert get_number_rows(pd.DataFrame([cream_cheese_info])) == 1
+=======
+def test_get_number_rows(data_table):
+    assert data_table.GetNumberRows() == 3
+>>>>>>> parent of b12ee5d (v_4.6)
 =======
 def test_get_number_rows(data_table):
     assert data_table.GetNumberRows() == 3
@@ -219,6 +224,7 @@ def test_get_number_rows(data_table):
 def test_get_number_cols(data_table):
     assert data_table.GetNumberCols() == 4
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 def test_get_number_cols_valid(cream_cheese_info):
@@ -251,12 +257,21 @@ def test_get_value_invalid(data_table):
     with pytest.raises(IndexError) as exc_info:
         data_table.GetValue(10, 10)
 >>>>>>> parent of b12ee5d (v_4.6)
+=======
+def test_get_value_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+
+def test_get_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetValue(10, 10)
+>>>>>>> parent of b12ee5d (v_4.6)
     assert exc_info.type is IndexError
 
 def test_set_value_valid(data_table):
     data_table.SetValue(0, 0, 10)
     assert data_table.GetValue(0, 0) == 10
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 def test_set_value_invalid(cream_cheese_info):
@@ -287,6 +302,22 @@ def test_get_col_label_value_invalid(data_table):
 >>>>>>> parent of b12ee5d (v_4.6)
     assert exc_info.type is IndexError
 
+=======
+def test_set_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.SetValue(10, 10, 100)
+    assert exc_info.type is IndexError
+
+def test_get_col_label_value_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+
+def test_get_col_label_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetColLabelValue(10)
+    assert exc_info.type is IndexError
+
+>>>>>>> parent of b12ee5d (v_4.6)
 =======
 def test_set_value_invalid(data_table):
     with pytest.raises(IndexError) as exc_info:
