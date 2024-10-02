@@ -73,11 +73,16 @@ def test_load_data_invalid():
 def test_search_food_by_name_valid():
     assert search_food_by_name('apple') == True
     assert search_food_by_name('banana') == True
+    assert search_food_by_name('pudding') == False
 
 def test_search_food_by_name_invalid():
-    assert search_food_by_name('pudding') == False
-    assert search_food_by_name('12') == False
-    assert search_food_by_name(' ') == False
+    with pytest.raises(ValueError) as exc_info:
+        search_food_by_name(12)
+    assert exc_info.type is ValueError
+
+    with pytest.raises(ValueError) as exc_info:
+        search_food_by_name(' ')
+    assert exc_info.type is ValueError
 
 def test_get_nutritional_info_valid(cream_cheese_info):
     assert get_nutritional_info("cream cheese") == cream_cheese_info

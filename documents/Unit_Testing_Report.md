@@ -84,31 +84,36 @@ def test_load_data_invalid():
   -The function reads the CSV file and checks if the specified food name exists in the dataset. A string name representing the food item to search for is the input. While the output is a boolean value (True if the food item exists, False otherwise).
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                 | **Expected Output** |
-|---------------------------------|---------------------|
-| `search_food_by_name('apple')`  | `True`              |
-| `search_food_by_name('banana')` | `True`              |
+| **Valid Input**                  | **Expected Output** |
+|----------------------------------|---------------------|
+| `search_food_by_name('apple')`   | `True`              |
+| `search_food_by_name('banana')`  | `True`              |
+| `search_food_by_name('pudding')` | `False`             |
 
 - **1) Code for the Test Function**
 ```python
 def test_search_food_by_name_valid():
     assert search_food_by_name('apple') == True
     assert search_food_by_name('banana') == True
+    assert search_food_by_name('pudding') == False
 ```
 - **2) Invalid Input and Expected Output**
 
-| **Invalid Input**                | **Expected Output** |
-|----------------------------------|---------------------|
-| `search_food_by_name('pudding')` | `False`             |
-| `search_food_by_name('12')`      | `False`             |
-| `search_food_by_name(' ')`       | `False`             |
+| **Invalid Input**           | **Expected Output** |
+|-----------------------------|---------------------|
+| `search_food_by_name('12')` | `Handle Exception`  |
+| `search_food_by_name(' ')`  | `Handle Exception`  |
 
 - **2) Code for the Test Function**
 ```python
 def test_search_food_by_name_invalid():
-    assert search_food_by_name('pudding') == False
-    assert search_food_by_name('12') == False
-    assert search_food_by_name(' ') == False
+    with pytest.raises(ValueError) as exc_info:
+        search_food_by_name(12)
+    assert exc_info.type is ValueError
+
+    with pytest.raises(ValueError) as exc_info:
+        search_food_by_name(' ')
+    assert exc_info.type is ValueError
 ```
 
 ### Test Case 3:
@@ -239,7 +244,8 @@ def test_create_pie_chart_invalid():
 - **1) Code for the Test Function**
 ```python
 def test_create_bar_graph_valid():
-    assert len((lambda ax: (create_bar_graph(["A", "B", "C"], [10, 20, 30], ax), ax)[1].patches)(plt.subplots()[1])) == 3
+    assert len((lambda ax: (create_bar_graph(["A", "B", "C"], [10, 20, 30], ax), ax)[1].patches)(plt.subplots()[1])) 
+    == 3
 ```
 - **2) Invalid Input and Expected Output**
 
@@ -263,7 +269,7 @@ def test_create_bar_graph_invalid():
 - **Tested Function/Module**
   - `filter_food_by_nutrient_range(nutrient, min_val, max_val)`
 - **Description**
-  - This function filters foods by a nutrient range. The input is the dataframe, nutrient, min_val, and max_val. The output is the filtered dataframe.
+  - This function filters foods by a nutrient range. The input is the nutrient, min_val, and max_val. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                                  | **Expected Output** |
@@ -307,7 +313,7 @@ def test_filter_food_by_nutrient_range_invalid():
 - **Tested Function/Module**
   - `filter_food_by_nutrient_level(nutrient, level)`
 - **Description**
-  - This function filters foods by nutrient level (Low, Mid, High). The input is the dataframe, nutrient, and level. The output is the filtered dataframe.
+  - This function filters foods by nutrient level (Low, Mid, High). The input is the nutrient, and level. The output is the filtered dataframe.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                                | **Expected Output** |
@@ -339,19 +345,17 @@ def test_filter_food_by_nutrient_level_invalid():
 
 ### Test Case 9:
 - **Test Function/Module**
-- `test_get_food_details_valid()`
-- `test_get_food_details_invalid()`
+- `test_get_food_details_valid(meal_plan)`
+- `test_get_food_details_invalid(meal_plan)`
 - **Tested Function/Module**
   - `get_food_details(food_name, meal_plan)`
 - **Description**
   - This function retrieves food details from the meal plan. The input is the dataframe, food_name, and meal_plan. The output is the food details.
 - **1) Valid Input and Expected Output**  
 
-| **Valid Input**                        | **Expected Output** |
-|----------------------------------------|---------------------|
-| `get_food_details('apple', meal_plan)` | `'apple'`           |
-| `get_food_details('apple', meal_plan)` | `2`                 |
-| `get_food_details('apple', meal_plan)` | `190`               |
+| **Valid Input**                        | **Expected Output**   |
+|----------------------------------------|-----------------------|
+| `get_food_details('apple', meal_plan)` | `'apple'`, `2`, `190` |
 
 - **1) Code for the Test Function**
 ```python
@@ -382,8 +386,8 @@ def test_get_food_details_invalid(meal_plan):
 
 ### Test Case 10:
 - **Test Function/Module**
-- `test_generate_meal_plan_valid()`
-- `test_generate_meal_plan_invalid()`
+- `test_generate_meal_plan_valid(meal_plan)`
+- `test_generate_meal_plan_invalid(meal_plan)`
 - **Tested Function/Module**
   - `generate_meal_plan(meal_plan, name, quantity)`
 - **Description**
@@ -430,8 +434,8 @@ def test_generate_meal_plan_invalid(meal_plan):
 
 ### Test Case 11:
 - **Test Function/Module**
-- `test_generate_total_calories_valid()`
-- `test_generate_total_calories_invalid()`
+- `test_generate_total_calories_valid(meal_plan)`
+- `test_generate_total_calories_invalid(meal_plan)`
 - **Tested Function/Module**
   - `generate_total_calories(meal_plan)`
 - **Description**
@@ -466,8 +470,8 @@ def test_generate_total_calories_invalid(meal_plan):
 
 ### Test Case 12:
 - **Test Function/Module**
-- `test_remove_food_from_meal_plan_valid()`
-- `test_remove_food_from_meal_plan_invalid()`
+- `test_remove_food_from_meal_plan_valid(meal_plan)`
+- `test_remove_food_from_meal_plan_invalid(meal_plan)`
 - **Tested Function/Module**
   - `remove_food_from_meal_plan(meal_plan, food_name, quantity)`
 - **Description**

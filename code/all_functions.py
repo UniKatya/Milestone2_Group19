@@ -15,6 +15,8 @@ df = load_data('Food_Nutrition_Dataset.csv')
 
 def search_food_by_name(food_name):
     global df
+    if not isinstance(food_name, str) or not food_name.strip():
+        raise ValueError
     found = food_name in df['food'].values
     return found
 
