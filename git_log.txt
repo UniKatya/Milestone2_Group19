@@ -1,0 +1,133 @@
+* af1a632 2024-10-02 by [ekaterina kozub] | v_5.7 (HEAD -> main, origin/main, origin/HEAD)
+* 678723b 2024-10-02 by [ekaterina kozub] | v_5.6
+* 10aa1ca 2024-10-02 by [ekaterina kozub] | v_5.5
+* e5929ec 2024-10-02 by [ekaterina kozub] | v_5.4
+* 80c0ea7 2024-10-02 by [ekaterina kozub] | pdf documents v_1.0
+* fe6d51d 2024-10-02 by [ekaterina kozub] | v_5.3
+* f13973f 2024-10-02 by [ekaterina kozub] | v_5.2
+* 6ef04f6 2024-10-02 by [ekaterina kozub] | Create Project Plan.pdf
+* 322e822 2024-10-02 by [ekaterina kozub] | Update Software Design Document.md
+* 726cfe8 2024-10-02 by [ekaterina kozub] | v_5.1
+* 4d05477 2024-10-02 by [ekaterina kozub] | Update workspace.xml
+* 19d75a1 2024-10-02 by [ekaterina kozub] | Update Coverage_Testing_Report.md
+* 0c5ad7e 2024-10-02 by [ekaterina kozub] | v_5.1
+* beb5ccf 2024-10-02 by [ekaterina kozub] | v_5.0
+* ada0421 2024-10-02 by [ekaterina kozub] | v_4.9
+* 6070c64 2024-10-02 by [ekaterina kozub] | Revert "v_4.5"
+* 5560143 2024-10-02 by [ekaterina kozub] | v_4.8
+* 9f79199 2024-10-02 by [ekaterina kozub] | v_4.8
+* f9099bd 2024-10-02 by [ekaterina kozub] | v_4.8
+* 4c1a290 2024-10-02 by [ekaterina kozub] | v_4.8
+* d77d009 2024-10-02 by [ekaterina kozub] | v_4.7
+* b12ee5d 2024-10-02 by [ekaterina kozub] | v_4.6
+* 9c47da0 2024-10-02 by [ekaterina kozub] | Update Software Design Document.md
+* 1dc92f6 2024-10-02 by [ekaterina kozub] | v_4.5
+* ab95683 2024-10-02 by [ekaterina kozub] | v_4.4
+* 5274641 2024-10-01 by [ekaterina kozub] | v_4.3
+* c7fcc77 2024-10-01 by [ekaterina kozub] | v_4.2
+* fc16398 2024-10-01 by [ekaterina kozub] | v_4.1
+* 2ada160 2024-10-01 by [ekaterina kozub] | v_4.0
+* e9e031b 2024-10-01 by [ekaterina kozub] | v_3.9
+* de93eb0 2024-10-01 by [ekaterina kozub] | v_3.8
+* 49c759d 2024-10-01 by [ekaterina kozub] | v_3.8
+* 7fb5485 2024-10-01 by [ekaterina kozub] | v_3.7
+* 7401559 2024-10-01 by [ekaterina kozub] | v_3.6
+* fc8b54b 2024-10-01 by [ekaterina kozub] | Update workspace.xml
+* 75e685d 2024-09-30 by [ekaterina kozub] | v_3.5
+* 22ef22b 2024-09-30 by [ekaterina kozub] | v_3.4
+*   e52d37f 2024-09-30 by [ekaterina kozub] | Merge branch 'main' of https://github.com/UniKatya/Milestone2_Group19
+|\  
+| * 56ecdde 2024-09-27 by [UniKatya] | Update Project Plan.md
+* | 61eac3a 2024-09-30 by [ekaterina kozub] | v_3.3
+|/  
+* 14a77b6 2024-09-26 by [ekaterina kozub] | Delete branch_coverage.png
+* 5b5d2fa 2024-09-26 by [ekaterina kozub] | unit test 2.5
+* b53f9bb 2024-09-26 by [ekaterina kozub] | unit test 2.4
+* fc6c79f 2024-09-26 by [ekaterina kozub] | unit test 2.4
+* c846692 2024-09-26 by [ekaterina kozub] | unit test 2.3
+* b43b180 2024-09-26 by [ekaterina kozub] | unit test 2.2
+* bcaddae 2024-09-26 by [ekaterina kozub] | unit test 2.2
+* cf9b1ef 2024-09-26 by [ekaterina kozub] | unit test 2.1
+* 8542cee 2024-09-26 by [ekaterina kozub] | unit test 1.9
+* d1db44e 2024-09-26 by [ekaterina kozub] | unit test 1.8
+* 36a3b8e 2024-09-26 by [ekaterina kozub] | unit test 1.8
+* 2ce53f1 2024-09-26 by [ekaterina kozub] | unit test 1.7
+* 0d1346a 2024-09-25 by [ekaterina kozub] | unit test 1.6
+* fae2537 2024-09-25 by [ekaterina kozub] | Update GUI.pdf
+* 9be51b5 2024-09-25 by [ekaterina kozub] | unit test 1.5
+* 40c9c2e 2024-09-25 by [ekaterina kozub] | unit tests 1.4
+* e5c48aa 2024-09-25 by [ekaterina kozub] | unit tests 1.3
+*   aaf92a3 2024-09-24 by [ekaterina kozub] | Merge branch 'main' of https://github.com/UniKatya/Milestone2_Group19
+|\  
+| * dc521bd 2024-09-24 by [Fiston Kayeye] | "I updated the level filter, now if you select a nutrient it will return food within the nutrient range"
+| * 5707e66 2024-09-24 by [Fiston Kayeye] | "I updated the level filter, now if you select a nutrient it will return food within the nutrient range"
+* | c522f1a 2024-09-24 by [ekaterina kozub] | Update all_functions.cpython-38.pyc
+|/  
+*   7c8d53b 2024-09-24 by [ekaterina kozub] | Merge branch 'main' of https://github.com/UniKatya/Milestone2_Group19
+|\  
+| * 4feec28 2024-09-24 by [Fiston Kayeye] | "I updated the level filter, now if you select a nutrient it will return food within the nutrient range"
+* | c296998 2024-09-24 by [ekaterina kozub] | 3.2
+|/  
+* 1d60432 2024-09-23 by [ekaterina kozub] | 3.3
+* 24b8eea 2024-09-23 by [ekaterina kozub] | 3.2
+* d3f9db5 2024-09-23 by [ekaterina kozub] | unit tests 1.2
+* b9c3ad7 2024-09-23 by [ekaterina kozub] | 3.1
+* 821c108 2024-09-23 by [ekaterina kozub] | unit_testing_report 1.1
+* d97f478 2024-09-23 by [ekaterina kozub] | executive_summary 1.6
+* a51ba98 2024-09-23 by [ekaterina kozub] | executive summary 1.5
+* 6f2a574 2024-09-20 by [ekaterina kozub] | basic tests initiated 1.1
+* 830de0d 2024-09-20 by [ekaterina kozub] | 2.9
+* 1ce53fd 2024-09-20 by [ekaterina kozub] | 2.8
+* 88d116c 2024-09-20 by [ekaterina kozub] | 2.7
+* 8b87a78 2024-09-20 by [Ella] | updated error messages for range filter
+* 34b2dd9 2024-09-20 by [ekaterina kozub] | test_all_functions added
+* 1416f4a 2024-09-19 by [ekaterina kozub] | 2.6
+* 8ee627e 2024-09-19 by [ekaterina kozub] | 2.5
+* 84681c5 2024-09-19 by [ekaterina kozub] | 2.4
+* 3a6d2b9 2024-09-19 by [ekaterina kozub] | 2.3
+* e5e79f9 2024-09-19 by [ekaterina kozub] | Photo updated 1.1
+* cfc9e90 2024-09-19 by [ekaterina kozub] | Update Structure_Design.png
+* 8a2cc0a 2024-09-19 by [ekaterina kozub] | executive summary 1.4
+* 26b7098 2024-09-19 by [ekaterina kozub] | executive summary 1.3
+* c0b2d66 2024-09-19 by [ekaterina kozub] | 2.2
+* e90d3fa 2024-09-19 by [ekaterina kozub] | all_functions added
+* 3c1e97c 2024-09-19 by [Ella] | Changed range filter to only show filtered nutrient column
+* ed87adf 2024-09-19 by [Ella] | Added range filter function
+* bf92854 2024-09-19 by [Ella] | Update template_frame.py
+* b24b968 2024-09-19 by [Ella] | Update template_frame.py
+* 6a81e2a 2024-09-18 by [ellyiian] | Added grids to filter pages
+* 98ed99e 2024-09-16 by [Fiston Kayeye] | "colour code of graph bars, text font_size of pie and bar graph "
+* 034c7f1 2024-09-16 by [ekaterina kozub] | executive_summary1.2
+* c2e2283 2024-09-16 by [ekaterina kozub] | executive_summary 1.1
+* 8163f18 2024-09-16 by [ekaterina kozub] | 2.1
+* eb2bfdd 2024-09-16 by [ekaterina kozub] | 1.9
+* 27f2f88 2024-09-16 by [ekaterina kozub] | previous images uploaded
+* baf6ba1 2024-09-15 by [ekaterina kozub] | 1.9
+* 95826f0 2024-09-15 by [Fiston Kayeye] | "setup of Nutritional_Breakdown"
+* 9fc1b69 2024-09-14 by [ekaterina kozub] | old documents added
+* c44cdf6 2024-09-14 by [ekaterina kozub] | 1.8.1
+* 18e1f9b 2024-09-14 by [ekaterina kozub] | 1.8
+* 38deb05 2024-09-14 by [ekaterina kozub] | 1.7
+* c8d2e1d 2024-09-14 by [ekaterina kozub] | Update template_frame.cpython-38.pyc
+* f827513 2024-09-14 by [ekaterina kozub] | 1.6 (meal_plan)
+* b20d983 2024-09-13 by [ekaterina kozub] | 1.6
+* ecbea14 2024-09-13 by [ekaterina kozub] | 1.5
+* b05b98a 2024-09-11 by [ekaterina kozub] | 1.4
+* 55b3bb3 2024-09-11 by [ekaterina kozub] | 1.3
+* 19d7cb3 2024-09-11 by [ekaterina kozub] | 1.2
+* b017fe9 2024-09-11 by [ekaterina kozub] | update to interface 1.1
+* f088dd8 2024-09-11 by [ekaterina kozub] | Update NutritionDatabase.fbp
+*   7a2cee6 2024-09-11 by [ekaterina kozub] | Merge branch 'main' of https://github.com/UniKatya/Milestone2_Group19
+|\  
+| * c44503b 2024-09-11 by [Ella] | Update NutritionDatabase.fbp
+| * c6e8771 2024-09-11 by [Ella] | Update template_frame.py
+* | 497ae0e 2024-09-11 by [ekaterina kozub] | Delete food_search.py
+* | ea48c5c 2024-09-11 by [ekaterina kozub] | update to food_search function
+|/  
+* ed88a6f 2024-09-11 by [Ella] | Added user interface files
+* 34f723a 2024-09-11 by [ekaterina kozub] | uploading initial files
+* 0ac09d5 2024-09-09 by [ekaterina kozub] | changes to food search
+* 69efed9 2024-09-09 by [ekaterina kozub] | creating main file
+* 8c8cded 2024-09-09 by [UniKatya] | Add files via upload
+* d4526bd 2024-09-09 by [UniKatya] | Create food_search.py
+* 1f9850c 2024-09-08 by [UniKatya] | Initial commit
