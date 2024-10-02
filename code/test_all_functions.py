@@ -6,6 +6,19 @@ import pandas as pd
 EVEN_ROW_COLOUR = '#CCE6FF'
 
 @pytest.fixture
+def sample_data():
+    return pd.DataFrame({
+        'food': ['apple', 'banana', 'carrot'],
+        'Caloric Value': [52, 89, 41],
+        'Protein': [0.3, 1.1, 0.9],
+        'Fat': [0.1, 0.3, 0.2]
+    })
+
+@pytest.fixture
+def data_table(sample_data):
+    return DataTable(sample_data)
+
+@pytest.fixture
 def meal_plan():
     return {'apple': 2, 'banana': 1}
 
@@ -190,4 +203,42 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
     assert exc_info.type is KeyError
 
+def test_get_number_rows(data_table):
+    assert data_table.GetNumberRows() == 3
 
+def test_get_number_cols(data_table):
+    assert data_table.GetNumberCols() == 4
+
+def test_get_value_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+
+def test_get_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetValue(10, 10)
+    assert exc_info.type is IndexError
+
+def test_set_value_valid(data_table):
+    data_table.SetValue(0, 0, 10)
+    assert data_table.GetValue(0, 0) == 10
+
+def test_set_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.SetValue(10, 10, 100)
+    assert exc_info.type is IndexError
+
+def test_get_col_label_value_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+
+def test_get_col_label_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetColLabelValue(10)
+    assert exc_info.type is IndexError
+
+def test_get_attr_valid(data_table):
+    assert data_table.GetAttr(3, 0, None).GetBackgroundColour() == EVEN_ROW_COLOUR
+    assert not data_table.GetAttr(0, 0, None).HasBackgroundColour()
+
+def test_get_attr_invalid(data_table):
+    assert data_table.GetAttr(10, 0, None) is not None
+    assert data_table.GetAttr(0, 10, None) is not None
