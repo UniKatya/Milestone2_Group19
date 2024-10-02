@@ -13,25 +13,26 @@ You should perform statement coverage testing and branch coverage testing. For e
 ## 1. **Test Summary**
 list all tested functions related to the five required features:
 
-| **Tested Functions** |
-|--------------------|
-| `load_data(file_path)` | 
-| `search_food_by_name(food_name)` |
-| `get_nutritional_info(food_name)` |
-| `filter_nutritional_info(nutritional_info)` |
+| **Tested Functions**                                                 |
+|----------------------------------------------------------------------|
+| `load_data(file_path)`                                               | 
+| `search_food_by_name(food_name)`                                     |
+| `get_nutritional_info(food_name)`                                    |
+| `filter_nutritional_info(nutritional_info)`                          |
 | `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` |
-| `create_bar_graph(filtered_categories, filtered_sizes, ax)` |
-| `filter_food_by_nutrient_range(nutrient, min_val, max_val)` |
-| `filter_food_by_nutrient_level(nutrient, level)` |
-| `get_food_details(food_name, meal_plan)` |
-| `generate_meal_plan(meal_plan, food_name, quantity)` |
-| `generate_total_calories(meal_plan)` |
-| `remove_food_from_meal_plan(meal_plan, food_name, quantity)` |
-| `get_number_rows(data)` |
-| `get_number_cols(data)` |
-| `get_value(data, row, col)` |
-| `set_value(data, row, col, value)` |
-| `get_col_label_value(data, col)` |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          |
+| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          |
+| `filter_food_by_nutrient_level(nutrient, level)`                     |
+| `get_food_details(food_name, meal_plan)`                             |
+| `generate_meal_plan(meal_plan, food_name, quantity)`                 |
+| `generate_total_calories(meal_plan)`                                 |
+| `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         |
+| `DataTable.GetNumberRows()`                                          |
+| `DataTable.GetNumberCols()`                                          |
+| `DataTable.GetValue(row, col)`                                       |
+| `DataTable.SetValue(row, col, value)`                                |
+| `DataTable.GetColLabelValue(col)`                                    |
+| `DataTable.GetAttr(col, row, col, prop)`                             |
 
 ---
 
