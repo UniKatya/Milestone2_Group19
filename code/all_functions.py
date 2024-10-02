@@ -1,3 +1,4 @@
+import wx.grid
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -132,17 +133,29 @@ def remove_food_from_meal_plan(meal_plan, food_name, quantity):
     else:
         meal_plan[food_name] -= quantity
 
-def get_number_rows(data):
-    return len(data.index)
+class DataTable(wx.grid.GridTableBase):
+    def __init__(self, data=None):
+        wx.grid.GridTableBase.__init__(self)
+        self.headerRows = 1
+        self.data = data
 
-def get_number_cols(data):
-    return len(data.columns)
+    def GetNumberRows(self):
+        return len(self.data.index)
 
-def get_value(data, row, col):
-    return data.iloc[row, col]
+    def GetNumberCols(self):
+        return len(self.data.columns)
 
-def set_value(data, row, col, value):
-    data.iloc[row, col] = value
+    def GetValue(self, row, col):
+        return self.data.iloc[row, col]
 
-def get_col_label_value(data, col):
-    return data.columns[col]
+    def SetValue(self, row, col, value):
+        self.data.iloc[row, col] = value
+
+    def GetColLabelValue(self, col):
+        return self.data.columns[col]
+
+    def GetAttr(self, row, col, prop):
+        attr = wx.grid.GridCellAttr()
+        if row % 2 == 1:
+            attr.SetBackgroundColour(EVEN_ROW_COLOUR)
+        return attr

@@ -1,9 +1,22 @@
 import pytest
 import matplotlib.pyplot as plt
-from all_functions import get_number_rows, get_number_cols, get_value, set_value, get_col_label_value, load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, filter_food_by_nutrient_level, get_food_details, generate_meal_plan, generate_total_calories, remove_food_from_meal_plan
+from all_functions import DataTable, load_data, search_food_by_name, get_nutritional_info, filter_nutritional_info, create_pie_chart, create_bar_graph, filter_food_by_nutrient_range, filter_food_by_nutrient_level, get_food_details, generate_meal_plan, generate_total_calories, remove_food_from_meal_plan
 import pandas as pd
 
 EVEN_ROW_COLOUR = '#CCE6FF'
+
+@pytest.fixture
+def sample_data():
+    return pd.DataFrame({
+        'food': ['apple', 'banana', 'carrot'],
+        'Caloric Value': [52, 89, 41],
+        'Protein': [0.3, 1.1, 0.9],
+        'Fat': [0.1, 0.3, 0.2]
+    })
+
+@pytest.fixture
+def data_table(sample_data):
+    return DataTable(sample_data)
 
 @pytest.fixture
 def meal_plan():
@@ -190,14 +203,18 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
     assert exc_info.type is KeyError
 
+<<<<<<< HEAD
 def test_get_number_rows_valid(cream_cheese_info):
     assert get_number_rows(pd.DataFrame([cream_cheese_info])) == 1
+=======
+def test_get_number_rows(data_table):
+    assert data_table.GetNumberRows() == 3
+>>>>>>> parent of b12ee5d (v_4.6)
 
-def test_get_number_rows_invalid():
-    with pytest.raises(AttributeError) as exc_info:
-        get_number_rows({'Caloric Value': 51})
-    assert exc_info.type is AttributeError
+def test_get_number_cols(data_table):
+    assert data_table.GetNumberCols() == 4
 
+<<<<<<< HEAD
 def test_get_number_cols_valid(cream_cheese_info):
     assert get_number_cols(pd.DataFrame([cream_cheese_info])) == 34
 
@@ -212,13 +229,21 @@ def test_get_value_valid(cream_cheese_info):
 def test_get_value_invalid(cream_cheese_info):
     with pytest.raises(IndexError) as exc_info:
         get_value(pd.DataFrame([cream_cheese_info]), 10, 10)
+=======
+def test_get_value_valid(data_table):
+    assert data_table.GetValue(0, 0) == 'apple'
+
+def test_get_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetValue(10, 10)
+>>>>>>> parent of b12ee5d (v_4.6)
     assert exc_info.type is IndexError
 
-def test_set_value_valid(cream_cheese_info):
-    df = pd.DataFrame([cream_cheese_info])
-    set_value(df, 0, 0, 10)
-    assert get_value(df, 0, 0) == 10
+def test_set_value_valid(data_table):
+    data_table.SetValue(0, 0, 10)
+    assert data_table.GetValue(0, 0) == 10
 
+<<<<<<< HEAD
 def test_set_value_invalid(cream_cheese_info):
     with pytest.raises(IndexError) as exc_info:
         set_value(pd.DataFrame([cream_cheese_info]), 10, 10, 100)
@@ -231,4 +256,26 @@ def test_get_col_label_value_valid(cream_cheese_info):
 def test_get_col_label_value_invalid(cream_cheese_info):
     with pytest.raises(IndexError) as exc_info:
         get_col_label_value(pd.DataFrame([cream_cheese_info]), 100)
+=======
+def test_set_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.SetValue(10, 10, 100)
     assert exc_info.type is IndexError
+
+def test_get_col_label_value_valid(data_table):
+    assert data_table.GetColLabelValue(0) == 'food'
+    assert data_table.GetColLabelValue(1) == 'Caloric Value'
+
+def test_get_col_label_value_invalid(data_table):
+    with pytest.raises(IndexError) as exc_info:
+        data_table.GetColLabelValue(10)
+>>>>>>> parent of b12ee5d (v_4.6)
+    assert exc_info.type is IndexError
+
+def test_get_attr_valid(data_table):
+    assert data_table.GetAttr(3, 0, None).GetBackgroundColour() == EVEN_ROW_COLOUR
+    assert not data_table.GetAttr(0, 0, None).HasBackgroundColour()
+
+def test_get_attr_invalid(data_table):
+    assert data_table.GetAttr(10, 0, None) is not None
+    assert data_table.GetAttr(0, 10, None) is not None
