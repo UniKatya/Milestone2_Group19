@@ -14,26 +14,26 @@ the five required features.</span> There is no need to test the GUI components. 
 list all tested functions related to the five required features and the corresponding test functions designed to test 
 those functions, for example:
 
-| **Tested Functions**                                                 | **Test Functions**                                                                                   |
-|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                             |
-| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                         |
-| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`      |
-| `filter_nutritional_info(nutritional_info)`                          | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()` |
-| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                               |
-| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                               |
-| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`     |
-| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`     |
-| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`             |
-| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`         |
-| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)` |
+| **Tested Functions**                                                 | **Test Functions**                                                                                           |
+|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `load_data(file_path)`                                               | `test_load_data_valid()` <br> `test_load_data_invalid()`                                                     |
+| `search_food_by_name(food_name)`                                     | `test_search_food_by_name_valid()` <br> `test_search_food_by_name_invalid()`                                 |
+| `get_nutritional_info(food_name)`                                    | `test_get_nutritional_info_valid(cream_cheese_info)` <br> `test_get_nutritional_info_invalid()`              |
+| `filter_nutritional_info(nutritional_info)`                          | `test_filter_nutritional_info_valid(cream_cheese_info)`<br> `test_filter_nutritional_info_invalid()`         |
+| `create_pie_chart(filtered_sizes, filtered_categories, explode, ax)` | `test_create_pie_chart_valid()` <br> `test_create_pie_chart_invalid()`                                       |
+| `create_bar_graph(filtered_categories, filtered_sizes, ax)`          | `test_create_bar_graph_valid()` <br> `test_create_bar_graph_invalid()`                                       |
+| `filter_food_by_nutrient_range(nutrient, min_val, max_val)`          | `test_filter_food_by_nutrient_range_valid()` <br> `test_filter_food_by_nutrient_range_invalid()`             |
+| `filter_food_by_nutrient_level(nutrient, level)`                     | `test_filter_food_by_nutrient_level_valid()` <br> `test_filter_food_by_nutrient_level_invalid()`             |
+| `get_food_details(food_name, meal_plan)`                             | `test_get_food_details_valid(meal_plan)` <br> `test_get_food_details_invalid(meal_plan)`                     |
+| `generate_meal_plan(meal_plan, food_name, quantity)`                 | `test_generate_meal_plan_valid(meal_plan)` <br> `test_generate_meal_plan_invalid(meal_plan)`                 |
+| `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)`      |
 | `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
-| `DataTable.GetNumberRows()`                                          | `test_get_number_rows(data_table)`                                                                   |
-| `DataTable.GetNumberCols()`                                          | `test_get_number_cols(data_table)`                                                                   |
-| `DataTable.GetValue(row, col)`                                       | `test_get_value_valid(data_table)` <br> `test_get_value_invalid(data_table)`         |
-| `DataTable.SetValue(row, col, value)`                                | `test_set_value_valid(data_table)` <br> `test_set_value_invalid(data_table)`         |
-| `DataTable.GetColLabelValue(col)`                                    | `test_get_col_label_value_valid(data_table)` <br> `test_get_col_label_value_invalid(data_table)`   |
-| `DataTable.GetAttr(row, col, prop)`                                  | `test_get_attr_valid(data_table)` <br> `test_get_attr_invalid(data_table)`             |
+| `DataTable.GetNumberRows()`                                          | `test_get_number_rows_valid(data_table)` <br>   `test_get_number_rows_invalid()`                             |
+| `DataTable.GetNumberCols()`                                          | `test_get_number_cols(data_table)`   <br>  `test_get_number_cols_invalid()`                                  |
+| `DataTable.GetValue(row, col)`                                       | `test_get_value_valid(data_table)` <br> `test_get_value_invalid(data_table)`                                 |
+| `DataTable.SetValue(row, col, value)`                                | `test_set_value_valid(data_table)` <br> `test_set_value_invalid(data_table)`                                 |
+| `DataTable.GetColLabelValue(col)`                                    | `test_get_col_label_value_valid(data_table)` <br> `test_get_col_label_value_invalid(data_table)`             |
+| `DataTable.GetAttr(row, col, prop)`                                  | `test_get_attr_valid(data_table)` <br> `test_get_attr_invalid(data_table)`                                   |
 ---
 
 ## 2. **Test Case Details**
@@ -509,6 +509,7 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
 ### Test Case 13:
 - **Test Function/Module**
 - `test_get_number_rows(data_table)`
+- `test_get_number_rows_invalid()`
 - **Tested Function/Module**
   - `DataTable.GetNumberRows()`
 - **Description**
@@ -525,9 +526,24 @@ def test_get_number_rows(data_table):
     assert data_table.GetNumberRows() == 3
 ```
 
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `DataTable().GetNumberRows()` | `Handle Exception`  |
+
+- **2) Code for the Test Function**
+```python
+def test_get_number_rows_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberRows()
+    assert exc_info.type is AttributeError
+```
+
 ### Test Case 14:
 - **Test Function/Module**
 - `test_get_number_cols(data_table)`
+- `test_get_number_cols_invalid()`
 - **Tested Function/Module**
   - `DataTable.GetNumberCols()`
 - **Description**
@@ -542,6 +558,20 @@ def test_get_number_rows(data_table):
 ```python
 def test_get_number_cols(data_table):
     assert data_table.GetNumberCols() == 4
+```
+
+- **2) Invalid Input and Expected Output**
+
+| **Invalid Input**             | **Expected Output** |
+|-------------------------------|---------------------|
+| `DataTable().GetNumberCols()` | `Handle Exception`  |
+
+- **2) Code for the Test Function**
+```python
+def test_get_number_cols_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberCols()
+    assert exc_info.type is AttributeError
 ```
 
 ### Test Case 15:

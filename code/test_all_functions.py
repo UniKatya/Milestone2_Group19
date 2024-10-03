@@ -208,11 +208,21 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
         remove_food_from_meal_plan(meal_plan, 'carrot', 2)
     assert exc_info.type is KeyError
 
-def test_get_number_rows(data_table):
+def test_get_number_rows_valid(data_table):
     assert data_table.GetNumberRows() == 3
 
-def test_get_number_cols(data_table):
+def test_get_number_rows_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberRows()
+    assert exc_info.type is AttributeError
+
+def test_get_number_cols_valid(data_table):
     assert data_table.GetNumberCols() == 4
+
+def test_get_number_cols_invalid():
+    with pytest.raises(AttributeError) as exc_info:
+        DataTable().GetNumberCols()
+    assert exc_info.type is AttributeError
 
 def test_get_value_valid(data_table):
     assert data_table.GetValue(0, 0) == 'apple'
