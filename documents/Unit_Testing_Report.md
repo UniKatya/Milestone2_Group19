@@ -29,7 +29,7 @@ those functions, for example:
 | `generate_total_calories(meal_plan)`                                 | `test_generate_total_calories_valid(meal_plan)`  <br> `test_generate_total_calories_invalid(meal_plan)`      |
 | `remove_food_from_meal_plan(meal_plan, food_name, quantity)`         | `test_remove_food_from_meal_plan_valid(meal_plan)` <br> `test_remove_food_from_meal_plan_invalid(meal_plan)` |
 | `DataTable.GetNumberRows()`                                          | `test_get_number_rows_valid(data_table)` <br>   `test_get_number_rows_invalid()`                             |
-| `DataTable.GetNumberCols()`                                          | `test_get_number_cols(data_table)`   <br>  `test_get_number_cols_invalid()`                                  |
+| `DataTable.GetNumberCols()`                                          | `test_get_number_cols_valid(data_table)`   <br>  `test_get_number_cols_invalid()`                            |
 | `DataTable.GetValue(row, col)`                                       | `test_get_value_valid(data_table)` <br> `test_get_value_invalid(data_table)`                                 |
 | `DataTable.SetValue(row, col, value)`                                | `test_set_value_valid(data_table)` <br> `test_set_value_invalid(data_table)`                                 |
 | `DataTable.GetColLabelValue(col)`                                    | `test_get_col_label_value_valid(data_table)` <br> `test_get_col_label_value_invalid(data_table)`             |
@@ -350,7 +350,7 @@ def test_filter_food_by_nutrient_level_invalid():
 - **Tested Function/Module**
   - `get_food_details(food_name, meal_plan)`
 - **Description**
-  - This function retrieves food details from the meal plan. The input is the dataframe, food_name, and meal_plan. The output is the food details.
+  - This function retrieves food details from the meal plan. The input is the food_name and meal_plan. The output is the food details.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                        | **Expected Output**   |
@@ -475,7 +475,7 @@ def test_generate_total_calories_invalid(meal_plan):
 - **Tested Function/Module**
   - `remove_food_from_meal_plan(meal_plan, food_name, quantity)`
 - **Description**
-  - This function removes a food item from the meal plan. The input is the meal plan and the selected meal food. The output is the updated meal plan.
+  - This function removes a food item from the meal plan. The input is the meal plan, the selected food item and it's quantity. The output is the updated meal plan.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**                                     | **Expected Output**         |
@@ -513,7 +513,7 @@ def test_remove_food_from_meal_plan_invalid(meal_plan):
 - **Tested Function/Module**
   - `DataTable.GetNumberRows()`
 - **Description**
-  - This functions obtains the number of rows in the data table. The input is the data table. The output is the number of rows.
+  - This functions obtains the number of rows in the data table. The function takes data from the __init__ function in the DataTable class. The output is the number of rows.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**              | **Expected Output** |
@@ -547,7 +547,7 @@ def test_get_number_rows_invalid():
 - **Tested Function/Module**
   - `DataTable.GetNumberCols()`
 - **Description**
-  - This functions obtains the number of columns in the data table. The input is the data table. The output is the number of columns.
+  - This functions obtains the number of columns in the data table. The function takes data from the __init__ function in the DataTable class. The output is the number of columns.
 - **1) Valid Input and Expected Output**  
 
 | **Valid Input**              | **Expected Output** |
